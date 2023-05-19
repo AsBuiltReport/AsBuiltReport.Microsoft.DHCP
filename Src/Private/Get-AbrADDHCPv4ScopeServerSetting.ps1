@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.6.3
+        Version:        0.1.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

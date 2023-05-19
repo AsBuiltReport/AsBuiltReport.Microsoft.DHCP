@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopeSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.7.6
+        Version:        0.1.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
