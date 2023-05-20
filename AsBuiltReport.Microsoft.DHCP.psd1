@@ -24,7 +24,7 @@ GUID = '6c9d84fd-4fdc-4739-b059-8347f3af880a'
 Author = 'Jonathan Colon'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+# CompanyName = 'Unknown'
 
 # Copyright statement for this module
 Copyright = '(c) 2023 Jonathan Colon. All rights reserved.'
@@ -73,7 +73,7 @@ RequiredModules = @(
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-# FunctionsToExport = '*'
+FunctionsToExport = @('Invoke-AsBuiltReport.Microsoft.DHCP')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 # CmdletsToExport = '*'
@@ -99,19 +99,19 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = 'AsBuiltReport', 'Report', 'Microsoft', 'DHCP', 'Dynamic-Host-Configuration-Protocol', 'Documentation', 'PScribo', 'PSEdition_Desktop', 'PSEdition_Core', 'Windows'
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP'
 
         # A URL to an icon representing this module.
-        # IconUri = ''
+        IconUri = 'https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport/master/AsBuiltReport.png'
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = 'https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/CHANGELOG.md'
 
     } # End of PSData hashtable
 
