@@ -22,8 +22,6 @@
   - Added DHCP Scope Statistics information.
   - Added DHCP Scope DNS Setting information.
 
-  ## Changed
+### Changed
 
-  - Improved bug and feature request templates
-
-
+- Improved bug and feature request templates
