@@ -62,7 +62,7 @@ This report is compatible with the following PowerShell versions;
 |   :white_check_mark:   | :x: |
 ## :wrench: System Requirements
 <!-- ********** Update system requirements ********** -->
-PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are required for generating a Microsoft DHCP As Built Report.
+PowerShell 5.1, and the following PowerShell modules are required for generating a Microsoft DHCP As Built Report.
 
 - [AsBuiltReport.Microsoft.DHCP Module](https://www.powershellgallery.com/packages/AsBuiltReport.Microsoft.DHCP/)
 - [ActiveDirectory Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps)
