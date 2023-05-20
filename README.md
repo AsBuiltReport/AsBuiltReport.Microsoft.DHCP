@@ -36,12 +36,22 @@ Microsoft DHCP As Built Report is a PowerShell module which works in conjunction
 
 Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for more detailed information about this project.
 
+# :books: Sample Reports
+
+## Sample Report - Custom Style 1
+
+Sample Microsoft DHCP As Built report HTML file: [Sample Microsoft DHCP As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.html)
+
+Sample Microsoft DHCP As Built report PDF file: [Sample Microsoft DHCP As Built Report.pdf](https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.pdf)
+
 # :beginner: Getting Started
 Below are the instructions on how to install, configure and generate a Microsoft DHCP As Built report.
 
 ## :floppy_disk: Supported Versions
-<!-- ********** Update supported DHCP versions ********** -->
-The Microsoft DHCP As Built Report supports the following DHCP versions;
+<!-- ********** Update supported AD versions ********** -->
+The Microsoft DHCP As Built Report supports the following DHCP server versions;
+
+- 2012, 2016, 2019 & 2022
 
 ### PowerShell
 This report is compatible with the following PowerShell versions;
@@ -49,29 +59,35 @@ This report is compatible with the following PowerShell versions;
 <!-- ********** Update supported PowerShell versions ********** -->
 | Windows PowerShell 5.1 |     PowerShell 7    |
 |:----------------------:|:--------------------:|
-|   :white_check_mark:   | :white_check_mark: |
+|   :white_check_mark:   | :x: |
 ## :wrench: System Requirements
 <!-- ********** Update system requirements ********** -->
 PowerShell 5.1 or PowerShell 7, and the following PowerShell modules are required for generating a Microsoft DHCP As Built Report.
 
 - [AsBuiltReport.Microsoft.DHCP Module](https://www.powershellgallery.com/packages/AsBuiltReport.Microsoft.DHCP/)
+- [ActiveDirectory Module](https://docs.microsoft.com/en-us/powershell/module/activedirectory/?view=windowsserver2019-ps)
+- [DhcpServer Module](https://docs.microsoft.com/en-us/powershell/module/dhcpserver/?view=windowsserver2019-ps)
 
 ### Linux & macOS
-* .NET Core is required for cover page image support on Linux and macOS operating systems.
-    * [Installing .NET Core for macOS](https://docs.microsoft.com/en-us/dotnet/core/install/macos)
-    * [Installing .NET Core for Linux](https://docs.microsoft.com/en-us/dotnet/core/install/linux)
+
+This report does not support Linux or Mac due to the fact that the ActiveDirectory/GroupPolicy modules are dependent on the .NET Framework. Until Microsoft migrates these modules to native PowerShell Core, only PowerShell >= (5.x, 7) will be supported on Windows.
 
 ❗ If you are unable to install .NET Core, you must set `ShowCoverPageImage` to `False` in the report JSON configuration file.
 ### :closed_lock_with_key: Required Privileges
-<!-- ********** Define required privileges ********** -->
-<!-- ********** Try to follow best practices to define least privileges ********** -->
+
+A Microsoft DHCP As Built Report can be generated with DHCP operator level privileges. Since this report relies extensively on the WinRM component, you should make sure that it is enabled and configured. [Reference](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
+
+Due to a limitation of the WinRM component, a domain-joined machine is needed, also it is required to use the FQDN of the DC instead of its IP address.
+[Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.1#how-to-use-an-ip-address-in-a-remote-command)
 
 ## :package: Module Installation
 
 ### PowerShell
 <!-- ********** Add installation for any additional PowerShell module(s) ********** -->
 ```powershell
-install-module AsBuiltReport.Microsoft.DHCP
+Install-Module -Name AsBuiltReport.Microsoft.DHCP
+Install-WindowsFeature -Name RSAT-AD-PowerShell
+Install-WindowsFeature -Name RSAT-DHCP
 ```
 
 ### GitHub
@@ -124,19 +140,44 @@ The **Options** schema allows certain options within the report to be toggled on
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 
-There are 6 levels (0-5) of detail granularity for each section as follows;
+There are 3 levels (0-2) of detail granularity for each section as follows;
 
 | Setting | InfoLevel         | Description                                                                                                                                |
 |:-------:|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 |    0    | Disabled          | Does not collect or display any information                                                                                                |
 |    1    | Enabled / Summary | Provides summarised information for a collection of objects                                                                                |
 |    2    | Adv Summary       | Provides condensed, detailed information for a collection of objects                                                                       |
-|    3    | Detailed          | Provides detailed information for individual objects                                                                                       |
-|    4    | Adv Detailed      | Provides detailed information for individual objects, as well as information for associated objects                                        |
-|    5    | Comprehensive     | Provides comprehensive information for individual objects, such as advanced configuration settings                                         |
+
+The table below outlines the default and maximum **InfoLevel** settings for each section.
+
+| Sub-Schema   | Default Setting | Maximum Setting |
+|--------------|:---------------:|:---------------:|
+| DHCP         |        1        |        2        |
 
 ### Healthcheck
 The **Healthcheck** schema is used to toggle health checks on or off.
 
 ## :computer: Examples
-<!-- ********** Add some examples. Use other AsBuiltReport modules as a guide. ********** -->
+
+There are a few examples listed below on running the AsBuiltReport script against a Microsoft DHCP server target. Refer to the `README.md` file in the main AsBuiltReport project repository for more examples.
+
+```powershell
+
+# Generate a Microsoft DHCP As Built Report for DHCP Server 'admin-dhcp-01v.contoso.local' using specified credentials. Export report to HTML & DOCX formats. Use default report style. Append timestamp to report filename. Save reports to 'C:\Users\Jon\Documents'
+PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso.local' -Username 'administrator@contoso.local' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -Timestamp
+
+# Generate a Microsoft DHCP As Built Report for DHCP Server 'admin-dhcp-01v.contoso.local' using specified credentials and report configuration file. Export report to Text, HTML & DOCX formats. Use default report style. Save reports to 'C:\Users\Jon\Documents'. Display verbose messages to the console.
+PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso.local' -Username 'administrator@contoso.local' -Password 'P@ssw0rd' -Format Text,Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -ReportConfigFilePath 'C:\Users\Jon\AsBuiltReport\AsBuiltReport.Microsoft.AD.json' -Verbose
+
+# Generate a Microsoft DHCP As Built Report for DHCP Server 'admin-dhcp-01v.contoso.local' using stored credentials. Export report to HTML & Text formats. Use default report style. Highlight environment issues within the report. Save reports to 'C:\Users\Jon\Documents'.
+PS C:\> $Creds = Get-Credential
+PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso.local' -Credential $Creds -Format Html,Text -OutputFolderPath 'C:\Users\Jon\Documents' -EnableHealthCheck
+
+# Generate a Microsoft DHCP As Built Report for DHCP Server 'admin-dhcp-01v.contoso.local' using specified credentials. Export report to HTML & DOCX formats. Use default report style. Reports are saved to the user profile folder by default. Attach and send reports via e-mail.
+PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso.local' -Username 'administrator@contoso.local' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -SendEmail
+```
+
+## :x: Known Issues
+
+- Issues with WinRM when using the IP address instead of the "Fully Qualified Domain Name".
+- This project relies heavily on the remote connection function through WinRM. For this reason the use of a Windows 10 client is specifically used as a jumpbox.
