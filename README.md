@@ -53,6 +53,10 @@ The Microsoft DHCP As Built Report supports the following DHCP server versions;
 
 - 2012, 2016, 2019 & 2022
 
+This report document the DHCP Services Forest/Domain wide.
+
+If you need to document an standalone DHCP server is a better option to use the [**AsBuiltReport.Microsoft.Windows**](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.Windows) report.
+
 ### PowerShell
 This report is compatible with the following PowerShell versions;
 
@@ -180,3 +184,4 @@ PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso
 
 - Issues with WinRM when using the IP address instead of the "Fully Qualified Domain Name".
 - This project relies heavily on the remote connection function through WinRM. For this reason the use of a Windows 10 client is specifically used as a jumpbox.
+- This report document the DHCP server service Forest/Domain wide. If you need to document an standalone DHCP server is a better option to use the [**AsBuiltReport.Microsoft.Windows**](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.Windows) report.
