@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.0
+        Version:        0.1.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -32,7 +32,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
     process {
         $DHCPScopeOptions = Get-DhcpServerv4OptionValue -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopeOptions) {
-            Section -Style Heading4 "$($DHCPServer.ToUpper().split(".", 2)[0]) Scope Server Options" {
+            Section -Style Heading4 "Scope Server Options" {
                 $OutObj = @()
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
@@ -89,7 +89,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             }
 
                             $TableParams = @{
-                                Name = "Scopes DNS Setting - $($Server.split(".", 2)[0])"
+                                Name = "Scopes DNS Setting - $($Server.split(".", 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }
