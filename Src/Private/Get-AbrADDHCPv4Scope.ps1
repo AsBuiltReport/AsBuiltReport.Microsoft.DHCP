@@ -33,7 +33,7 @@ function Get-AbrADDHCPv4Scope {
         try {
             $DHCPScopes = Get-DhcpServerv4Scope -CimSession $TempCIMSession -ComputerName $Server
             if ($DHCPScopes) {
-                Section -Style Heading5 "Scopes" {
+                Section -Style Heading4 "Scopes" {
                     Paragraph "The following sections summarizes the configuration of the ipv4 scope within $($Server.ToUpper().split(".", 2)[0])."
                     BlankLine
                     $OutObj = @()
@@ -80,7 +80,7 @@ function Get-AbrADDHCPv4Scope {
                 try {
                     $DHCPScopes = Get-DhcpServerv4ScopeStatistics -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopes) {
-                        Section -Style Heading5 "Scope Statistics" {
+                        Section -Style Heading4 "Scope Statistics" {
                             $OutObj = @()
                             foreach ($Scope in $DHCPScopes) {
                                 try {
@@ -121,12 +121,12 @@ function Get-AbrADDHCPv4Scope {
                 try {
                     $DHCPScopes = Get-DhcpServerv4Failover -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopes) {
-                        Section -Style Heading5 "IPv4 Scope Failover" {
+                        Section -Style Heading4 "Scope Failover" {
                             Write-PScriboMessage "Discovered '$(($DHCPScopes | Measure-Object).Count)' failover setting in $($Server)."
                             foreach ($Scope in $DHCPScopes) {
                                 if ($Scope.ScopeId) {
                                     try {
-                                        Section -ExcludeFromTOC -Style NOTOCHeading6 $Scope.ScopeId.IPAddressToString {
+                                        Section -ExcludeFromTOC -Style NOTOCHeading5 $Scope.ScopeId.IPAddressToString {
                                             $OutObj = @()
                                             Write-PscriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId.IPAddressToString) scope failover setting from $($Server.split(".", 2)[0])"
                                             $inObj = [ordered] @{
@@ -180,7 +180,7 @@ function Get-AbrADDHCPv4Scope {
                 try {
                     $DHCPScopes = Get-DhcpServerv4Binding -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopes) {
-                        Section -Style Heading5 "Network Interface Binding" {
+                        Section -Style Heading4 "NIC Binding" {
                             $OutObj = @()
                             foreach ($Scope in $DHCPScopes) {
                                 try {
@@ -201,14 +201,14 @@ function Get-AbrADDHCPv4Scope {
                                     $OutObj += [pscustomobject]$inobj
                                 }
                                 catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Network Interface binding Item)"
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 NIC Biding Item)"
                                 }
                             }
                             if ($HealthCheck.DHCP.BP) {
                                 $OutObj | Where-Object { $_.'State' -ne 'Enabled'} | Set-Style -Style Warning -Property 'State'
                             }
                             $TableParams = @{
-                                Name = "Network Interface binding - $($Server.split(".", 2).ToUpper()[0])"
+                                Name = "NIC Biding - $($Server.split(".", 2).ToUpper()[0])"
                                 List = $false
                                 ColumnWidths = 25, 25, 25, 25
                             }
@@ -221,6 +221,84 @@ function Get-AbrADDHCPv4Scope {
                 }
                 catch {
                     Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Network Interface binding Table)"
+                }
+                try {
+                    $DHCPClass = Get-DhcpServerv4Class -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'Name'
+                    if ($DHCPClass) {
+                        Section -Style Heading4 "Client Classes" {
+                            $OutObj = @()
+                            foreach ($Class in $DHCPClass) {
+                                try {
+                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Class.Name) class from $($Server.split(".", 2)[0])"
+                                    $inObj = [ordered] @{
+                                        'Name' = $Class.Name
+                                        'Type' = $Class.Type
+                                        'Data' = $Class.Data
+                                        'Ascii Data' = $Class.AsciiData
+                                        'Description' = $Class.Description
+                                    }
+                                    $OutObj += [pscustomobject]$inobj
+                                }
+                                catch {
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Item)"
+                                }
+                            }
+
+                            if ($HealthCheck.DHCP.BP) {
+                                $OutObj | Where-Object { $Null -eq $_.'Description'} | Set-Style -Style Warning -Property 'Description'
+                            }
+
+                            $TableParams = @{
+                                Name = "Client Classes - $($Server.split(".", 2).ToUpper()[0])"
+                                List = $false
+                                ColumnWidths = 24, 12, 24, 20, 20
+                            }
+                            if ($Report.ShowTableCaptions) {
+                                $TableParams['Caption'] = "- $($TableParams.Name)"
+                            }
+                            $OutObj | Table @TableParams
+                        }
+                    }
+                }
+                catch {
+                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
+                }
+                try {
+                    $DHCPOptionDefinition = Get-DhcpServerv4OptionDefinition -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'OptionId'
+                    if ($DHCPOptionDefinition) {
+                        Section -Style Heading4 "Option Definitions" {
+                            $OutObj = @()
+                            foreach ($Definition in $DHCPOptionDefinition) {
+                                try {
+                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Definition.Name) option definitions from $($Server.split(".", 2)[0])"
+                                    $inObj = [ordered] @{
+                                        'Name' = $Definition.Name
+                                        'Option Id' = $Definition.OptionId
+                                        'Type' = $Definition.Type
+                                        'Vendor Class' = $Definition.VendorClass
+                                        'Multi Valued' = ConvertTo-TextYN $Definition.MultiValued
+                                    }
+                                    $OutObj += [pscustomobject]$inobj
+                                }
+                                catch {
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Option Definitions Item)"
+                                }
+                            }
+
+                            $TableParams = @{
+                                Name = "Option Definitions - $($Server.split(".", 2).ToUpper()[0])"
+                                List = $false
+                                ColumnWidths = 30, 12, 22, 22, 14
+                            }
+                            if ($Report.ShowTableCaptions) {
+                                $TableParams['Caption'] = "- $($TableParams.Name)"
+                            }
+                            $OutObj | Table @TableParams
+                        }
+                    }
+                }
+                catch {
+                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
                 }
             }
         }
