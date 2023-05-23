@@ -1,5 +1,21 @@
 # :arrows_clockwise: Microsoft DHCP As Built Report Changelog
 
+## [0.1.1] - 2023-05-23
+
+### Added
+
+- Added Global and Per Scope Policy information.
+- Added Global and Per Scope Filter information
+- Added Scope Reservation information
+- Added Scope Exclusion information
+- Added Client Class
+  - Vendor
+  - User
+- Added Scope Option Definition information
+### Changed
+
+- Improved bug and feature request templates
+
 ## [0.1.0] - 2023-05-19
 
 ### Added
