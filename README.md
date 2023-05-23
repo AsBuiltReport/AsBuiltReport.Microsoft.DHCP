@@ -37,7 +37,7 @@ Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for m
 
 ## Sample Report - Custom Style 1
 
-Sample Microsoft DHCP As Built report HTML file: [Sample Microsoft DHCP As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/Samples/Sample%20Microsoft%20DHCP%20As-Built%20Report.html)
+Sample Microsoft DHCP As Built report HTML file: [Sample Microsoft DHCP As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/dev/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.html)
 
 Sample Microsoft DHCP As Built report PDF file: [Sample Microsoft DHCP As Built Report.pdf](https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.pdf)
 
