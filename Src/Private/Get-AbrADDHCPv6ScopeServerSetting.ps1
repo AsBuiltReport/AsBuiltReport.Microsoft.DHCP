@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.0
+        Version:        0.1.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -33,8 +33,8 @@ function Get-AbrADDHCPv6ScopeServerSetting {
         $OutObj = @()
         $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopeOptions) {
-            Section -Style Heading4 "$($DHCPServer.ToUpper().split(".", 2)[0]) Scope Server Options" {
-                Paragraph "The following table summarises the dhcp server ipv4 scope dns setting."
+            Section -Style Heading4 "Global Server Options" {
+                Paragraph "The following table summarises the dhcp server ipv4 global dns setting."
                 BlankLine
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
@@ -54,7 +54,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                 }
 
                 $TableParams = @{
-                    Name = "Scopes Server Options - $($Server.split(".", 2).ToUpper()[0])"
+                    Name = "Global Server Options - $($Server.split(".", 2).ToUpper()[0])"
                     List = $false
                     ColumnWidths = 40, 15, 20, 25
                 }
@@ -65,11 +65,11 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                 try {
                     $DHCPScopeOptions = Get-DhcpServerv6DnsSetting -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopeOptions) {
-                        Section -Style Heading5 "Scope DNS Settings" {
+                        Section -Style Heading4 "Global DNS Settings" {
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv6 Scope DNS Setting value from $($Server)."
+                                    Write-PscriboMessage "Collecting DHCP Server IPv6 Global DNS Setting value from $($Server)."
                                     $inObj = [ordered] @{
                                         'Dynamic Updates' = $Option.DynamicUpdates
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
@@ -78,12 +78,12 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                                     $OutObj += [pscustomobject]$inobj
                                 }
                                 catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope DNS Setting Item)"
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Setting Item)"
                                 }
                             }
 
                             $TableParams = @{
-                                Name = "Scopes DNS Setting - $($Server.split(".", 2)[0])"
+                                Name = "Global DNS Setting - $($Server.split(".", 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }
@@ -95,7 +95,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                     }
                 }
                 catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope DNS Setting Table)"
+                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Setting Table)"
                 }
             }
         }
