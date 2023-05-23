@@ -31,7 +31,7 @@ function Get-AbrADDHCPv6PerScopeOption {
     process {
         $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope
         if ($DHCPScopeOptions) {
-            Section -ExcludeFromTOC -Style NOTOCHeading4 $Scope {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 "Options" {
                 $OutObj = @()
                 foreach ($Option in $DHCPScopeOptions) {
                     try {

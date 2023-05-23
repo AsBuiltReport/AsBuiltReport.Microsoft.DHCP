@@ -152,26 +152,28 @@ function Get-AbrDHCPReport {
                                                             Paragraph "The following section provides a summary 6 Scope Server Options information."
                                                             BlankLine
                                                             foreach ($Scope in $DHCPScopes) {
-                                                                try {
-                                                                    Get-AbrADDHCPv6PerScopeExclusion -Server $DHCPServer -Scope $Scope
-                                                                }
-                                                                catch {
-                                                                    Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope Exclusion from $($DHCPServer.split(".", 2)[0])."
-                                                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope Exclusion)"
-                                                                }
-                                                                try {
-                                                                    Get-AbrADDHCPv6PerScopeReservation -Server $DHCPServer -Scope $Scope
-                                                                }
-                                                                catch {
-                                                                    Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope reservation from $($DHCPServer.split(".", 2)[0])."
-                                                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope reservation)"
-                                                                }
-                                                                try {
-                                                                    Get-AbrADDHCPv6PerScopeOption -Server $DHCPServer -Scope $Scope
-                                                                }
-                                                                catch {
-                                                                    Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope options from $($DHCPServer.split(".", 2)[0])."
-                                                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope options)"
+                                                                Section -Style Heading5 $Scope {
+                                                                    try {
+                                                                        Get-AbrADDHCPv6PerScopeExclusion -Server $DHCPServer -Scope $Scope
+                                                                    }
+                                                                    catch {
+                                                                        Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope Exclusion from $($DHCPServer.split(".", 2)[0])."
+                                                                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope Exclusion)"
+                                                                    }
+                                                                    try {
+                                                                        Get-AbrADDHCPv6PerScopeReservation -Server $DHCPServer -Scope $Scope
+                                                                    }
+                                                                    catch {
+                                                                        Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope reservation from $($DHCPServer.split(".", 2)[0])."
+                                                                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope reservation)"
+                                                                    }
+                                                                    try {
+                                                                        Get-AbrADDHCPv6PerScopeOption -Server $DHCPServer -Scope $Scope
+                                                                    }
+                                                                    catch {
+                                                                        Write-PScriboMessage -IsWarning "Error: Retreiving DHCP Server IPv6 Scope options from $($DHCPServer.split(".", 2)[0])."
+                                                                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server Scope options)"
+                                                                    }
                                                                 }
                                                             }
                                                         }
