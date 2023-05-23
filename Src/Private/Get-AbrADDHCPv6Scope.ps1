@@ -32,7 +32,7 @@ function Get-AbrADDHCPv6Scope {
     process {
         $DHCPScopes = Get-DhcpServerv6Scope -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopes) {
-            Section -Style Heading5 "Scopes" {
+            Section -Style Heading4 "Scopes" {
                 Paragraph "The following sections detail the configuration of the ipv4 scope within $($Server.ToUpper().split(".", 2)[0])."
                 BlankLine
                 $OutObj = @()
@@ -68,7 +68,7 @@ function Get-AbrADDHCPv6Scope {
             try {
                 $DHCPScopes = Get-DhcpServerv6ScopeStatistics -CimSession $TempCIMSession -ComputerName $Server
                 if ($DHCPScopes) {
-                    Section -Style Heading5 "Scope Statistics" {
+                    Section -Style Heading4 "Scope Statistics" {
                         $OutObj = @()
                         foreach ($Scope in $DHCPScopes) {
                             try {
@@ -108,7 +108,7 @@ function Get-AbrADDHCPv6Scope {
             try {
                 $DHCPScopes = Get-DhcpServerv6Binding -CimSession $TempCIMSession -ComputerName $Server
                 if ($DHCPScopes) {
-                    Section -Style Heading5 "Network Interface Binding" {
+                    Section -Style Heading4 "NIC Binding" {
                         $OutObj = @()
                         foreach ($Scope in $DHCPScopes) {
                             try {
@@ -127,12 +127,12 @@ function Get-AbrADDHCPv6Scope {
                                 $OutObj += [pscustomobject]$inobj
                             }
                             catch {
-                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Network Interface binding item)"
+                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 NIC binding item)"
                             }
                         }
 
                         $TableParams = @{
-                            Name = "Network Interface binding - $($Server.split(".", 2).ToUpper()[0])"
+                            Name = "NIC Binding - $($Server.split(".", 2).ToUpper()[0])"
                             List = $false
                             ColumnWidths = 30, 40, 30
                         }

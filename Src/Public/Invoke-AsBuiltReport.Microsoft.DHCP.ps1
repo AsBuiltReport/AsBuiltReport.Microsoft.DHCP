@@ -94,18 +94,16 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         #                                 DHCP Section                                                #
         #---------------------------------------------------------------------------------------------#
 
-        Section -Style Heading1 "DHCP Configuration" {
-            if ($InfoLevel.DHCP -ge 1 -and $DHCPinDomain ) {
-                foreach ($Domain in ($OrderedDomains.split(" "))) {
-                    if ($Domain -notin $Options.Exclude.Domains) {
-                        try {
-                            $DomainInfo = Get-ADDomain $Domain -ErrorAction Stop
-                            if ($DomainInfo) {
-                                Get-AbrDHCPReport -Domain $DomainInfo
-                            }
-                        } catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException] {
-                            Write-PScriboMessage -IsWarning "Unable to retreive $($Domain) information. Removing Domain from report"
+        if ($InfoLevel.DHCP -ge 1 -and $DHCPinDomain ) {
+            foreach ($Domain in ($OrderedDomains.split(" "))) {
+                if ($Domain -notin $Options.Exclude.Domains) {
+                    try {
+                        $DomainInfo = Get-ADDomain $Domain -ErrorAction Stop
+                        if ($DomainInfo) {
+                            Get-AbrDHCPReport -Domain $DomainInfo
                         }
+                    } catch [Microsoft.ActiveDirectory.Management.ADIdentityNotFoundException] {
+                        Write-PScriboMessage -IsWarning "Unable to retreive $($Domain) information. Removing Domain from report"
                     }
                 }
             }
