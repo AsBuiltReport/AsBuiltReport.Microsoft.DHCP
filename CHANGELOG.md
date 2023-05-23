@@ -12,9 +12,15 @@
   - Vendor
   - User
 - Added Scope Option Definition information
-### Changed
 
-- Improved bug and feature request templates
+### Fixed
+
+- fix [#5](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/5)
+- fix [#6](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/6)
+- fix [#7](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/7)
+- fix [#8](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/8)
+- fix [#9](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/9)
+- fix [#11](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/11)
 
 ## [0.1.0] - 2023-05-19
 
