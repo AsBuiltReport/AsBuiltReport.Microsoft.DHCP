@@ -30,11 +30,11 @@ function Get-AbrADDHCPv4Statistic {
     process {
         try {
             if ($DHCPinDC) {
-                Section -Style Heading4 'Service Statistics' {
+                Section -Style Heading3 'Service Statistics' {
                     $OutObj = @()
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
-                            if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
+                            if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
                                 Write-PScriboMessage "Collecting DHCP Server IPv4 Statistics from $($DHCPServer.DnsName.split(".", 2)[0])"
                                 $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $Setting = Get-DhcpServerv4Statistics -CimSession $TempCIMSession -ComputerName ($DHCPServer).DnsName

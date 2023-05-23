@@ -26,7 +26,7 @@ function ConvertTo-TextYN {
         )
 
     switch ($TEXT) {
-            "" {"-"; break}
+            "" {"--"; break}
             $Null {"-"; break}
             "True" {"Yes"; break}
             "False" {"No"; break}
@@ -106,8 +106,8 @@ function ConvertTo-EmptyToFiller {
             )
 
         switch ($TEXT) {
-                "" {"-"; break}
-                $Null {"-"; break}
+                "" {"--"; break}
+                $Null {"--"; break}
                 "True" {"Yes"; break}
                 "False" {"No"; break}
                 default {$TEXT}

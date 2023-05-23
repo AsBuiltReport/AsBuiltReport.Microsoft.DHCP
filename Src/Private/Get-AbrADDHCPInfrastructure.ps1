@@ -31,12 +31,12 @@ function Get-AbrADDHCPInfrastructure {
         try {
             if ($DHCPinDC) {
                 Write-PScriboMessage "Discovered '$(($DHCPinDC | Measure-Object).Count)' DHCP Servers in forest $($Domain)."
-                Section -Style Heading3 'DHCP Servers in Domain' {
+                Section -Style Heading2 'DHCP Servers in Domain' {
                     Paragraph "The following table summarises the DHCP servers information within $($Domain.ToString().ToUpper())."
                     BlankLine
                     $OutObj = @()
                     foreach ($DHCPServer in $DHCPinDC) {
-                        if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
+                        if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
                             try {
                                 $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 Write-PScriboMessage "Collecting DHCP Server Setting information from $($DHCPServer.DnsName.split(".", 2)[0])"
@@ -75,10 +75,10 @@ function Get-AbrADDHCPInfrastructure {
                     }
                     $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
                     try {
-                        Section -Style Heading4 'Service Database' {
+                        Section -Style Heading3 'Service Database' {
                             $OutObj = @()
                             foreach ($DHCPServer in $DHCPinDC) {
-                                if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
+                                if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
                                     try {
                                         Write-PScriboMessage "Collecting DHCP Server database information from $($DHCPServer.DnsName.split(".", 2)[0])"
                                         $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
@@ -126,10 +126,10 @@ function Get-AbrADDHCPInfrastructure {
                         Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Service Database Table)"
                     }
                     try {
-                        Section -Style Heading4 'Dynamic DNS credentials' {
+                        Section -Style Heading3 'Dynamic DNS credentials' {
                             $OutObj = @()
                             foreach ($DHCPServer in $DHCPinDC) {
-                                if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
+                                if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
                                     try{
                                         Write-PScriboMessage "Collecting DHCP Server Dynamic DNS Credentials information from $($DHCPServer.DnsName.split(".", 2)[0])"
                                         $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop

@@ -30,10 +30,10 @@ function Get-AbrADDHCPv6Statistic {
     process {
         try  {
             if ($DHCPinDC) {
-                Section -Style Heading4 'Service Statistics' {
+                Section -Style Heading3 'Service Statistics' {
                     $OutObj = @()
                     foreach ($DHCPServer in $DHCPinDC) {
-                        if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
+                        if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
                             try {
                                 Write-PScriboMessage "Collecting DHCP Server IPv6 Statistics from $($DHCPServer.DnsName.split(".", 2)[0])"
                                 $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
