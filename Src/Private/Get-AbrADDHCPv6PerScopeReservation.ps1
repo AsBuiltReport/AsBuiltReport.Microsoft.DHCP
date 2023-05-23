@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6PerScopeReservation {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.0
+        Version:        0.1.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
