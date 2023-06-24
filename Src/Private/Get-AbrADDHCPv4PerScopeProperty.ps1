@@ -60,7 +60,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
 
 
                 if ($HealthCheck.DHCP.BP) {
-                    $OutObj | Where-Object { $Null -eq $_.'Description' } | Set-Style -Style Warning -Property 'Description'
+                    $OutObj | Where-Object { $_.'Description' -eq '--'} | Set-Style -Style Warning -Property 'Description'
                     $OutObj | Where-Object { $_.'State' -eq "Inactive" } | Set-Style -Style Warning -Property 'State'
                 }
 
@@ -74,6 +74,11 @@ function Get-AbrADDHCPv4PerScopeProperty {
                     $TableParams['Caption'] = "- $($TableParams.Name)"
                 }
                 $OutObj | Table @TableParams
+                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Description' -eq "--" } )) {
+                    Paragraph "Health Check:" -Italic -Bold -Underline
+                    BlankLine
+                    Paragraph "Best Practice: It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment." -Italic -Bold
+                }
             }
         }
     }

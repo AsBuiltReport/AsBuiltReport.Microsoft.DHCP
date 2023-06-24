@@ -34,12 +34,12 @@ function Get-AbrADDHCPv4FilterStatus {
                     $OutObj = @()
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
-                            if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 1) {
-                                Write-PScriboMessage "Collecting DHCP Server IPv4 filter status from $($DHCPServer.DnsName.split(".", 2)[0])"
-                                $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
-                                $Setting = Get-DhcpServerv4FilterList -CimSession $TempCIMSession -ComputerName ($DHCPServer).DnsName
+                            if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 1) {
+                                Write-PScriboMessage "Collecting DHCP Server IPv4 filter status from $($DHCPServer.split(".", 2)[0])"
+                                $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                $Setting = Get-DhcpServerv4FilterList -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
-                                    'DC Name' = $DHCPServer.DnsName.Split(".", 2)[0]
+                                    'DC Name' = $DHCPServer.Split(".", 2)[0]
                                     'Allow' = ConvertTo-EmptyToFiller $Setting.Allow
                                     'Deny' = ConvertTo-EmptyToFiller $Setting.Deny
                                 }

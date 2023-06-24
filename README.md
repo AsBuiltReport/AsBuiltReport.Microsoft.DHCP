@@ -136,7 +136,14 @@ The **Report** schema provides configuration of the Microsoft DHCP report inform
 ### Options
 The **Options** schema allows certain options within the report to be toggled on or off.
 
-<!-- ********** Add/Remove the number of InfoLevels as required ********** -->
+| Sub-Schema      | Setting      | Default | Description                                                                                                                                                                                 |
+|-----------------|--------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ShowDefinitionInfo | true/false  | false    | Toggle to enable/disable Microsoft AD term explanations
+| PSDefaultAuthentication | Negotiate/Kerberos  | Negotiate    | Allow to set the value of the PSRemoting authentication method. For Workgroup authentication Negotiate value is required. |
+| ServerDiscovery | Domain/Standalone  | Domain | Allow to set the DHCP servers discovery |
+| Exclude.Domains | Array List  | Empty    | Allow to filter on AD Domain FQDN |
+| Exclude.DCs | Array List  | Empty    | Allow to filter on AD Domain Controller Server FQDN. |
+
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 

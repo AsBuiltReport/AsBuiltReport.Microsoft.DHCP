@@ -27,7 +27,7 @@ function ConvertTo-TextYN {
 
     switch ($TEXT) {
             "" {"--"; break}
-            $Null {"-"; break}
+            $Null {"--"; break}
             "True" {"Yes"; break}
             "False" {"No"; break}
             default {$TEXT}
@@ -81,7 +81,7 @@ function ConvertTo-FileSizeString {
 function ConvertTo-EmptyToFiller {
         <#
         .SYNOPSIS
-        Used by As Built Report to convert empty culumns to "-".
+        Used by As Built Report to convert empty culumns to "--".
         .DESCRIPTION
 
         .NOTES
