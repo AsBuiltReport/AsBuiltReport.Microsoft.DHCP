@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4FilterStatus {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux

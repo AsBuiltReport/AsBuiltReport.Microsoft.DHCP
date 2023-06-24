@@ -5,7 +5,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
     .DESCRIPTION
         Documents the configuration of Microsoft DHCP in Word/HTML/Text formats using PScribo.
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
