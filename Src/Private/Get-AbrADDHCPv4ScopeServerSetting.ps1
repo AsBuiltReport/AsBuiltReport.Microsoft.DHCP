@@ -100,11 +100,13 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             $OutObj | Table @TableParams
                             if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'}) -or ($OutObj | Where-Object { $_.'Name Protection' -eq 'No'})) {
                                 Paragraph "Health Check:" -Italic -Bold -Underline
+                                BlankLine
                                 if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'})) {
                                     Paragraph "Best Practice: 'Always dynamically update dns records' should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server." -Italic -Bold
+                                    BlankLine
                                 }
                                 if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Name Protection' -eq 'No'})) {
-                                    Paragraph "Best Practice: 'Name Protection' should be configured to prevent Name Squating" -Italic -Bold
+                                    Paragraph "Best Practice: 'Name Protection' should be configured to prevent Name Squating." -Italic -Bold
                                 }
                             }
                         }
