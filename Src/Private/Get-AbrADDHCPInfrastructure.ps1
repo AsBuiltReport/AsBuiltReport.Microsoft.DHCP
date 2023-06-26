@@ -173,9 +173,12 @@ function Get-AbrADDHCPInfrastructure {
                         }
                         $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
                         if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'User Name' -eq "--"})) {
-                            Paragraph "Health Check:" -Italic -Bold -Underline
+                            Paragraph "Health Check:"  -Bold -Underline
                             BlankLine
-                            Paragraph "Best Practice: Credentials for DNS update should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server." -Italic -Bold
+                            Paragraph {
+                                Text "Best Practice:" -Bold
+                                Text "Credentials for DNS update should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
+                            }
                         }
                     }
                 }
