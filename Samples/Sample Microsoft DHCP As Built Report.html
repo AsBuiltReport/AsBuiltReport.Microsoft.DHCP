@@ -51,378 +51,65 @@ hr { margin-top: 1.0rem; }
 </div>
 <br /><div class="Title">Microsoft DHCP As Built Report</div><br /><div class="Title2">Zen Pr Solutions</div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="borderless"><tbody>
 <tr><th>Author:</th><td>Jonathan Colon</td></tr>
-<tr><th>Date:</th><td>Tuesday, May 23, 2023</td></tr>
+<tr><th>Date:</th><td>Sunday, June 25, 2023</td></tr>
 <tr><th>Version:</th><td>1.0</td></tr>
 </tbody></table>
 <br /></div>
 </div></div></div><div class="portrait"><div class="Normal" style="padding-top: 5.92rem; padding-left: 5.92rem; padding-bottom: 5.92rem; padding-right: 5.92rem;">
 <div style="min-height: 247mm" ><div><div class="Header">Microsoft DHCP As Built Report - v1.0</div><br /></div><h1 class="TOC">Table of Contents</h1><table>
-<tr><td>1</td><td><a href="#727aa6b3-0765-4612-9282-2d73c1287e94" style="text-decoration: none;">PHARMAX.LOCAL</a></td></tr>
-<tr><td>1.1</td><td>&nbsp;&nbsp;&nbsp;<a href="#abc22e5d-562f-4fa9-a688-bd91c9df2b53" style="text-decoration: none;">DHCP Servers in Domain</a></td></tr>
-<tr><td>1.1.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#b00f3112-f477-47de-b392-d447489d82ca" style="text-decoration: none;">Service Database</a></td></tr>
-<tr><td>1.1.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#d9927136-7961-46a7-a64c-bd1bbfb7bc45" style="text-decoration: none;">Dynamic DNS credentials</a></td></tr>
-<tr><td>1.2</td><td>&nbsp;&nbsp;&nbsp;<a href="#c7c5afd2-b8b8-4231-acbb-930e3d35dff6" style="text-decoration: none;">IPv4 Information</a></td></tr>
-<tr><td>1.2.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ff7835a7-f7d8-4069-8339-aa77455bb2fc" style="text-decoration: none;">Service Statistics</a></td></tr>
-<tr><td>1.2.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ffdae52f-1b8e-479e-8361-eb9d93e6394b" style="text-decoration: none;">Filter Status</a></td></tr>
-<tr><td>1.2.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#e973a201-f1ee-4fea-8e28-f2b26a639a40" style="text-decoration: none;">CAYEY-DC-01V</a></td></tr>
-<tr><td>1.2.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#2d3caf37-b78f-400a-a654-bc5216b60763" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>1.2.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#c54cf615-86df-4672-b072-e93150381e52" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>1.2.3.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#0cb7c75f-5eb5-431f-9aae-48d4a8a309a6" style="text-decoration: none;">Scope Failover</a></td></tr>
-<tr><td>1.2.3.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#5a8c6bf6-d79b-485c-b536-8ab816008603" style="text-decoration: none;">NIC Binding</a></td></tr>
-<tr><td>1.2.3.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#6959a0ec-e2e2-4700-91f1-b7f0bde28af8" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>1.2.3.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ce672134-1537-4afd-9827-9be1107ffb3e" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>1.2.3.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cfad434b-1ac5-42f0-94c0-4c3d92fe5547" style="text-decoration: none;">Global Server Options</a></td></tr>
-<tr><td>1.2.3.7.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#4cfb2901-19d3-4ca1-bbb5-66c6ed932c82" style="text-decoration: none;">Global DNS Setting</a></td></tr>
-<tr><td>1.2.3.8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#46243b47-6d64-4eb6-8396-3c00ffe491ab" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>1.2.3.8.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#17ffda8d-3d4a-43e2-8ddc-a95a685de27f" style="text-decoration: none;">10.0.0.0</a></td></tr>
-<tr><td>1.2.3.8.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ec110c0b-ae30-45aa-84a8-18b378b99b74" style="text-decoration: none;">10.10.32.0</a></td></tr>
-<tr><td>1.2.3.8.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#8e62c069-afaf-45d0-a848-c7eae249c6b7" style="text-decoration: none;">10.10.33.0</a></td></tr>
-<tr><td>1.2.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#6292ed4f-3ded-424b-b3aa-c801484456f2" style="text-decoration: none;">SERVER-DC-01V</a></td></tr>
-<tr><td>1.2.4.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#bfd78f79-05aa-4c2f-be6b-7f64711eaa9e" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>1.2.4.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#d95ec169-4b22-4999-aa9a-104b1787dddf" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>1.2.4.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fa3536c6-ff19-42bd-8522-b340915df6fb" style="text-decoration: none;">Scope Failover</a></td></tr>
-<tr><td>1.2.4.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fbed910c-bb12-4963-b841-a7812fc4ea1f" style="text-decoration: none;">NIC Binding</a></td></tr>
-<tr><td>1.2.4.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ebab8cef-56ac-4dcc-9332-b282fe726ef3" style="text-decoration: none;">Policies</a></td></tr>
-<tr><td>1.2.4.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#bb2a2965-fce7-4b5c-b6ae-8bb4d42911be" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>1.2.4.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#12a50a9a-2d1d-4fb4-bb83-bec43a4af27a" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>1.2.4.8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#ade23322-e02a-4fe4-b7cc-3fe73c3fd44a" style="text-decoration: none;">Global Server Options</a></td></tr>
-<tr><td>1.2.4.8.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fd6b48b7-c3a6-4011-8f14-58df688fb294" style="text-decoration: none;">Global DNS Setting</a></td></tr>
-<tr><td>1.2.4.9</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#bb708d3c-e73d-4c7a-b18b-b14e4943a3d4" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>1.2.4.9.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#5285556c-c31b-4164-b9eb-d301622e0004" style="text-decoration: none;">10.10.32.0</a></td></tr>
-<tr><td>1.2.4.9.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#a2f8d12e-5900-4fed-829f-0f89f16a097d" style="text-decoration: none;">10.10.33.0</a></td></tr>
-<tr><td>1.2.4.9.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#5bca8843-f021-4c3e-b0c6-308b884826f7" style="text-decoration: none;">10.10.34.0</a></td></tr>
-<tr><td>1.2.4.9.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#46bff850-418d-4be1-9bec-c85d184ff46e" style="text-decoration: none;">10.10.35.0</a></td></tr>
-<tr><td>1.2.4.9.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#981f4410-b8ec-4821-9b3a-335fa1ca99a9" style="text-decoration: none;">192.168.2.0</a></td></tr>
-<tr><td>1.2.4.9.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#9a92be7b-9635-4de3-bcf8-250fb127f0fc" style="text-decoration: none;">192.168.4.0</a></td></tr>
-<tr><td>1.2.4.9.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#8228170b-ccfa-454e-9649-9277a0c33c03" style="text-decoration: none;">192.168.6.0</a></td></tr>
-<tr><td>1.2.4.9.8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#49d1ebdb-8df7-4bfc-833a-01d003cc26e2" style="text-decoration: none;">192.168.7.0</a></td></tr>
-<tr><td>1.2.4.9.9</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#d68a513c-00af-4bb6-b898-3363beee2da6" style="text-decoration: none;">192.168.10.0</a></td></tr>
-<tr><td>1.2.4.9.10</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#61afc674-1aa3-4fd5-ac1e-0fd5c38c3a6e" style="text-decoration: none;">192.168.12.0</a></td></tr>
-<tr><td>1.3</td><td>&nbsp;&nbsp;&nbsp;<a href="#22ac0ad2-3170-449d-b703-bd5297683b5b" style="text-decoration: none;">IPv6 Information</a></td></tr>
-<tr><td>1.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#63b0bc59-8139-4e9b-a005-9bba24895a69" style="text-decoration: none;">Service Statistics</a></td></tr>
-<tr><td>2</td><td><a href="#bb9a2c21-2e6e-4887-88af-81de64e5d6ff" style="text-decoration: none;">ACAD.PHARMAX.LOCAL</a></td></tr>
-<tr><td>2.1</td><td>&nbsp;&nbsp;&nbsp;<a href="#985067d5-b7b6-4f4a-b723-ab8df370003d" style="text-decoration: none;">DHCP Servers in Domain</a></td></tr>
-<tr><td>2.1.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#b79bd514-0253-420d-8a82-d9b0014d0b0a" style="text-decoration: none;">Service Database</a></td></tr>
-<tr><td>2.1.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#4f7d9b5e-7333-48b6-9cd5-4a89f778b475" style="text-decoration: none;">Dynamic DNS credentials</a></td></tr>
-<tr><td>2.2</td><td>&nbsp;&nbsp;&nbsp;<a href="#2290e866-b309-4a41-879c-a0969b06f412" style="text-decoration: none;">IPv4 Information</a></td></tr>
-<tr><td>2.2.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#b21d9537-cf10-4046-b9fa-a4b37d189415" style="text-decoration: none;">Service Statistics</a></td></tr>
-<tr><td>2.2.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fc58f6b5-5a58-4e4c-a7ca-8a62ce2a5529" style="text-decoration: none;">Filter Status</a></td></tr>
-<tr><td>2.2.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#6b0fb72c-edf0-4880-80ba-51014b5882ca" style="text-decoration: none;">ACAD-DHCP-01V</a></td></tr>
-<tr><td>2.2.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#45694b98-d913-47fc-9309-e9064e54375a" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>2.2.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#7612dfb3-2ffd-48e8-b244-b53cb44ea01f" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>2.2.3.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#4644a429-91ac-4799-b5d3-3fbaae72d74f" style="text-decoration: none;">NIC Binding</a></td></tr>
-<tr><td>2.2.3.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#50e2c9be-d151-4f05-adaa-77a0e36f88a2" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>2.2.3.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#de7d943d-81d9-47fc-9df1-75ad1b29d894" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>2.2.3.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#79b1bbcd-9db0-4b44-96ee-1d177b3ce489" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>2.2.3.6.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cd2391c5-5b49-447b-9b3f-d14fbedfd7a7" style="text-decoration: none;">172.23.8.0</a></td></tr>
-<tr><td>2.2.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#be2c9fa4-0943-4e90-8232-18c36e576573" style="text-decoration: none;">ACADE-DC-01V</a></td></tr>
-<tr><td>2.2.4.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fc49b98a-e41b-46e3-bf0c-03083f5206a6" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>2.2.4.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#455cbad9-41c4-4ca3-8134-fffe20b19d6c" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>2.2.4.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#cc42413b-9f62-4629-914c-8bef8409a1a6" style="text-decoration: none;">NIC Binding</a></td></tr>
-<tr><td>2.2.4.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#1fad1152-28cd-4422-ba27-9f91d4fc9704" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>2.2.4.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#28b78f93-3810-4ffe-bb3b-9742a1bfb23d" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>2.2.4.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#db58be6d-bf2f-4538-8746-032407065767" style="text-decoration: none;">Global Server Options</a></td></tr>
-<tr><td>2.2.4.6.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#fb204e74-a567-4cdc-8a76-aab8822c45ba" style="text-decoration: none;">Global DNS Setting</a></td></tr>
-<tr><td>2.2.4.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#7eb50bc8-1c0b-442b-bb3d-24ffcee2327b" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>2.2.4.7.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#0252403c-09da-4292-b25e-f4747f52301d" style="text-decoration: none;">172.23.4.0</a></td></tr>
-<tr><td>2.2.4.7.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#6c18fb10-3750-482b-b4ef-16129fa9e1b7" style="text-decoration: none;">172.23.5.0</a></td></tr>
-<tr><td>2.3</td><td>&nbsp;&nbsp;&nbsp;<a href="#690af786-b257-4737-82cd-641dccf32cc0" style="text-decoration: none;">IPv6 Information</a></td></tr>
-<tr><td>2.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#0cf3b5ea-00d5-4d34-a207-5a7771c0b904" style="text-decoration: none;">Service Statistics</a></td></tr>
-<tr><td>2.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#09ce7c64-fd81-42cf-a07c-4cada6940c22" style="text-decoration: none;">ACADE-DC-01V</a></td></tr>
-<tr><td>2.3.2.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#32d083b3-2db3-454a-924a-a0e2ab8c6878" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>2.3.2.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#568c9d75-149f-48ad-9ff0-ad8693da2417" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>2.3.2.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#c8b6f617-e73d-4fae-b28c-ca3788b418f9" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>2.3.2.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#17b3e04c-0c00-49e0-92f5-8ed8af37bfbd" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>2.3.2.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#a7fb03b8-4bc3-4605-a83a-f733b31e88df" style="text-decoration: none;">Global Server Options</a></td></tr>
-<tr><td>2.3.2.5.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#6cb5a9eb-1066-460a-a492-dace745e0747" style="text-decoration: none;">Global DNS Settings</a></td></tr>
-<tr><td>2.3.2.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#c8dd660f-f3de-4f62-b298-a10bc122bf90" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>2.3.2.6.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#e6357188-2853-4937-ae3e-d5872d5b0bc9" style="text-decoration: none;">fd99:2222::</a></td></tr>
-<tr><td>2.3.2.6.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#4831f8c1-5907-4797-b42c-507480c5b643" style="text-decoration: none;">fd99:9971::</a></td></tr>
-<tr><td>3</td><td><a href="#f4473d8d-20f3-449a-95aa-a5c738f57803" style="text-decoration: none;">UIA.LOCAL</a></td></tr>
-<tr><td>3.1</td><td>&nbsp;&nbsp;&nbsp;<a href="#453971e7-13fb-426c-82bc-8dcc2647eb77" style="text-decoration: none;">DHCP Servers in Domain</a></td></tr>
-<tr><td>3.1.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#3ec5026b-f5a6-48bc-9f54-e39d0979b1fe" style="text-decoration: none;">Service Database</a></td></tr>
-<tr><td>3.1.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#445931b6-5f17-4b21-b29a-30056e411121" style="text-decoration: none;">Dynamic DNS credentials</a></td></tr>
-<tr><td>3.2</td><td>&nbsp;&nbsp;&nbsp;<a href="#43268f5b-cb7c-415f-8535-6bbd456822ef" style="text-decoration: none;">IPv4 Information</a></td></tr>
-<tr><td>3.2.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#a2e842df-37cd-4046-97a9-817e1123092b" style="text-decoration: none;">Service Statistics</a></td></tr>
-<tr><td>3.2.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#f530bc68-8a82-4163-82bf-3d5e4bd2479a" style="text-decoration: none;">Filter Status</a></td></tr>
-<tr><td>3.2.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#dca3dfaa-138d-4a5e-bc22-f57a3f364352" style="text-decoration: none;">DC-UIA-01V</a></td></tr>
-<tr><td>3.2.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#737c7167-f6b2-4a35-8003-80c57d9e8be8" style="text-decoration: none;">Scopes</a></td></tr>
-<tr><td>3.2.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#a6b0c88e-4a04-4800-a8aa-a63cbddae949" style="text-decoration: none;">Scope Statistics</a></td></tr>
-<tr><td>3.2.3.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#9c8ed5dd-2af4-46d1-8a64-15eba216be1d" style="text-decoration: none;">NIC Binding</a></td></tr>
-<tr><td>3.2.3.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#9247ce28-fc16-422e-bc24-a6c507c93ba9" style="text-decoration: none;">Client Classes</a></td></tr>
-<tr><td>3.2.3.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#5d20538b-f54b-4f7b-9adb-c42158cd4993" style="text-decoration: none;">Option Definitions</a></td></tr>
-<tr><td>3.2.3.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#70bfca7a-8cd5-4a0c-b259-905c410cb99f" style="text-decoration: none;">Scope Configuration</a></td></tr>
-<tr><td>3.2.3.6.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#0b8237bd-c0c8-4340-bcc5-8a1b5eec2261" style="text-decoration: none;">172.23.7.0</a></td></tr>
-<tr><td>3.3</td><td>&nbsp;&nbsp;&nbsp;<a href="#80be0982-b373-40e4-ad73-ee71f1739b78" style="text-decoration: none;">IPv6 Information</a></td></tr>
-<tr><td>3.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#624db728-914c-4e28-a1cb-11fdc46f51e4" style="text-decoration: none;">Service Statistics</a></td></tr>
+<tr><td>1</td><td><a href="#04f75280-0331-4c11-84e4-e69e54a2111b" style="text-decoration: none;">SERVER-DC-01V</a></td></tr>
+<tr><td>1.1</td><td>&nbsp;&nbsp;&nbsp;<a href="#de95d49b-f4bd-419a-bad2-b90f069af7e4" style="text-decoration: none;">Service Database</a></td></tr>
+<tr><td>1.2</td><td>&nbsp;&nbsp;&nbsp;<a href="#89a9cbce-fc72-4011-950e-c64d5e5d6dbc" style="text-decoration: none;">Dynamic DNS credentials</a></td></tr>
+<tr><td>1.3</td><td>&nbsp;&nbsp;&nbsp;<a href="#89a5dbf2-cff2-4ae5-81c3-a290e028ce48" style="text-decoration: none;">IPv4 Information</a></td></tr>
+<tr><td>1.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#c64a5de9-b35d-47a5-ac42-e4bb7865ece2" style="text-decoration: none;">Service Statistics</a></td></tr>
+<tr><td>1.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#598c45d0-2752-490b-93dc-b97bff4545c1" style="text-decoration: none;">Filter Status</a></td></tr>
+<tr><td>1.3.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#96518380-bfd8-43e9-80b7-e9a65e7f0d0a" style="text-decoration: none;">SERVER-DC-01V</a></td></tr>
+<tr><td>1.3.3.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#8d6ea005-435b-4095-af4c-dc34fd488afb" style="text-decoration: none;">Scopes</a></td></tr>
+<tr><td>1.3.3.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#5a60da9a-0925-49dc-9912-52e83415e25a" style="text-decoration: none;">Scope Statistics</a></td></tr>
+<tr><td>1.3.3.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#2dabab47-6a08-41c4-aeed-78c7fda52f85" style="text-decoration: none;">Scope Failover</a></td></tr>
+<tr><td>1.3.3.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#77d0ca3b-94d3-418f-ac33-1417588f9f25" style="text-decoration: none;">NIC Binding</a></td></tr>
+<tr><td>1.3.3.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#d39207e1-2c44-4221-b336-c92f6a2cc169" style="text-decoration: none;">Policies</a></td></tr>
+<tr><td>1.3.3.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#d69bc425-3996-4a3a-853d-9f94aaa28f85" style="text-decoration: none;">Client Classes</a></td></tr>
+<tr><td>1.3.3.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#f096b65e-2add-44b2-8368-1879ec9d0f39" style="text-decoration: none;">Option Definitions</a></td></tr>
+<tr><td>1.3.3.8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#1a0bc21c-1b66-48f4-9e6b-184f1fe381b3" style="text-decoration: none;">Global Server Options</a></td></tr>
+<tr><td>1.3.3.8.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#b3ba3177-8669-4794-af31-180fc8f4597b" style="text-decoration: none;">Global DNS Setting</a></td></tr>
+<tr><td>1.3.3.9</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#c582db50-8b75-49fc-a4ba-b15f21f12bff" style="text-decoration: none;">Scope Configuration</a></td></tr>
+<tr><td>1.3.3.9.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#7aa6d138-7997-4de6-8787-2240eb78db4b" style="text-decoration: none;">10.10.32.0</a></td></tr>
+<tr><td>1.3.3.9.2</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#91289f7a-5fcc-4a11-9ddd-e08d6fca98b9" style="text-decoration: none;">10.10.33.0</a></td></tr>
+<tr><td>1.3.3.9.3</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#adb0ed7c-40b4-470c-b8bb-df6fc2253f51" style="text-decoration: none;">10.10.34.0</a></td></tr>
+<tr><td>1.3.3.9.4</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#38452c34-ef2d-4d7e-ba41-b8e520f42910" style="text-decoration: none;">10.10.35.0</a></td></tr>
+<tr><td>1.3.3.9.5</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#bbda8743-4d9f-4c77-ae77-a9ba8651f4a0" style="text-decoration: none;">192.168.2.0</a></td></tr>
+<tr><td>1.3.3.9.6</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#07f03695-3c24-4565-b1de-594bda4edddd" style="text-decoration: none;">192.168.4.0</a></td></tr>
+<tr><td>1.3.3.9.7</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#813568a7-8372-4c19-8fa5-59270e5dcc88" style="text-decoration: none;">192.168.6.0</a></td></tr>
+<tr><td>1.3.3.9.8</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#f03be7c2-7413-4da2-aaae-0e2f237af765" style="text-decoration: none;">192.168.7.0</a></td></tr>
+<tr><td>1.3.3.9.9</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#00d144d6-3aa0-4888-9091-f5e3bc0c7ddb" style="text-decoration: none;">192.168.10.0</a></td></tr>
+<tr><td>1.3.3.9.10</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#23f7706e-06f2-4973-88ab-151fc983e29f" style="text-decoration: none;">192.168.12.0</a></td></tr>
+<tr><td>1.3.3.9.11</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#e508492f-5f00-4b98-adf8-a8ba35c1acfa" style="text-decoration: none;">192.168.13.0</a></td></tr>
+<tr><td>1.4</td><td>&nbsp;&nbsp;&nbsp;<a href="#4cb2a3b2-c2c0-41d1-84bf-1023fbf38713" style="text-decoration: none;">IPv6 Information</a></td></tr>
+<tr><td>1.4.1</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#7870203d-b3ed-46f2-8991-8bb1a100f85e" style="text-decoration: none;">Service Statistics</a></td></tr>
 </table>
 </div><div><br /><div class="Footer">Page 2</div></div></div></div><div class="portrait"><div class="Normal" style="padding-top: 5.92rem; padding-left: 5.92rem; padding-bottom: 5.92rem; padding-right: 5.92rem;">
-<div style="min-height: 247mm" ><div><div class="Header">Microsoft DHCP As Built Report - v1.0</div><br /></div><a name="727aa6b3-0765-4612-9282-2d73c1287e94"><h1 class="Heading1">1 PHARMAX.LOCAL</h1></a><div>The following section provides a summary of the Dynamic Host Configuration Protocol.</div><a name="abc22e5d-562f-4fa9-a688-bd91c9df2b53"><h2 class="Heading2">1.1 DHCP Servers in Domain</h2></a><div>The following table summarises the DHCP servers information within PHARMAX.LOCAL.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
-<thead><tr><th>DC Name</th><th>IP Address</th><th>Domain Name</th><th>Domain Joined</th><th>Authorized</th><th>Conflict Detection Attempts</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>10.10.33.1</td><td>pharmax.local</td><td>Yes</td><td>Yes</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">0</td></tr>
-<tr><td>server-dc-01v</td><td>192.168.5.1</td><td>pharmax.local</td><td>Yes</td><td>Yes</td><td>1</td></tr>
-</tbody></table>
-<div class="Caption">Table 1 - DHCP Servers in Domain - PHARMAX.LOCAL</div><br /></div>
-<a name="b00f3112-f477-47de-b392-d447489d82ca"><h3 class="Heading3">1.1.1 Service Database</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:12%; min-width:12%; width:12%" /></colgroup>
+<div style="min-height: 247mm" ><div><div class="Header">Microsoft DHCP As Built Report - v1.0</div><br /></div><a name="04f75280-0331-4c11-84e4-e69e54a2111b"><h1 class="Heading1">1 SERVER-DC-01V</h1></a><div>The following section provides a summary of the Dynamic Host Configuration Protocol.</div><a name="de95d49b-f4bd-419a-bad2-b90f069af7e4"><h2 class="Heading2">1.1 Service Database</h2></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:12%; min-width:12%; width:12%" /></colgroup>
 <thead><tr><th>DC Name</th><th>File Path</th><th>Backup Path</th><th>Backup Interval</th><th>Logging Enabled</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>C:\Windows\system32\dhcp\dhcp.mdb</td><td>C:\Windows\system32\dhcp\backup</td><td>60 min</td><td>Yes</td></tr>
 <tr><td>server-dc-01v</td><td>C:\Windows\system32\dhcp\dhcp.mdb</td><td>C:\Windows\system32\dhcp\backup</td><td>60 min</td><td>Yes</td></tr>
 </tbody></table>
-<div class="Caption">Table 2 - DHCP Servers Database - PHARMAX.LOCAL</div><br /></div>
-<a name="d9927136-7961-46a7-a64c-bd1bbfb7bc45"><h3 class="Heading3">1.1.2 Dynamic DNS credentials</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:40%; min-width:40%; width:40%" /></colgroup>
+<div class="Caption">Table 1 - Service Database - SERVER-DC-01V</div><br /></div>
+<a name="89a9cbce-fc72-4011-950e-c64d5e5d6dbc"><h2 class="Heading2">1.2 Dynamic DNS credentials</h2></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:40%; min-width:40%; width:40%" /></colgroup>
 <thead><tr><th>DC Name</th><th>User Name</th><th>Domain Name</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>--</td><td>--</td></tr>
 <tr><td>server-dc-01v</td><td>administrator</td><td>PHARMAX.LOCAL</td></tr>
 </tbody></table>
-<div class="Caption">Table 3 - DHCP Servers Dynamic DNS Credentials - PHARMAX.LOCAL</div><br /></div>
-<a name="c7c5afd2-b8b8-4231-acbb-930e3d35dff6"><h2 class="Heading2">1.2 IPv4 Information</h2></a><div>The following sections detail the configuration of the ipv4 scopes within domain pharmax.local.</div><br /><a name="ff7835a7-f7d8-4069-8339-aa77455bb2fc"><h3 class="Heading3">1.2.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
+<div class="Caption">Table 2 - Dynamic DNS Credentials - SERVER-DC-01V</div><br /></div>
+<a name="89a5dbf2-cff2-4ae5-81c3-a290e028ce48"><h2 class="Heading2">1.3 IPv4 Information</h2></a><div>The following sections detail the configuration of the ipv4 scopes within domain server-dc-01v.pharmax.local.</div><br /><a name="c64a5de9-b35d-47a5-ac42-e4bb7865ece2"><h3 class="Heading3">1.3.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
 <thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>3</td><td>704</td><td>19</td><td>685</td><td>3</td><td>97</td></tr>
-<tr><td>server-dc-01v</td><td>10</td><td>1870</td><td>124</td><td>1746</td><td>7</td><td>93</td></tr>
+<tr><td>server-dc-01v</td><td>11</td><td>2114</td><td>120</td><td>1994</td><td>6</td><td>94</td></tr>
 </tbody></table>
-<div class="Caption">Table 4 - DHCP Server Statistics - PHARMAX.LOCAL</div><br /></div>
-<a name="ffdae52f-1b8e-479e-8361-eb9d93e6394b"><h3 class="Heading3">1.2.2 Filter Status</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /></colgroup>
+<div class="Caption">Table 3 - DHCP Server Statistics - SERVER-DC-01V.PHARMAX.LOCAL</div><br /></div>
+<a name="598c45d0-2752-490b-93dc-b97bff4545c1"><h3 class="Heading3">1.3.2 Filter Status</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /></colgroup>
 <thead><tr><th>DC Name</th><th>Allow</th><th>Deny</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>No</td><td>No</td></tr>
 <tr><td>server-dc-01v</td><td>No</td><td>Yes</td></tr>
 </tbody></table>
-<div class="Caption">Table 5 - Filter Status - PHARMAX.LOCAL</div><br /></div>
-<a name="e973a201-f1ee-4fea-8e28-f2b26a639a40"><h3 class="Heading3">1.2.3 CAYEY-DC-01V</h3></a><a name="2d3caf37-b78f-400a-a654-bc5216b60763"><h4 class="Heading4">1.2.3.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within CAYEY-DC-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Scope Name</th><th>Scope Range</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
-<tr><td>10.0.0.0/24</td><td>SCCM</td><td>10.0.0.1 - 10.0.0.254</td><td>8.00:00:00</td><td>Active</td></tr>
-<tr><td>10.10.32.0/24</td><td>ESXi-vMotion-DR</td><td>10.10.32.10 - 10.10.32.250</td><td>8.00:00:00</td><td>Active</td></tr>
-<tr><td>10.10.33.0/24</td><td>ESX-VM-NETWORK-DR</td><td>10.10.33.40 - 10.10.33.253</td><td>100.00:00:00</td><td>Active</td></tr>
-</tbody></table>
-<div class="Caption">Table 6 - Scopes - CAYEY-DC-01V</div><br /></div>
-<a name="c54cf615-86df-4672-b072-e93150381e52"><h4 class="Heading4">1.2.3.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
-<tr><td>10.0.0.0</td><td>249</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>10.10.32.0</td><td>241</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>10.10.33.0</td><td>195</td><td>19</td><td>9</td><td>3</td></tr>
-</tbody></table>
-<div class="Caption">Table 7 - IPv4 Scope Statistics - CAYEY-DC-01V</div><br /></div>
-<a name="0cb7c75f-5eb5-431f-9aae-48d4a8a309a6"><h4 class="Heading4">1.2.3.3 Scope Failover</h4></a><a name="81bfd58a-efc4-4d46-9981-5d74e58299db"><h1 class="NOTOCHeading5">10.10.32.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
-<tbody>
-<tr><th>DHCP Server</th><td>cayey-dc-01v.pharmax.local</td></tr>
-<tr><th>Partner DHCP Server</th><td>server-dc-01v.pharmax.local</td></tr>
-<tr><th>Mode</th><td>LoadBalance</td></tr>
-<tr><th>LoadBalance Percent</th><td>50</td></tr>
-<tr><th>Server Role</th><td>--</td></tr>
-<tr><th>Reserve Percent</th><td>0</td></tr>
-<tr><th>Max Client Lead Time</th><td>01:00:00</td></tr>
-<tr><th>State Switch Interval</th><td>--</td></tr>
-<tr><th>Scope Ids</th><td>10.10.32.0</td></tr>
-<tr><th>State</th><td>Normal</td></tr>
-<tr><th>Auto State Transition</th><td>No</td></tr>
-<tr><th>Authetication Enable</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">No</td></tr>
-</tbody></table>
-<div class="Caption">Table 8 - IPv4 Scope Failover Cofiguration - CAYEY-DC-01V</div><br /></div>
-<div><span style="font-weight: bold; font-style: italic; text-decoration: underline;">Health Check:</span></div><div><span style="font-weight: bold; font-style: italic;">Corrective Action: Ensure Dhcp servers require authentication (a shared secret) in order to secure communications between failover partners.</span></div><a name="5860a38e-7429-4b45-b938-52043fefee88"><h1 class="NOTOCHeading5">10.10.33.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
-<tbody>
-<tr><th>DHCP Server</th><td>cayey-dc-01v.pharmax.local</td></tr>
-<tr><th>Partner DHCP Server</th><td>server-dc-01v.pharmax.local</td></tr>
-<tr><th>Mode</th><td>LoadBalance</td></tr>
-<tr><th>LoadBalance Percent</th><td>50</td></tr>
-<tr><th>Server Role</th><td>--</td></tr>
-<tr><th>Reserve Percent</th><td>0</td></tr>
-<tr><th>Max Client Lead Time</th><td>01:00:00</td></tr>
-<tr><th>State Switch Interval</th><td>--</td></tr>
-<tr><th>Scope Ids</th><td>10.10.33.0</td></tr>
-<tr><th>State</th><td>Normal</td></tr>
-<tr><th>Auto State Transition</th><td>No</td></tr>
-<tr><th>Authetication Enable</th><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 9 - IPv4 Scope Failover Cofiguration - CAYEY-DC-01V</div><br /></div>
-<a name="5a8c6bf6-d79b-485c-b536-8ab816008603"><h4 class="Heading4">1.2.3.4 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Interface Alias</th><th>IP Address</th><th>Subnet Mask</th><th>State</th></tr></thead><tbody>
-<tr><td>Ethernet0</td><td>10.10.33.1</td><td>255.255.255.0</td><td>Enabled</td></tr>
-</tbody></table>
-<div class="Caption">Table 10 - NIC Biding - CAYEY-DC-01V</div><br /></div>
-<a name="6959a0ec-e2e2-4700-91f1-b7f0bde28af8"><h4 class="Heading4">1.2.3.5 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
-<tr><td>Default BOOTP Class</td><td>User</td><td>0x424f4f54502e4d6963726f736f6674</td><td>BOOTP.Microsoft</td><td>User class for BOOTP Clients</td></tr>
-<tr><td>Default Routing and Remote Access Class</td><td>User</td><td>0x525241532e4d6963726f736f6674</td><td>RRAS.Microsoft</td><td>User class for remote access clients</td></tr>
-<tr><td>Microsoft Options</td><td>Vendor</td><td>0x4d534654</td><td>MSFT</td><td>Microsoft vendor-specific options applicable to all Windows Clients</td></tr>
-<tr><td>Microsoft Windows 2000 Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows 2000 and above Clients</td></tr>
-<tr><td>Microsoft Windows 98 Options</td><td>Vendor</td><td>0x4d534654203938</td><td>MSFT 98</td><td>Microsoft vendor-specific options for Windows 98 Clients</td></tr>
-</tbody></table>
-<div class="Caption">Table 11 - Client Classes - CAYEY-DC-01V</div><br /></div>
-<a name="ce672134-1537-4afd-9827-9be1107ffb3e"><h4 class="Heading4">1.2.3.6 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
-<tr><td>Subnet Mask</td><td>1</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Time Offset</td><td>2</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Router</td><td>3</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Time Server</td><td>4</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Name Servers</td><td>5</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Log Servers</td><td>7</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Cookie Servers</td><td>8</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>LPR Servers</td><td>9</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Impress Servers</td><td>10</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Resource Location Servers</td><td>11</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Host Name</td><td>12</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Boot File Size</td><td>13</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Merit Dump File</td><td>14</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Swap Server</td><td>16</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Root Path</td><td>17</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Extensions Path</td><td>18</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>IP Layer Forwarding</td><td>19</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Nonlocal Source Routing</td><td>20</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Policy Filter Masks</td><td>21</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Max DG Reassembly Size</td><td>22</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Default IP Time-to-live</td><td>23</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Aging Timeout</td><td>24</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Plateau Table</td><td>25</td><td>Word</td><td>--</td><td>Yes</td></tr>
-<tr><td>MTU Option</td><td>26</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>All subnets are local</td><td>27</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Broadcast Address</td><td>28</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Mask Discovery</td><td>29</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Mask Supplier Option</td><td>30</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Router Discovery</td><td>31</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Router Solicitation Address</td><td>32</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Static Route Option</td><td>33</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Trailer Encapsulation</td><td>34</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>ARP Cache Timeout</td><td>35</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Ethernet Encapsulation</td><td>36</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>TCP Default Time-to-live</td><td>37</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Interval</td><td>38</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Garbage</td><td>39</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Domain Name</td><td>40</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Servers</td><td>41</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NTP Servers</td><td>42</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Vendor Specific Info</td><td>43</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-<tr><td>WINS/NBNS Servers</td><td>44</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NetBIOS over TCP/IP NBDD</td><td>45</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>WINS/NBT Node Type</td><td>46</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NetBIOS Scope ID</td><td>47</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>X Window System Font</td><td>48</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>X Window System Display</td><td>49</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Lease</td><td>51</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Renewal (T1) Time Value</td><td>58</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Rebinding (T2) Time Value</td><td>59</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Domain Name</td><td>64</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Servers</td><td>65</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Boot Server Host Name</td><td>66</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Bootfile Name</td><td>67</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Mobile IP Home Agents</td><td>68</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Simple Mail Transport Protocol (SMTP) Servers</td><td>69</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Post Office Protocol (POP3) Servers</td><td>70</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Network News Transport Protocol (NNTP) Servers</td><td>71</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>World Wide Web (WWW) Servers</td><td>72</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Finger Servers</td><td>73</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Internet Relay Chat (IRC) Servers</td><td>74</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Servers</td><td>75</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Directory Assistance (STDA) Servers</td><td>76</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Classless Static Routes</td><td>121</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 12 - Option Definitions - CAYEY-DC-01V</div><br /></div>
-<a name="cfad434b-1ac5-42f0-94c0-4c3d92fe5547"><h4 class="Heading3">1.2.3.7 Global Server Options</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Time Offset</td><td>2</td><td>0</td><td>--</td></tr>
-<tr><td>Time Server</td><td>4</td><td>10.10.33.1</td><td>--</td></tr>
-<tr><td>Name Servers</td><td>5</td><td>10.10.33.1</td><td>--</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>10.10.33.1<br />192.168.5.1</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 13 - Scopes Server Options - CAYEY-DC-01V</div><br /></div>
-<a name="4cfb2901-19d3-4ca1-bbb5-66c6ed932c82"><h5 class="Heading4">1.2.3.7.1 Global DNS Setting</h5></a><div>The following table summarises the dhcp server ipv4 global dns setting.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
-<tbody>
-<tr><th>Dynamic Updates</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">OnClientRequest</td></tr>
-<tr><th>Dns Suffix</th><td>--</td></tr>
-<tr><th>Name Protection</th><td>No</td></tr>
-<tr><th>Update Dns RR For Older Clients</th><td>No</td></tr>
-<tr><th>Disable Dns Ptr RR Update</th><td>No</td></tr>
-<tr><th>Delete Dns RR On Lease Expiry</th><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 14 - Global DNS Setting - CAYEY-DC-01V</div><br /></div>
-<div><span style="font-weight: bold; font-style: italic; text-decoration: underline;">Health Check:</span></div><div><span style="font-weight: bold; font-style: italic;">Best Practice: &#39;Always dynamically update dns records&#39; should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server.</span></div><a name="46243b47-6d64-4eb6-8396-3c00ffe491ab"><h4 class="Heading4">1.2.3.8 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="17ffda8d-3d4a-43e2-8ddc-a95a685de27f"><h5 class="Heading5">1.2.3.8.1 10.0.0.0</h5></a><a name="931e3b5b-b54b-4d29-a655-465db298e38f"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>SCCM</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
-<tr><th>Start Range</th><td>10.0.0.1</td></tr>
-<tr><th>End Range</th><td>10.0.0.254</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 15 - Scopes Properties - 10.0.0.0</div><br /></div>
-<a name="03128543-b264-4e69-8586-0f6d8729b4bc"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<thead><tr><th>Start Range</th><th>End Range</th></tr></thead><tbody>
-<tr><td>10.0.0.20</td><td>10.0.0.24</td></tr>
-</tbody></table>
-<div class="Caption">Table 16 - Scopes Exclusion - 10.0.0.0</div><br /></div>
-<a name="ce991fd0-a4f0-416d-93ee-0d96130159d1"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>10.0.0.254</td><td>--</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>10.10.33.1<br />192.168.5.1<br />10.10.33.1</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 17 - Scopes Options - 10.0.0.0</div><br /></div>
-<a name="ec110c0b-ae30-45aa-84a8-18b378b99b74"><h5 class="Heading5">1.2.3.8.2 10.10.32.0</h5></a><a name="3a176bab-a420-4316-b9e1-5aee6b575023"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>ESXi-vMotion-DR</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
-<tr><th>Start Range</th><td>10.10.32.10</td></tr>
-<tr><th>End Range</th><td>10.10.32.250</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>VLAN32</td></tr>
-</tbody></table>
-<div class="Caption">Table 18 - Scopes Properties - 10.10.32.0</div><br /></div>
-<a name="8bafc242-33bd-49a3-b904-8c1e07082a4d"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>10.10.32.254</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 19 - Scopes Options - 10.10.32.0</div><br /></div>
-<a name="8e62c069-afaf-45d0-a848-c7eae249c6b7"><h5 class="Heading5">1.2.3.8.3 10.10.33.0</h5></a><a name="56672ded-0abe-49fe-a92e-95fe9068dc3d"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>ESX-VM-NETWORK-DR</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>100.00:00:00</td></tr>
-<tr><th>Start Range</th><td>10.10.33.40</td></tr>
-<tr><th>End Range</th><td>10.10.33.253</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>VLAN33</td></tr>
-</tbody></table>
-<div class="Caption">Table 20 - Scopes Properties - 10.10.33.0</div><br /></div>
-<a name="0e52cf70-177f-49b4-8ed9-b9d6cd8fc687"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
-<thead><tr><th>IP Address</th><th>Client Id</th><th>Name</th><th>Type</th></tr></thead><tbody>
-<tr><td>10.10.33.10</td><td>0a-21-0a-0a</td><td>BAD_ADDRESS</td><td>Dhcp</td></tr>
-<tr><td>10.10.33.11</td><td>0b-21-0a-0a</td><td>BAD_ADDRESS</td><td>Dhcp</td></tr>
-<tr><td>10.10.33.42</td><td>00-50-56-b0-e4-b1</td><td>disaster-01a.pharmax.local</td><td>Dhcp</td></tr>
-</tbody></table>
-<div class="Caption">Table 21 - Scopes Reservation - 10.10.33.0</div><br /></div>
-<a name="2e18725f-d60d-440c-9d2f-faae0e9de1b9"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>10.10.33.254</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>8640000</td><td>--</td></tr>
-<tr><td>Boot Server Host Name</td><td>66</td><td>192.168.5.2</td><td>--</td></tr>
-<tr><td>Bootfile Name</td><td>67</td><td>snponly64.efi.vmw-hardwired</td><td>--</td></tr>
-<tr><td>&nbsp;</td><td>81</td><td>23</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 22 - Scopes Options - 10.10.33.0</div><br /></div>
-<a name="6292ed4f-3ded-424b-b3aa-c801484456f2"><h3 class="Heading3">1.2.4 SERVER-DC-01V</h3></a><a name="bfd78f79-05aa-4c2f-be6b-7f64711eaa9e"><h4 class="Heading4">1.2.4.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within SERVER-DC-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
+<div class="Caption">Table 4 - Filter Status - SERVER-DC-01V.PHARMAX.LOCAL</div><br /></div>
+<a name="96518380-bfd8-43e9-80b7-e9a65e7f0d0a"><h3 class="Heading3">1.3.3 SERVER-DC-01V</h3></a><a name="8d6ea005-435b-4095-af4c-dc34fd488afb"><h4 class="Heading4">1.3.3.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within SERVER-DC-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
 <thead><tr><th>Scope Id</th><th>Scope Name</th><th>Scope Range</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
 <tr><td>10.10.32.0/24</td><td>ESXi-vMotion-DR</td><td>10.10.32.10 - 10.10.32.250</td><td>8.00:00:00</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">Inactive</td></tr>
 <tr><td>10.10.33.0/24</td><td>ESX-VM-NETWORK-DR</td><td>10.10.33.40 - 10.10.33.253</td><td>100.00:00:00</td><td>Active</td></tr>
@@ -430,27 +117,29 @@ hr { margin-top: 1.0rem; }
 <tr><td>10.10.35.0/24</td><td>ESXi-ISCSI-BLOCK-B-DR</td><td>10.10.35.10 - 10.10.35.253</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.10.0/24</td><td>ESX-vSAN-NET</td><td>192.168.10.10 - 192.168.10.253</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.12.0/24</td><td>ESXi-ISCSI-BLOCK-B</td><td>192.168.12.10 - 192.168.12.240</td><td>8.00:00:00</td><td>Active</td></tr>
+<tr><td>192.168.13.0/24</td><td>PHARMAX-CLIENT-13</td><td>192.168.13.10 - 192.168.13.253</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.2.0/24</td><td>ESXi-vMotion</td><td>192.168.2.10 - 192.168.2.253</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.4.0/24</td><td>ESXi-NFS-File</td><td>192.168.4.10 - 192.168.4.20</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.6.0/24</td><td>ESXi-ISCSI-BLOCK-A</td><td>192.168.6.10 - 192.168.6.240</td><td>8.00:00:00</td><td>Active</td></tr>
 <tr><td>192.168.7.0/24</td><td>ESX-VM-NETWORK</td><td>192.168.7.40 - 192.168.7.253</td><td>8.00:00:00</td><td>Active</td></tr>
 </tbody></table>
-<div class="Caption">Table 23 - Scopes - SERVER-DC-01V</div><br /></div>
-<div><span style="font-weight: bold; font-style: italic; text-decoration: underline;">Health Check:</span></div><div><span style="font-weight: bold; font-style: italic;">Corrective Action: Ensure inactive scope are removed from DHCP server.</span></div><a name="d95ec169-4b22-4999-aa9a-104b1787dddf"><h4 class="Heading4">1.2.4.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
+<div class="Caption">Table 5 - Scopes - SERVER-DC-01V</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Corrective Action: </span>Ensure inactive scope are removed from DHCP server.</div><a name="5a60da9a-0925-49dc-9912-52e83415e25a"><h4 class="Heading4">1.3.3.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
 <thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
 <tr><td>10.10.32.0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>10.10.33.0</td><td>195</td><td>19</td><td>9</td><td>3</td></tr>
-<tr><td>10.10.34.0</td><td>243</td><td>1</td><td>0</td><td>0</td></tr>
-<tr><td>10.10.35.0</td><td>243</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>10.10.34.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>10.10.35.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>192.168.10.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>192.168.12.0</td><td>226</td><td>5</td><td>2</td><td>3</td></tr>
+<tr><td>192.168.13.0</td><td>243</td><td>1</td><td>0</td><td>0</td></tr>
 <tr><td>192.168.2.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>192.168.4.0</td><td>11</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>192.168.6.0</td><td>227</td><td>4</td><td>2</td><td>2</td></tr>
-<tr><td>192.168.7.0</td><td>113</td><td>94</td><td>45</td><td>17</td></tr>
+<tr><td>192.168.7.0</td><td>116</td><td>91</td><td>44</td><td>17</td></tr>
 </tbody></table>
-<div class="Caption">Table 24 - IPv4 Scope Statistics - SERVER-DC-01V</div><br /></div>
-<a name="fa3536c6-ff19-42bd-8522-b340915df6fb"><h4 class="Heading4">1.2.4.3 Scope Failover</h4></a><a name="cace5aa2-dbe6-4a76-89de-562edf1c8b86"><h1 class="NOTOCHeading5">10.10.32.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
+<div class="Caption">Table 6 - IPv4 Scope Statistics - SERVER-DC-01V</div><br /></div>
+<a name="2dabab47-6a08-41c4-aeed-78c7fda52f85"><h4 class="Heading4">1.3.3.3 Scope Failover</h4></a><a name="8d7befb7-1a2f-4e97-ac28-9f9b24a78019"><h1 class="NOTOCHeading5">10.10.32.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
 <tbody>
 <tr><th>DHCP Server</th><td>server-dc-01v.pharmax.local</td></tr>
 <tr><th>Partner DHCP Server</th><td>cayey-dc-01v.pharmax.local</td></tr>
@@ -465,8 +154,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Auto State Transition</th><td>No</td></tr>
 <tr><th>Authetication Enable</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">No</td></tr>
 </tbody></table>
-<div class="Caption">Table 25 - IPv4 Scope Failover Cofiguration - SERVER-DC-01V</div><br /></div>
-<div><span style="font-weight: bold; font-style: italic; text-decoration: underline;">Health Check:</span></div><div><span style="font-weight: bold; font-style: italic;">Corrective Action: Ensure Dhcp servers require authentication (a shared secret) in order to secure communications between failover partners.</span></div><a name="cf58f58e-35c9-45c7-b08f-b645c4b1f6aa"><h1 class="NOTOCHeading5">10.10.33.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
+<div class="Caption">Table 7 - IPv4 Scope Failover Cofiguration - SERVER-DC-01V</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Corrective Action: </span>Ensure Dhcp servers require authentication (a shared secret) in order to secure communications between failover partners.</div><a name="876df601-6de8-476b-a6d6-0bf4fd27411c"><h1 class="NOTOCHeading5">10.10.33.0</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
 <tbody>
 <tr><th>DHCP Server</th><td>server-dc-01v.pharmax.local</td></tr>
 <tr><th>Partner DHCP Server</th><td>cayey-dc-01v.pharmax.local</td></tr>
@@ -481,13 +170,13 @@ hr { margin-top: 1.0rem; }
 <tr><th>Auto State Transition</th><td>No</td></tr>
 <tr><th>Authetication Enable</th><td>Yes</td></tr>
 </tbody></table>
-<div class="Caption">Table 26 - IPv4 Scope Failover Cofiguration - SERVER-DC-01V</div><br /></div>
-<a name="fbed910c-bb12-4963-b841-a7812fc4ea1f"><h4 class="Heading4">1.2.4.4 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 8 - IPv4 Scope Failover Cofiguration - SERVER-DC-01V</div><br /></div>
+<a name="77d0ca3b-94d3-418f-ac33-1417588f9f25"><h4 class="Heading4">1.3.3.4 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Interface Alias</th><th>IP Address</th><th>Subnet Mask</th><th>State</th></tr></thead><tbody>
 <tr><td>Ethernet0</td><td>192.168.5.1</td><td>255.255.255.0</td><td>Enabled</td></tr>
 </tbody></table>
-<div class="Caption">Table 27 - NIC Biding - SERVER-DC-01V</div><br /></div>
-<a name="ebab8cef-56ac-4dcc-9332-b282fe726ef3"><h4 class="Heading4">1.2.4.5 Policies</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 9 - NIC Biding - SERVER-DC-01V</div><br /></div>
+<a name="d39207e1-2c44-4221-b336-c92f6a2cc169"><h4 class="Heading4">1.3.3.5 Policies</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>Global Policy SCCM</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -506,8 +195,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>00:00:00</td></tr>
 <tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 28 - Policy - Global Policy SCCM</div><br /></div>
-<a name="bb2a2965-fce7-4b5c-b6ae-8bb4d42911be"><h4 class="Heading4">1.2.4.6 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
+<div class="Caption">Table 10 - Policy - Global Policy SCCM</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="d69bc425-3996-4a3a-853d-9f94aaa28f85"><h4 class="Heading4">1.3.3.6 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
 <thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
 <tr><td>Default BOOTP Class</td><td>User</td><td>0x424f4f54502e4d6963726f736f6674</td><td>BOOTP.Microsoft</td><td>User class for BOOTP Clients</td></tr>
 <tr><td>Default Routing and Remote Access Class</td><td>User</td><td>0x525241532e4d6963726f736f6674</td><td>RRAS.Microsoft</td><td>User class for remote access clients</td></tr>
@@ -515,8 +204,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>Microsoft Windows 2000 Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows 2000 and above Clients</td></tr>
 <tr><td>Microsoft Windows 98 Options</td><td>Vendor</td><td>0x4d534654203938</td><td>MSFT 98</td><td>Microsoft vendor-specific options for Windows 98 Clients</td></tr>
 </tbody></table>
-<div class="Caption">Table 29 - Client Classes - SERVER-DC-01V</div><br /></div>
-<a name="12a50a9a-2d1d-4fb4-bb83-bec43a4af27a"><h4 class="Heading4">1.2.4.7 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
+<div class="Caption">Table 11 - Client Classes - SERVER-DC-01V</div><br /></div>
+<a name="f096b65e-2add-44b2-8368-1879ec9d0f39"><h4 class="Heading4">1.3.3.7 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
 <tr><td>Subnet Mask</td><td>1</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
 <tr><td>Time Offset</td><td>2</td><td>DWord</td><td>--</td><td>No</td></tr>
@@ -585,8 +274,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>StreetTalk Directory Assistance (STDA) Servers</td><td>76</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
 <tr><td>Classless Static Routes</td><td>121</td><td>BinaryData</td><td>--</td><td>No</td></tr>
 </tbody></table>
-<div class="Caption">Table 30 - Option Definitions - SERVER-DC-01V</div><br /></div>
-<a name="ade23322-e02a-4fe4-b7cc-3fe73c3fd44a"><h4 class="Heading3">1.2.4.8 Global Server Options</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 12 - Option Definitions - SERVER-DC-01V</div><br /></div>
+<a name="1a0bc21c-1b66-48f4-9e6b-184f1fe381b3"><h4 class="Heading3">1.3.3.8 Global Server Options</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Time Server</td><td>4</td><td>192.168.5.1</td><td>--</td></tr>
 <tr><td>Name Servers</td><td>5</td><td>192.168.5.1</td><td>--</td></tr>
@@ -596,8 +285,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>Post Office Protocol (POP3) Servers</td><td>70</td><td>192.168.7.21</td><td>--</td></tr>
 <tr><td>&nbsp;</td><td>81</td><td>55</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 31 - Scopes Server Options - SERVER-DC-01V</div><br /></div>
-<a name="fd6b48b7-c3a6-4011-8f14-58df688fb294"><h5 class="Heading4">1.2.4.8.1 Global DNS Setting</h5></a><div>The following table summarises the dhcp server ipv4 global dns setting.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
+<div class="Caption">Table 13 - Scopes Server Options - SERVER-DC-01V</div><br /></div>
+<a name="b3ba3177-8669-4794-af31-180fc8f4597b"><h5 class="Heading4">1.3.3.8.1 Global DNS Setting</h5></a><div>The following table summarises the dhcp server ipv4 global dns setting.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
 <tbody>
 <tr><th>Dynamic Updates</th><td>Always</td></tr>
 <tr><th>Dns Suffix</th><td>--</td></tr>
@@ -606,8 +295,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Disable Dns Ptr RR Update</th><td>No</td></tr>
 <tr><th>Delete Dns RR On Lease Expiry</th><td>Yes</td></tr>
 </tbody></table>
-<div class="Caption">Table 32 - Global DNS Setting - SERVER-DC-01V</div><br /></div>
-<a name="bb708d3c-e73d-4c7a-b18b-b14e4943a3d4"><h4 class="Heading4">1.2.4.9 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="5285556c-c31b-4164-b9eb-d301622e0004"><h5 class="Heading5">1.2.4.9.1 10.10.32.0</h5></a><a name="2c308214-3aaa-4384-a2d0-fbdbcc3be070"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 14 - Global DNS Setting - SERVER-DC-01V</div><br /></div>
+<a name="c582db50-8b75-49fc-a4ba-b15f21f12bff"><h4 class="Heading4">1.3.3.9 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="7aa6d138-7997-4de6-8787-2240eb78db4b"><h5 class="Heading5">1.3.3.9.1 10.10.32.0</h5></a><a name="d3ffec78-5f6f-442d-8b5c-f0bd51443080"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-vMotion-DR</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -623,15 +312,15 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN32</td></tr>
 </tbody></table>
-<div class="Caption">Table 33 - Scopes Properties - 10.10.32.0</div><br /></div>
-<a name="93c8aae7-6ed8-4106-bda7-14dc2af878ba"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 15 - Scopes Properties - 10.10.32.0</div><br /></div>
+<a name="ca47b194-795a-4e2d-b70f-671347407374"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>10.10.32.254</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 34 - Scopes Options - 10.10.32.0</div><br /></div>
-<a name="aa16f403-d0cb-45c4-951d-6ffc8b6bad8b"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 16 - Scopes Options - 10.10.32.0</div><br /></div>
+<a name="71ce3bc4-e80c-46f8-b340-df3de684fe45"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>SCCM</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -650,8 +339,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>00:00:00</td></tr>
 <tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 35 - Policy - SCCM</div><br /></div>
-<a name="a2f8d12e-5900-4fed-829f-0f89f16a097d"><h5 class="Heading5">1.2.4.9.2 10.10.33.0</h5></a><a name="c9d59dbb-2839-4c89-aaf8-e7c0ea32aa14"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 17 - Policy - SCCM</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="91289f7a-5fcc-4a11-9ddd-e08d6fca98b9"><h5 class="Heading5">1.3.3.9.2 10.10.33.0</h5></a><a name="1692aed4-abb7-4330-99db-58934c53717d"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESX-VM-NETWORK-DR</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -667,15 +356,15 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN33</td></tr>
 </tbody></table>
-<div class="Caption">Table 36 - Scopes Properties - 10.10.33.0</div><br /></div>
-<a name="6b98c783-7115-4b84-8c6b-9fb4c0034499"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
+<div class="Caption">Table 18 - Scopes Properties - 10.10.33.0</div><br /></div>
+<a name="1dd98424-782c-4caf-89da-804faa66beac"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
 <thead><tr><th>IP Address</th><th>Client Id</th><th>Name</th><th>Type</th></tr></thead><tbody>
 <tr><td>10.10.33.10</td><td>0a-21-0a-0a</td><td>BAD_ADDRESS</td><td>Dhcp</td></tr>
 <tr><td>10.10.33.11</td><td>0b-21-0a-0a</td><td>BAD_ADDRESS</td><td>Dhcp</td></tr>
 <tr><td>10.10.33.42</td><td>00-50-56-b0-e4-b1</td><td>disaster-01a.pharmax.local</td><td>Dhcp</td></tr>
 </tbody></table>
-<div class="Caption">Table 37 - Scopes Reservation - 10.10.33.0</div><br /></div>
-<a name="39f8c2f7-d129-49ee-91da-40743725b104"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 19 - Scopes Reservation - 10.10.33.0</div><br /></div>
+<a name="f6f8b91a-11bb-4dcd-aa6f-92867dbc3b17"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>10.10.33.254</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>8640000</td><td>--</td></tr>
@@ -683,8 +372,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>Bootfile Name</td><td>67</td><td>snponly64.efi.vmw-hardwired</td><td>--</td></tr>
 <tr><td>&nbsp;</td><td>81</td><td>23</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 38 - Scopes Options - 10.10.33.0</div><br /></div>
-<a name="5bca8843-f021-4c3e-b0c6-308b884826f7"><h5 class="Heading5">1.2.4.9.3 10.10.34.0</h5></a><a name="5141792f-c8a5-4319-b1aa-3d084cdd61af"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 20 - Scopes Options - 10.10.33.0</div><br /></div>
+<a name="adb0ed7c-40b4-470c-b8bb-df6fc2253f51"><h5 class="Heading5">1.3.3.9.3 10.10.34.0</h5></a><a name="f7eb79f2-7ab3-44f9-8466-9c12c8fb9142"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-ISCSI-BLOCK-A-DR</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -698,17 +387,17 @@ hr { margin-top: 1.0rem; }
 <tr><th>Activate Policies</th><td>Yes</td></tr>
 <tr><th>Nap Enable</th><td>No</td></tr>
 <tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
+<tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 39 - Scopes Properties - 10.10.34.0</div><br /></div>
-<a name="130fbdca-5c7a-43c4-bac7-21df756a7a7b"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 21 - Scopes Properties - 10.10.34.0</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="8f120bc8-10e4-45dd-84ff-5d87a4ea92ad"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>DNS Servers</td><td>6</td><td>192.168.5.1<br />192.168.5.1</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 40 - Scopes Options - 10.10.34.0</div><br /></div>
-<a name="46bff850-418d-4be1-9bec-c85d184ff46e"><h5 class="Heading5">1.2.4.9.4 10.10.35.0</h5></a><a name="5285c1ef-d157-470d-87a2-fa7be9360a63"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 22 - Scopes Options - 10.10.34.0</div><br /></div>
+<a name="38452c34-ef2d-4d7e-ba41-b8e520f42910"><h5 class="Heading5">1.3.3.9.4 10.10.35.0</h5></a><a name="5904987a-ed6f-4ae5-84ae-130878e60090"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-ISCSI-BLOCK-B-DR</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -722,17 +411,17 @@ hr { margin-top: 1.0rem; }
 <tr><th>Activate Policies</th><td>Yes</td></tr>
 <tr><th>Nap Enable</th><td>No</td></tr>
 <tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
+<tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 41 - Scopes Properties - 10.10.35.0</div><br /></div>
-<a name="d6ca9c25-6226-4b86-af49-49e5e667c53b"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 23 - Scopes Properties - 10.10.35.0</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="69ea348f-2f42-4598-9124-d1a49fe7da19"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>DNS Servers</td><td>6</td><td>192.168.5.1<br />192.168.5.1</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 42 - Scopes Options - 10.10.35.0</div><br /></div>
-<a name="981f4410-b8ec-4821-9b3a-335fa1ca99a9"><h5 class="Heading5">1.2.4.9.5 192.168.2.0</h5></a><a name="d645cc85-47d9-4ff1-877e-d291d09293d6"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 24 - Scopes Options - 10.10.35.0</div><br /></div>
+<a name="bbda8743-4d9f-4c77-ae77-a9ba8651f4a0"><h5 class="Heading5">1.3.3.9.5 192.168.2.0</h5></a><a name="7b951a84-6ed4-4f81-bee7-3eb4758069f5"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-vMotion</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -748,15 +437,15 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN02</td></tr>
 </tbody></table>
-<div class="Caption">Table 43 - Scopes Properties - 192.168.2.0</div><br /></div>
-<a name="cb807a5f-c6f8-4cb8-8ee7-df37ce033b40"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 25 - Scopes Properties - 192.168.2.0</div><br /></div>
+<a name="b262b940-1a6d-4ebe-a185-1d484c67b7b7"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>192.168.2.254</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 44 - Scopes Options - 192.168.2.0</div><br /></div>
-<a name="9a92be7b-9635-4de3-bcf8-250fb127f0fc"><h5 class="Heading5">1.2.4.9.6 192.168.4.0</h5></a><a name="3069c9a5-272d-4090-89f2-eb30a39b20fc"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 26 - Scopes Options - 192.168.2.0</div><br /></div>
+<a name="07f03695-3c24-4565-b1de-594bda4edddd"><h5 class="Heading5">1.3.3.9.6 192.168.4.0</h5></a><a name="bfed7426-37c1-412f-aef4-d554dd783df5"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-NFS-File</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -770,17 +459,17 @@ hr { margin-top: 1.0rem; }
 <tr><th>Activate Policies</th><td>Yes</td></tr>
 <tr><th>Nap Enable</th><td>No</td></tr>
 <tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
+<tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 45 - Scopes Properties - 192.168.4.0</div><br /></div>
-<a name="c01d706f-f4f5-4cca-ad46-0b642249110e"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 27 - Scopes Properties - 192.168.4.0</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="cf64fca6-c94a-4b21-aa54-f9e9ccdf35c8"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>192.168.4.254</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 46 - Scopes Options - 192.168.4.0</div><br /></div>
-<a name="8c9e0acb-5393-4778-b56a-4c7087186191"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 28 - Scopes Options - 192.168.4.0</div><br /></div>
+<a name="d2f5a505-9a6c-43f2-bfa1-e688e1f8d04a"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>Test</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -799,8 +488,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>00:00:00</td></tr>
 <tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 47 - Policy - Test</div><br /></div>
-<a name="8228170b-ccfa-454e-9649-9277a0c33c03"><h5 class="Heading5">1.2.4.9.7 192.168.6.0</h5></a><a name="06863250-47d1-46cb-93a7-0e9b99a8cd42"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 29 - Policy - Test</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="813568a7-8372-4c19-8fa5-59270e5dcc88"><h5 class="Heading5">1.3.3.9.7 192.168.6.0</h5></a><a name="05dea77a-ca1d-47c2-9856-512e09330e62"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-ISCSI-BLOCK-A</td></tr>
 <tr><th>Type</th><td>Both</td></tr>
@@ -816,20 +505,20 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN06</td></tr>
 </tbody></table>
-<div class="Caption">Table 48 - Scopes Properties - 192.168.6.0</div><br /></div>
-<a name="e755f2af-b0fa-4017-b643-e1ad62ccd234"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
+<div class="Caption">Table 30 - Scopes Properties - 192.168.6.0</div><br /></div>
+<a name="1dc6dbd5-d284-4d01-bd26-6212f34be4bc"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
 <thead><tr><th>IP Address</th><th>Client Id</th><th>Name</th><th>Type</th></tr></thead><tbody>
 <tr><td>192.168.6.13</td><td>00-50-56-b0-66-b1</td><td>VEEAM-VBR.pharmax.local</td><td>Dhcp</td></tr>
 <tr><td>192.168.6.14</td><td>00-50-56-b0-99-c8</td><td>VEEAM-VTL.pharmax.local</td><td>Dhcp</td></tr>
 </tbody></table>
-<div class="Caption">Table 49 - Scopes Reservation - 192.168.6.0</div><br /></div>
-<a name="42c3441a-d319-4ae1-a91d-df8e2332d613"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 31 - Scopes Reservation - 192.168.6.0</div><br /></div>
+<a name="84ab8b78-1fb1-4867-a76b-059c6e2d4f29"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 50 - Scopes Options - 192.168.6.0</div><br /></div>
-<a name="38ed97cd-96ea-4d3a-8f8d-b0809c213fa8"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 32 - Scopes Options - 192.168.6.0</div><br /></div>
+<a name="173930e0-8656-4e6e-8a94-04a6dbaa94c4"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>Default BOOTP Class</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -848,8 +537,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>30.00:00:00</td></tr>
 <tr><th>Description</th><td>User class for BOOTP Clients</td></tr>
 </tbody></table>
-<div class="Caption">Table 51 - Policy - Default BOOTP Class</div><br /></div>
-<a name="49d1ebdb-8df7-4bfc-833a-01d003cc26e2"><h5 class="Heading5">1.2.4.9.8 192.168.7.0</h5></a><a name="a5f4650b-de6a-442e-87ef-e4b772294313"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 33 - Policy - Default BOOTP Class</div><br /></div>
+<a name="f03be7c2-7413-4da2-aaae-0e2f237af765"><h5 class="Heading5">1.3.3.9.8 192.168.7.0</h5></a><a name="90e36e44-cb52-47e8-9f34-c307fe64caa5"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESX-VM-NETWORK</td></tr>
 <tr><th>Type</th><td>Dhcp</td></tr>
@@ -865,13 +554,13 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN7</td></tr>
 </tbody></table>
-<div class="Caption">Table 52 - Scopes Properties - 192.168.7.0</div><br /></div>
-<a name="9c29f723-0503-49b4-aed4-908f56b09f1a"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 34 - Scopes Properties - 192.168.7.0</div><br /></div>
+<a name="bb9691b6-3b33-40cb-97a2-9fa735069468"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <thead><tr><th>Start Range</th><th>End Range</th></tr></thead><tbody>
 <tr><td>192.168.7.89</td><td>192.168.7.95</td></tr>
 </tbody></table>
-<div class="Caption">Table 53 - Scopes Exclusion - 192.168.7.0</div><br /></div>
-<a name="ca39ff80-0a7e-435f-963d-21d804ffe55b"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
+<div class="Caption">Table 35 - Scopes Exclusion - 192.168.7.0</div><br /></div>
+<a name="20c3cc54-648b-41be-bab2-028d0ec7e8f7"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
 <thead><tr><th>IP Address</th><th>Client Id</th><th>Name</th><th>Type</th></tr></thead><tbody>
 <tr><td>192.168.7.102</td><td>00-50-56-b0-9e-ba</td><td>srmsvr-01v.pharmax.local</td><td>Dhcp</td></tr>
 <tr><td>192.168.7.128</td><td>00-50-56-b0-aa-e0</td><td>VEEAM-HSV.pharmax.local</td><td>Dhcp</td></tr>
@@ -891,8 +580,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>192.168.7.83</td><td>00-50-56-b0-44-70</td><td>VEEAM-EM.pharmax.local</td><td>Dhcp</td></tr>
 <tr><td>192.168.7.86</td><td>00-50-56-b0-a8-58</td><td>VEEAM-VBR-01V.pharmax.local</td><td>Dhcp</td></tr>
 </tbody></table>
-<div class="Caption">Table 54 - Scopes Reservation - 192.168.7.0</div><br /></div>
-<a name="94f66d34-d682-44d6-92dc-763071a7552b"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 36 - Scopes Reservation - 192.168.7.0</div><br /></div>
+<a name="a6bb9591-a153-4858-a055-da78fc754532"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>192.168.7.254</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
@@ -901,8 +590,8 @@ hr { margin-top: 1.0rem; }
 <tr><td>Bootfile Name</td><td>67</td><td>snponly64.efi.vmw-hardwired</td><td>--</td></tr>
 <tr><td>&nbsp;</td><td>81</td><td>23</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 55 - Scopes Options - 192.168.7.0</div><br /></div>
-<a name="9290022c-b027-4e1f-8225-2d7b0c8b2241"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 37 - Scopes Options - 192.168.7.0</div><br /></div>
+<a name="2b75ff17-e38a-4ba8-836c-def166a4825b"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>VM-Policy</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -921,8 +610,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>00:00:00</td></tr>
 <tr><th>Description</th><td>Policy done bla bla bla</td></tr>
 </tbody></table>
-<div class="Caption">Table 56 - Policy - VM-Policy</div><br /></div>
-<a name="d68a513c-00af-4bb6-b898-3363beee2da6"><h5 class="Heading5">1.2.4.9.9 192.168.10.0</h5></a><a name="ef67d0a0-5992-44d2-ae51-a4df827f00d3"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 38 - Policy - VM-Policy</div><br /></div>
+<a name="00d144d6-3aa0-4888-9091-f5e3bc0c7ddb"><h5 class="Heading5">1.3.3.9.9 192.168.10.0</h5></a><a name="7612ec26-3195-46fe-ad26-718d435ffbe1"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESX-vSAN-NET</td></tr>
 <tr><th>Type</th><td>Both</td></tr>
@@ -936,18 +625,18 @@ hr { margin-top: 1.0rem; }
 <tr><th>Activate Policies</th><td>Yes</td></tr>
 <tr><th>Nap Enable</th><td>No</td></tr>
 <tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
+<tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
 </tbody></table>
-<div class="Caption">Table 57 - Scopes Properties - 192.168.10.0</div><br /></div>
-<a name="d7d97df8-f747-4cb3-b400-b893e9af8889"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 39 - Scopes Properties - 192.168.10.0</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="2c72d3e0-e331-4324-bc25-cef033eeb15a"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>Router</td><td>3</td><td>192.168.10.254</td><td>--</td></tr>
 <tr><td>DNS Servers</td><td>6</td><td>192.168.5.1<br />192.168.5.1</td><td>--</td></tr>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 58 - Scopes Options - 192.168.10.0</div><br /></div>
-<a name="278d87ec-45e7-4fe1-85bd-043f7187acb8"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 40 - Scopes Options - 192.168.10.0</div><br /></div>
+<a name="731b1fae-0761-4966-93ec-e5622ffc832e"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>Default BOOTP Class</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -966,8 +655,8 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>30.00:00:00</td></tr>
 <tr><th>Description</th><td>User class for BOOTP Clients</td></tr>
 </tbody></table>
-<div class="Caption">Table 59 - Policy - Default BOOTP Class</div><br /></div>
-<a name="61afc674-1aa3-4fd5-ac1e-0fd5c38c3a6e"><h5 class="Heading5">1.2.4.9.10 192.168.12.0</h5></a><a name="f0065330-0609-4fde-b0ec-8011fc4f40fd"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 41 - Policy - Default BOOTP Class</div><br /></div>
+<a name="23f7706e-06f2-4973-88ab-151fc983e29f"><h5 class="Heading5">1.3.3.9.10 192.168.12.0</h5></a><a name="422fcf2a-ab2c-4f19-8178-a5121d46be72"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>ESXi-ISCSI-BLOCK-B</td></tr>
 <tr><th>Type</th><td>Both</td></tr>
@@ -983,21 +672,21 @@ hr { margin-top: 1.0rem; }
 <tr><th>Nap Profile</th><td>--</td></tr>
 <tr><th>Description</th><td>VLAN12</td></tr>
 </tbody></table>
-<div class="Caption">Table 60 - Scopes Properties - 192.168.12.0</div><br /></div>
-<a name="d164fed0-d1cf-4670-b953-b3a966230b3e"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
+<div class="Caption">Table 42 - Scopes Properties - 192.168.12.0</div><br /></div>
+<a name="6d0947f5-77c1-4398-86fa-ebb0f3c49825"><h1 class="NOTOCHeading6">Reservations</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
 <thead><tr><th>IP Address</th><th>Client Id</th><th>Name</th><th>Type</th></tr></thead><tbody>
 <tr><td>192.168.12.12</td><td>00-50-56-62-64-6f</td><td>comp-02a.pharmax.local</td><td>Dhcp</td></tr>
 <tr><td>192.168.12.13</td><td>00-50-56-b0-ec-c1</td><td>VEEAM-VBR.pharmax.local</td><td>Dhcp</td></tr>
 <tr><td>192.168.12.14</td><td>00-50-56-b0-c6-0e</td><td>VEEAM-VTL.pharmax.local</td><td>Dhcp</td></tr>
 </tbody></table>
-<div class="Caption">Table 61 - Scopes Reservation - 192.168.12.0</div><br /></div>
-<a name="61d197d6-ce38-4027-970e-72c29887f4ee"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<div class="Caption">Table 43 - Scopes Reservation - 192.168.12.0</div><br /></div>
+<a name="d3ffa4f1-7141-4e99-932d-cbb223ae1cbb"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
 <thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
 <tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
 <tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
 </tbody></table>
-<div class="Caption">Table 62 - Scopes Options - 192.168.12.0</div><br /></div>
-<a name="05c52ce7-8939-49d4-8e8e-7c6ad5f1d784"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<div class="Caption">Table 44 - Scopes Options - 192.168.12.0</div><br /></div>
+<a name="ce788c96-fcb2-46b4-88a3-78260e131140"><h1 class="NOTOCHeading6">Policies</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
 <tbody>
 <tr><th>Name</th><td>Default BOOTP Class</td></tr>
 <tr><th>Enabled</th><td>Yes</td></tr>
@@ -1016,541 +705,36 @@ hr { margin-top: 1.0rem; }
 <tr><th>Lease Duration</th><td>30.00:00:00</td></tr>
 <tr><th>Description</th><td>User class for BOOTP Clients</td></tr>
 </tbody></table>
-<div class="Caption">Table 63 - Policy - Default BOOTP Class</div><br /></div>
-<a name="22ac0ad2-3170-449d-b703-bd5297683b5b"><h2 class="Heading2">1.3 IPv6 Information</h2></a><div>The following section provides a IPv6 configuration summary of the Dynamic Host Configuration Protocol.</div><br /><a name="63b0bc59-8139-4e9b-a005-9bba24895a69"><h3 class="Heading3">1.3.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
+<div class="Caption">Table 45 - Policy - Default BOOTP Class</div><br /></div>
+<a name="e508492f-5f00-4b98-adf8-a8ba35c1acfa"><h5 class="Heading5">1.3.3.9.11 192.168.13.0</h5></a><a name="98167710-aa53-49b2-a498-7280bfe798ea"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
+<tbody>
+<tr><th>Name</th><td>PHARMAX-CLIENT-13</td></tr>
+<tr><th>Type</th><td>Dhcp</td></tr>
+<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
+<tr><th>Start Range</th><td>192.168.13.10</td></tr>
+<tr><th>End Range</th><td>192.168.13.253</td></tr>
+<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
+<tr><th>Delay(ms)</th><td>0</td></tr>
+<tr><th>State</th><td>Active</td></tr>
+<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
+<tr><th>Activate Policies</th><td>Yes</td></tr>
+<tr><th>Nap Enable</th><td>No</td></tr>
+<tr><th>Nap Profile</th><td>--</td></tr>
+<tr><th>Description</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">--</td></tr>
+</tbody></table>
+<div class="Caption">Table 46 - Scopes Properties - 192.168.13.0</div><br /></div>
+<div><span style="font-weight: bold; text-decoration: underline;">Health Check:</span></div><br /><div><span style="font-weight: bold;">Best Practice: </span>It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.</div><a name="05dbe337-2917-4a99-8211-7a3e331e7857"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
+<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
+<tr><td>Router</td><td>3</td><td>192.168.13.254</td><td>--</td></tr>
+<tr><td>DNS Servers</td><td>6</td><td>192.168.5.1<br />8.8.8.8</td><td>--</td></tr>
+<tr><td>DNS Domain Name</td><td>15</td><td>pharmax.local</td><td>--</td></tr>
+<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
+</tbody></table>
+<div class="Caption">Table 47 - Scopes Options - 192.168.13.0</div><br /></div>
+<a name="4cb2a3b2-c2c0-41d1-84bf-1023fbf38713"><h2 class="Heading2">1.4 IPv6 Information</h2></a><div>The following section provides a IPv6 configuration summary of the Dynamic Host Configuration Protocol.</div><br /><a name="7870203d-b3ed-46f2-8991-8bb1a100f85e"><h3 class="Heading3">1.4.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
 <thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>cayey-dc-01v</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>server-dc-01v</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 </tbody></table>
-<div class="Caption">Table 64 - DHCP Server Statistics - PHARMAX.LOCAL</div><br /></div>
-<a name="bb9a2c21-2e6e-4887-88af-81de64e5d6ff"><h1 class="Heading1">2 ACAD.PHARMAX.LOCAL</h1></a><div>The following section provides a summary of the Dynamic Host Configuration Protocol.</div><a name="985067d5-b7b6-4f4a-b723-ab8df370003d"><h2 class="Heading2">2.1 DHCP Servers in Domain</h2></a><div>The following table summarises the DHCP servers information within ACAD.PHARMAX.LOCAL.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
-<thead><tr><th>DC Name</th><th>IP Address</th><th>Domain Name</th><th>Domain Joined</th><th>Authorized</th><th>Conflict Detection Attempts</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>172.23.4.21</td><td>acad.pharmax.local</td><td>Yes</td><td>Yes</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">0</td></tr>
-<tr><td>acade-dc-01v</td><td>172.23.4.1</td><td>acad.pharmax.local</td><td>Yes</td><td>Yes</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">0</td></tr>
-</tbody></table>
-<div class="Caption">Table 65 - DHCP Servers in Domain - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="b79bd514-0253-420d-8a82-d9b0014d0b0a"><h3 class="Heading3">2.1.1 Service Database</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:12%; min-width:12%; width:12%" /></colgroup>
-<thead><tr><th>DC Name</th><th>File Path</th><th>Backup Path</th><th>Backup Interval</th><th>Logging Enabled</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>C:\Windows\system32\dhcp\dhcp.mdb</td><td>C:\Windows\system32\dhcp\backup</td><td>60 min</td><td>Yes</td></tr>
-<tr><td>acade-dc-01v</td><td>C:\Windows\system32\dhcp\dhcp.mdb</td><td>C:\Windows\system32\dhcp\backup</td><td>60 min</td><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 66 - DHCP Servers Database - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="4f7d9b5e-7333-48b6-9cd5-4a89f778b475"><h3 class="Heading3">2.1.2 Dynamic DNS credentials</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:40%; min-width:40%; width:40%" /></colgroup>
-<thead><tr><th>DC Name</th><th>User Name</th><th>Domain Name</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>--</td><td>--</td></tr>
-<tr><td>acade-dc-01v</td><td>--</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 67 - DHCP Servers Dynamic DNS Credentials - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="2290e866-b309-4a41-879c-a0969b06f412"><h2 class="Heading2">2.2 IPv4 Information</h2></a><div>The following sections detail the configuration of the ipv4 scopes within domain acad.pharmax.local.</div><br /><a name="b21d9537-cf10-4046-b9fa-a4b37d189415"><h3 class="Heading3">2.2.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>1</td><td>244</td><td>0</td><td>244</td><td>0</td><td>100</td></tr>
-<tr><td>acade-dc-01v</td><td>2</td><td>467</td><td>0</td><td>467</td><td>0</td><td>100</td></tr>
-</tbody></table>
-<div class="Caption">Table 68 - DHCP Server Statistics - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="fc58f6b5-5a58-4e4c-a7ca-8a62ce2a5529"><h3 class="Heading3">2.2.2 Filter Status</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Allow</th><th>Deny</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>No</td><td>Yes</td></tr>
-<tr><td>acade-dc-01v</td><td>No</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 69 - Filter Status - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="6b0fb72c-edf0-4880-80ba-51014b5882ca"><h3 class="Heading3">2.2.3 ACAD-DHCP-01V</h3></a><a name="45694b98-d913-47fc-9309-e9064e54375a"><h4 class="Heading4">2.2.3.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within ACAD-DHCP-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Scope Name</th><th>Scope Range</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
-<tr><td>172.23.8.0/24</td><td>DATA</td><td>172.23.8.10 - 172.23.8.253</td><td>8.00:00:00</td><td>Active</td></tr>
-</tbody></table>
-<div class="Caption">Table 70 - Scopes - ACAD-DHCP-01V</div><br /></div>
-<a name="7612dfb3-2ffd-48e8-b244-b53cb44ea01f"><h4 class="Heading4">2.2.3.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
-<tr><td>172.23.8.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
-</tbody></table>
-<div class="Caption">Table 71 - IPv4 Scope Statistics - ACAD-DHCP-01V</div><br /></div>
-<a name="4644a429-91ac-4799-b5d3-3fbaae72d74f"><h4 class="Heading4">2.2.3.3 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Interface Alias</th><th>IP Address</th><th>Subnet Mask</th><th>State</th></tr></thead><tbody>
-<tr><td>Ethernet1</td><td>192.168.6.40</td><td>255.255.255.0</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">Disabled</td></tr>
-<tr><td>Ethernet0</td><td>172.23.4.21</td><td>255.255.255.0</td><td>Enabled</td></tr>
-</tbody></table>
-<div class="Caption">Table 72 - NIC Biding - ACAD-DHCP-01V</div><br /></div>
-<a name="50e2c9be-d151-4f05-adaa-77a0e36f88a2"><h4 class="Heading4">2.2.3.4 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
-<tr><td>Default BOOTP Class</td><td>User</td><td>0x424f4f54502e4d6963726f736f6674</td><td>BOOTP.Microsoft</td><td>User class for BOOTP Clients</td></tr>
-<tr><td>Default Routing and Remote Access Class</td><td>User</td><td>0x525241532e4d6963726f736f6674</td><td>RRAS.Microsoft</td><td>User class for remote access clients</td></tr>
-<tr><td>Microsoft Options</td><td>Vendor</td><td>0x4d534654</td><td>MSFT</td><td>Microsoft vendor-specific options applicable to all Windows Clients</td></tr>
-<tr><td>Microsoft Windows 2000 Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows 2000 and above Clients</td></tr>
-<tr><td>Microsoft Windows 98 Options</td><td>Vendor</td><td>0x4d534654203938</td><td>MSFT 98</td><td>Microsoft vendor-specific options for Windows 98 Clients</td></tr>
-</tbody></table>
-<div class="Caption">Table 73 - Client Classes - ACAD-DHCP-01V</div><br /></div>
-<a name="de7d943d-81d9-47fc-9df1-75ad1b29d894"><h4 class="Heading4">2.2.3.5 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
-<tr><td>Subnet Mask</td><td>1</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Time Offset</td><td>2</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Router</td><td>3</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Time Server</td><td>4</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Name Servers</td><td>5</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Log Servers</td><td>7</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Cookie Servers</td><td>8</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>LPR Servers</td><td>9</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Impress Servers</td><td>10</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Resource Location Servers</td><td>11</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Host Name</td><td>12</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Boot File Size</td><td>13</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Merit Dump File</td><td>14</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Swap Server</td><td>16</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Root Path</td><td>17</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Extensions Path</td><td>18</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>IP Layer Forwarding</td><td>19</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Nonlocal Source Routing</td><td>20</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Policy Filter Masks</td><td>21</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Max DG Reassembly Size</td><td>22</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Default IP Time-to-live</td><td>23</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Aging Timeout</td><td>24</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Plateau Table</td><td>25</td><td>Word</td><td>--</td><td>Yes</td></tr>
-<tr><td>MTU Option</td><td>26</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>All subnets are local</td><td>27</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Broadcast Address</td><td>28</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Mask Discovery</td><td>29</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Mask Supplier Option</td><td>30</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Router Discovery</td><td>31</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Router Solicitation Address</td><td>32</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Static Route Option</td><td>33</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Trailer Encapsulation</td><td>34</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>ARP Cache Timeout</td><td>35</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Ethernet Encapsulation</td><td>36</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>TCP Default Time-to-live</td><td>37</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Interval</td><td>38</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Garbage</td><td>39</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Domain Name</td><td>40</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Servers</td><td>41</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NTP Servers</td><td>42</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Vendor Specific Info</td><td>43</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-<tr><td>WINS/NBNS Servers</td><td>44</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NetBIOS over TCP/IP NBDD</td><td>45</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>WINS/NBT Node Type</td><td>46</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NetBIOS Scope ID</td><td>47</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>X Window System Font</td><td>48</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>X Window System Display</td><td>49</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Lease</td><td>51</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Renewal (T1) Time Value</td><td>58</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Rebinding (T2) Time Value</td><td>59</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Domain Name</td><td>64</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Servers</td><td>65</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Boot Server Host Name</td><td>66</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Bootfile Name</td><td>67</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Mobile IP Home Agents</td><td>68</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Simple Mail Transport Protocol (SMTP) Servers</td><td>69</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Post Office Protocol (POP3) Servers</td><td>70</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Network News Transport Protocol (NNTP) Servers</td><td>71</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>World Wide Web (WWW) Servers</td><td>72</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Finger Servers</td><td>73</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Internet Relay Chat (IRC) Servers</td><td>74</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Servers</td><td>75</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Directory Assistance (STDA) Servers</td><td>76</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Classless Static Routes</td><td>121</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 74 - Option Definitions - ACAD-DHCP-01V</div><br /></div>
-<a name="79b1bbcd-9db0-4b44-96ee-1d177b3ce489"><h4 class="Heading4">2.2.3.6 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="cd2391c5-5b49-447b-9b3f-d14fbedfd7a7"><h5 class="Heading5">2.2.3.6.1 172.23.8.0</h5></a><a name="20cced9f-f1df-4528-af88-dc2c00a2d5be"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>DATA</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
-<tr><th>Start Range</th><td>172.23.8.10</td></tr>
-<tr><th>End Range</th><td>172.23.8.253</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 75 - Scopes Properties - 172.23.8.0</div><br /></div>
-<a name="86fd2e23-df17-4f09-8116-84b4408572e2"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>172.23.8.254</td><td>--</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>172.23.4.1<br />192.168.5.1</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>acad.pharmax.local</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 76 - Scopes Options - 172.23.8.0</div><br /></div>
-<a name="be2c9fa4-0943-4e90-8232-18c36e576573"><h3 class="Heading3">2.2.4 ACADE-DC-01V</h3></a><a name="fc49b98a-e41b-46e3-bf0c-03083f5206a6"><h4 class="Heading4">2.2.4.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within ACADE-DC-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Scope Name</th><th>Scope Range</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
-<tr><td>172.23.4.0/24</td><td>Dept-A Clients</td><td>172.23.4.20 - 172.23.4.253</td><td>8.00:00:00</td><td>Active</td></tr>
-<tr><td>172.23.5.0/24</td><td>Dept-B Clients</td><td>172.23.5.10 - 172.23.5.253</td><td>1.00:00:00</td><td>Active</td></tr>
-</tbody></table>
-<div class="Caption">Table 77 - Scopes - ACADE-DC-01V</div><br /></div>
-<a name="455cbad9-41c4-4ca3-8134-fffe20b19d6c"><h4 class="Heading4">2.2.4.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
-<tr><td>172.23.4.0</td><td>234</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>172.23.5.0</td><td>233</td><td>0</td><td>0</td><td>0</td></tr>
-</tbody></table>
-<div class="Caption">Table 78 - IPv4 Scope Statistics - ACADE-DC-01V</div><br /></div>
-<a name="cc42413b-9f62-4629-914c-8bef8409a1a6"><h4 class="Heading4">2.2.4.3 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Interface Alias</th><th>IP Address</th><th>Subnet Mask</th><th>State</th></tr></thead><tbody>
-<tr><td>Ethernet0</td><td>172.23.4.1</td><td>255.255.255.0</td><td>Enabled</td></tr>
-</tbody></table>
-<div class="Caption">Table 79 - NIC Biding - ACADE-DC-01V</div><br /></div>
-<a name="1fad1152-28cd-4422-ba27-9f91d4fc9704"><h4 class="Heading4">2.2.4.4 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
-<tr><td>Default BOOTP Class</td><td>User</td><td>0x424f4f54502e4d6963726f736f6674</td><td>BOOTP.Microsoft</td><td>User class for BOOTP Clients</td></tr>
-<tr><td>Default Routing and Remote Access Class</td><td>User</td><td>0x525241532e4d6963726f736f6674</td><td>RRAS.Microsoft</td><td>User class for remote access clients</td></tr>
-<tr><td>Microsoft Options</td><td>Vendor</td><td>0x4d534654</td><td>MSFT</td><td>Microsoft vendor-specific options applicable to all Windows Clients</td></tr>
-<tr><td>Microsoft Windows 2000 Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows 2000 and above Clients</td></tr>
-<tr><td>Microsoft Windows 98 Options</td><td>Vendor</td><td>0x4d534654203938</td><td>MSFT 98</td><td>Microsoft vendor-specific options for Windows 98 Clients</td></tr>
-</tbody></table>
-<div class="Caption">Table 80 - Client Classes - ACADE-DC-01V</div><br /></div>
-<a name="28b78f93-3810-4ffe-bb3b-9742a1bfb23d"><h4 class="Heading4">2.2.4.5 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
-<tr><td>Subnet Mask</td><td>1</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Time Offset</td><td>2</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Router</td><td>3</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Time Server</td><td>4</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Name Servers</td><td>5</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Log Servers</td><td>7</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Cookie Servers</td><td>8</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>LPR Servers</td><td>9</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Impress Servers</td><td>10</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Resource Location Servers</td><td>11</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Host Name</td><td>12</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Boot File Size</td><td>13</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Merit Dump File</td><td>14</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Swap Server</td><td>16</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Root Path</td><td>17</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Extensions Path</td><td>18</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>IP Layer Forwarding</td><td>19</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Nonlocal Source Routing</td><td>20</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Policy Filter Masks</td><td>21</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Max DG Reassembly Size</td><td>22</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Default IP Time-to-live</td><td>23</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Aging Timeout</td><td>24</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Plateau Table</td><td>25</td><td>Word</td><td>--</td><td>Yes</td></tr>
-<tr><td>MTU Option</td><td>26</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>All subnets are local</td><td>27</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Broadcast Address</td><td>28</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Mask Discovery</td><td>29</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Mask Supplier Option</td><td>30</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Router Discovery</td><td>31</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Router Solicitation Address</td><td>32</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Static Route Option</td><td>33</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Trailer Encapsulation</td><td>34</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>ARP Cache Timeout</td><td>35</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Ethernet Encapsulation</td><td>36</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>TCP Default Time-to-live</td><td>37</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Interval</td><td>38</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Garbage</td><td>39</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Domain Name</td><td>40</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Servers</td><td>41</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NTP Servers</td><td>42</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Vendor Specific Info</td><td>43</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-<tr><td>WINS/NBNS Servers</td><td>44</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NetBIOS over TCP/IP NBDD</td><td>45</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>WINS/NBT Node Type</td><td>46</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NetBIOS Scope ID</td><td>47</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>X Window System Font</td><td>48</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>X Window System Display</td><td>49</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Lease</td><td>51</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Renewal (T1) Time Value</td><td>58</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Rebinding (T2) Time Value</td><td>59</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Domain Name</td><td>64</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Servers</td><td>65</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Boot Server Host Name</td><td>66</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Bootfile Name</td><td>67</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Mobile IP Home Agents</td><td>68</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Simple Mail Transport Protocol (SMTP) Servers</td><td>69</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Post Office Protocol (POP3) Servers</td><td>70</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Network News Transport Protocol (NNTP) Servers</td><td>71</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>World Wide Web (WWW) Servers</td><td>72</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Finger Servers</td><td>73</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Internet Relay Chat (IRC) Servers</td><td>74</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Servers</td><td>75</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Directory Assistance (STDA) Servers</td><td>76</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Classless Static Routes</td><td>121</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 81 - Option Definitions - ACADE-DC-01V</div><br /></div>
-<a name="db58be6d-bf2f-4538-8746-032407065767"><h4 class="Heading3">2.2.4.6 Global Server Options</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>DNS Servers</td><td>6</td><td>172.23.4.1<br />192.168.5.1<br />10.10.33.1</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>acad.pharmax.local</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 82 - Scopes Server Options - ACADE-DC-01V</div><br /></div>
-<a name="fb204e74-a567-4cdc-8a76-aab8822c45ba"><h5 class="Heading4">2.2.4.6.1 Global DNS Setting</h5></a><div>The following table summarises the dhcp server ipv4 global dns setting.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
-<tbody>
-<tr><th>Dynamic Updates</th><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">OnClientRequest</td></tr>
-<tr><th>Dns Suffix</th><td>--</td></tr>
-<tr><th>Name Protection</th><td>No</td></tr>
-<tr><th>Update Dns RR For Older Clients</th><td>No</td></tr>
-<tr><th>Disable Dns Ptr RR Update</th><td>No</td></tr>
-<tr><th>Delete Dns RR On Lease Expiry</th><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 83 - Global DNS Setting - ACADE-DC-01V</div><br /></div>
-<div><span style="font-weight: bold; font-style: italic; text-decoration: underline;">Health Check:</span></div><div><span style="font-weight: bold; font-style: italic;">Best Practice: &#39;Always dynamically update dns records&#39; should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server.</span></div><a name="7eb50bc8-1c0b-442b-bb3d-24ffcee2327b"><h4 class="Heading4">2.2.4.7 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="0252403c-09da-4292-b25e-f4747f52301d"><h5 class="Heading5">2.2.4.7.1 172.23.4.0</h5></a><a name="bd77b6a4-a56c-4f3b-90dd-661d59e829f6"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>Dept-A Clients</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
-<tr><th>Start Range</th><td>172.23.4.20</td></tr>
-<tr><th>End Range</th><td>172.23.4.253</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 84 - Scopes Properties - 172.23.4.0</div><br /></div>
-<a name="49bd36a3-4bd5-4fc4-85c2-89ae068acfb2"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>172.23.4.254</td><td>--</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>172.23.4.1<br />10.10.33.1<br />192.168.5.1</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>acad.pharmax.local</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 85 - Scopes Options - 172.23.4.0</div><br /></div>
-<a name="6c18fb10-3750-482b-b4ef-16129fa9e1b7"><h5 class="Heading5">2.2.4.7.2 172.23.5.0</h5></a><a name="116b49c1-06a6-4cbc-9a59-f8d362d6c5ad"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>Dept-B Clients</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>1.00:00:00</td></tr>
-<tr><th>Start Range</th><td>172.23.5.10</td></tr>
-<tr><th>End Range</th><td>172.23.5.253</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>VLAN 25</td></tr>
-</tbody></table>
-<div class="Caption">Table 86 - Scopes Properties - 172.23.5.0</div><br /></div>
-<a name="805a8b1b-59eb-4d61-8589-7721366ab19e"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<thead><tr><th>Start Range</th><th>End Range</th></tr></thead><tbody>
-<tr><td>172.23.5.20</td><td>172.23.5.30</td></tr>
-</tbody></table>
-<div class="Caption">Table 87 - Scopes Exclusion - 172.23.5.0</div><br /></div>
-<a name="654626cb-f50b-4916-b2ce-7db318153f7a"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>172.23.5.254</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>86400</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 88 - Scopes Options - 172.23.5.0</div><br /></div>
-<a name="690af786-b257-4737-82cd-641dccf32cc0"><h2 class="Heading2">2.3 IPv6 Information</h2></a><div>The following section provides a IPv6 configuration summary of the Dynamic Host Configuration Protocol.</div><br /><a name="0cf3b5ea-00d5-4d34-a207-5a7771c0b904"><h3 class="Heading3">2.3.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>acad-dhcp-01v</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>acade-dc-01v</td><td>2</td><td>18446744073709542362</td><td>0</td><td>18446744073709542362</td><td>0</td><td>100</td></tr>
-</tbody></table>
-<div class="Caption">Table 89 - DHCP Server Statistics - ACAD.PHARMAX.LOCAL</div><br /></div>
-<a name="09ce7c64-fd81-42cf-a07c-4cada6940c22"><h3 class="Heading3">2.3.2 ACADE-DC-01V</h3></a><a name="32d083b3-2db3-454a-924a-a0e2ab8c6878"><h4 class="Heading4">2.3.2.1 Scopes</h4></a><div>The following sections detail the configuration of the ipv6 scope within ACADE-DC-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Scope Name</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
-<tr><td>fd99:2222::/64</td><td>Dept-D Client</td><td>8.00:00:00</td><td>Active</td></tr>
-<tr><td>fd99:9971::/64</td><td>Dept-C Clients</td><td>8.00:00:00</td><td>Active</td></tr>
-</tbody></table>
-<div class="Caption">Table 90 - Scopes - ACADE-DC-01V</div><br /></div>
-<a name="568c9d75-149f-48ad-9ff0-ad8693da2417"><h4 class="Heading4">2.3.2.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
-<tr><td>fd99:2222::</td><td>18446744073709542621</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>fd99:9971::</td><td>18446744073709551357</td><td>0</td><td>0</td><td>0</td></tr>
-</tbody></table>
-<div class="Caption">Table 91 - Scope Statistics -  ACADE-DC-01V</div><br /></div>
-<a name="c8b6f617-e73d-4fae-b28c-ca3788b418f9"><h4 class="Heading4">2.3.2.3 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
-<tr><td>Microsoft Windows Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows Clients</td></tr>
-</tbody></table>
-<div class="Caption">Table 92 - Client Classes - ACADE-DC-01V</div><br /></div>
-<a name="17b3e04c-0c00-49e0-92f5-8ed8af37bfbd"><h4 class="Heading4">2.3.2.4 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
-<tr><td>SIP Server Domain Name List </td><td>21</td><td>String</td><td>--</td><td>Yes</td></tr>
-<tr><td>SIP Servers IPv6 Address List </td><td>22</td><td>IPv6Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>DNS Recursive Name Server IPv6 Address List </td><td>23</td><td>IPv6Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Domain Search List </td><td>24</td><td>String</td><td>--</td><td>Yes</td></tr>
-<tr><td>NIS IPv6 Address List </td><td>27</td><td>IPv6Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NIS+ IPv6 Address List </td><td>28</td><td>IPv6Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NIS Domain List </td><td>29</td><td>String</td><td>--</td><td>Yes</td></tr>
-<tr><td>NIS+ Domain Name List </td><td>30</td><td>String</td><td>--</td><td>Yes</td></tr>
-<tr><td>SNTP Servers IPv6 Address List </td><td>31</td><td>IPv6Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Information Refresh Time </td><td>32</td><td>DWord</td><td>--</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 93 - Option Definitions - ACADE-DC-01V</div><br /></div>
-<a name="a7fb03b8-4bc3-4605-a83a-f733b31e88df"><h4 class="Heading4">2.3.2.5 Global Server Options</h4></a><div>The following table summarises the dhcp server ipv4 global dns setting.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Value</th></tr></thead><tbody>
-<tr><td>Domain Search List </td><td>24</td><td>String</td><td>fd99:9971::1</td></tr>
-</tbody></table>
-<div class="Caption">Table 94 - Global Server Options - ACADE-DC-01V</div><br /></div>
-<a name="6cb5a9eb-1066-460a-a492-dace745e0747"><h5 class="Heading4">2.3.2.5.1 Global DNS Settings</h5></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:60%; min-width:60%; width:60%" /></colgroup>
-<tbody>
-<tr><th>Dynamic Updates</th><td>OnClientRequest</td></tr>
-<tr><th>Name Protection</th><td>No</td></tr>
-<tr><th>Delete Dns RR On Lease Expiry</th><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 95 - Global DNS Setting - ACADE-DC-01V</div><br /></div>
-<a name="c8dd660f-f3de-4f62-b298-a10bc122bf90"><h4 class="Heading4">2.3.2.6 Scope Configuration</h4></a><div>The following section provides a summary 6 Scope Server Options information.</div><br /><a name="e6357188-2853-4937-ae3e-d5872d5b0bc9"><h5 class="Heading5">2.3.2.6.1 fd99:2222::</h5></a><a name="d13973ea-98b9-4573-ac6c-a1329c1dbf2b"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<thead><tr><th>Start Range</th><th>End Range</th></tr></thead><tbody>
-<tr><td>fd99:2222::1</td><td>fd99:2222::2322</td></tr>
-</tbody></table>
-<div class="Caption">Table 96 - Scopes Exclusion - fd99:2222::</div><br /></div>
-<a name="4831f8c1-5907-4797-b42c-507480c5b643"><h5 class="Heading5">2.3.2.6.2 fd99:9971::</h5></a><a name="7e09dd3f-d3a5-4ff4-bc15-607f42ceeb69"><h1 class="NOTOCHeading6">Exclusion</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<thead><tr><th>Start Range</th><th>End Range</th></tr></thead><tbody>
-<tr><td>fd99:9971::1</td><td>fd99:9971::1</td></tr>
-<tr><td>fd99:9971::2233:2323:2323:2200</td><td>fd99:9971::2233:2323:2323:2300</td></tr>
-</tbody></table>
-<div class="Caption">Table 97 - Scopes Exclusion - fd99:9971::</div><br /></div>
-<a name="8457d3cd-537f-4870-a224-2f39641e2563"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Value</th></tr></thead><tbody>
-<tr><td>DNS Recursive Name Server IPv6 Address List </td><td>23</td><td>IPv6Address</td><td>fd99:9971::1</td></tr>
-</tbody></table>
-<div class="Caption">Table 98 - Scopes Options - fd99:9971::</div><br /></div>
-<a name="f4473d8d-20f3-449a-95aa-a5c738f57803"><h1 class="Heading1">3 UIA.LOCAL</h1></a><div>The following section provides a summary of the Dynamic Host Configuration Protocol.</div><a name="453971e7-13fb-426c-82bc-8dcc2647eb77"><h2 class="Heading2">3.1 DHCP Servers in Domain</h2></a><div>The following table summarises the DHCP servers information within UIA.LOCAL.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:15%; min-width:15%; width:15%" /></colgroup>
-<thead><tr><th>DC Name</th><th>IP Address</th><th>Domain Name</th><th>Domain Joined</th><th>Authorized</th><th>Conflict Detection Attempts</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>172.23.7.1</td><td>uia.local</td><td>Yes</td><td>Yes</td><td style="font-family: 'Segoe Ui'; font-size: 0.83rem; text-align: left; font-weight: normal; color: #000000; background-color: #fcd116;">0</td></tr>
-</tbody></table>
-<div class="Caption">Table 99 - DHCP Servers in Domain - UIA.LOCAL</div><br /></div>
-<a name="3ec5026b-f5a6-48bc-9f54-e39d0979b1fe"><h3 class="Heading3">3.1.1 Service Database</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:28%; min-width:28%; width:28%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:12%; min-width:12%; width:12%" /></colgroup>
-<thead><tr><th>DC Name</th><th>File Path</th><th>Backup Path</th><th>Backup Interval</th><th>Logging Enabled</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>C:\Windows\system32\dhcp\dhcp.mdb</td><td>C:\Windows\system32\dhcp\backup</td><td>60 min</td><td>Yes</td></tr>
-</tbody></table>
-<div class="Caption">Table 100 - DHCP Servers Database - UIA.LOCAL</div><br /></div>
-<a name="445931b6-5f17-4b21-b29a-30056e411121"><h3 class="Heading3">3.1.2 Dynamic DNS credentials</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:40%; min-width:40%; width:40%" /></colgroup>
-<thead><tr><th>DC Name</th><th>User Name</th><th>Domain Name</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>--</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 101 - DHCP Servers Dynamic DNS Credentials - UIA.LOCAL</div><br /></div>
-<a name="43268f5b-cb7c-415f-8535-6bbd456822ef"><h2 class="Heading2">3.2 IPv4 Information</h2></a><div>The following sections detail the configuration of the ipv4 scopes within domain uia.local.</div><br /><a name="a2e842df-37cd-4046-97a9-817e1123092b"><h3 class="Heading3">3.2.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>1</td><td>244</td><td>0</td><td>244</td><td>0</td><td>100</td></tr>
-</tbody></table>
-<div class="Caption">Table 102 - DHCP Server Statistics - UIA.LOCAL</div><br /></div>
-<a name="f530bc68-8a82-4163-82bf-3d5e4bd2479a"><h3 class="Heading3">3.2.2 Filter Status</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:30%; min-width:30%; width:30%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Allow</th><th>Deny</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>No</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 103 - Filter Status - UIA.LOCAL</div><br /></div>
-<a name="dca3dfaa-138d-4a5e-bc22-f57a3f364352"><h3 class="Heading3">3.2.3 DC-UIA-01V</h3></a><a name="737c7167-f6b2-4a35-8003-80c57d9e8be8"><h4 class="Heading4">3.2.3.1 Scopes</h4></a><div>The following sections summarizes the ipv4 scope configuration within DC-UIA-01V.</div><br /><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:35%; min-width:35%; width:35%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:10%; min-width:10%; width:10%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Scope Name</th><th>Scope Range</th><th>Lease Duration</th><th>State</th></tr></thead><tbody>
-<tr><td>172.23.7.0/24</td><td>UIA Admin Scope</td><td>172.23.7.10 - 172.23.7.253</td><td>8.00:00:00</td><td>Active</td></tr>
-</tbody></table>
-<div class="Caption">Table 104 - Scopes - DC-UIA-01V</div><br /></div>
-<a name="a6b0c88e-4a04-4800-a8aa-a63cbddae949"><h4 class="Heading4">3.2.3.2 Scope Statistics</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Scope Id</th><th>Free IP</th><th>In Use IP</th><th>Percentage In Use</th><th>Reserved IP</th></tr></thead><tbody>
-<tr><td>172.23.7.0</td><td>244</td><td>0</td><td>0</td><td>0</td></tr>
-</tbody></table>
-<div class="Caption">Table 105 - IPv4 Scope Statistics - DC-UIA-01V</div><br /></div>
-<a name="9c8ed5dd-2af4-46d1-8a64-15eba216be1d"><h4 class="Heading4">3.2.3.3 NIC Binding</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Interface Alias</th><th>IP Address</th><th>Subnet Mask</th><th>State</th></tr></thead><tbody>
-<tr><td>Ethernet0</td><td>172.23.7.1</td><td>255.255.255.0</td><td>Enabled</td></tr>
-</tbody></table>
-<div class="Caption">Table 106 - NIC Biding - DC-UIA-01V</div><br /></div>
-<a name="9247ce28-fc16-422e-bc24-a6c507c93ba9"><h4 class="Heading4">3.2.3.4 Client Classes</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:24%; min-width:24%; width:24%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:20%; min-width:20%; width:20%" /></colgroup>
-<thead><tr><th>Name</th><th>Type</th><th>Data</th><th>Ascii Data</th><th>Description</th></tr></thead><tbody>
-<tr><td>Default BOOTP Class</td><td>User</td><td>0x424f4f54502e4d6963726f736f6674</td><td>BOOTP.Microsoft</td><td>User class for BOOTP Clients</td></tr>
-<tr><td>Default Routing and Remote Access Class</td><td>User</td><td>0x525241532e4d6963726f736f6674</td><td>RRAS.Microsoft</td><td>User class for remote access clients</td></tr>
-<tr><td>Microsoft Options</td><td>Vendor</td><td>0x4d534654</td><td>MSFT</td><td>Microsoft vendor-specific options applicable to all Windows Clients</td></tr>
-<tr><td>Microsoft Windows 2000 Options</td><td>Vendor</td><td>0x4d53465420352e30</td><td>MSFT 5.0</td><td>Microsoft vendor-specific options for Windows 2000 and above Clients</td></tr>
-<tr><td>Microsoft Windows 98 Options</td><td>Vendor</td><td>0x4d534654203938</td><td>MSFT 98</td><td>Microsoft vendor-specific options for Windows 98 Clients</td></tr>
-</tbody></table>
-<div class="Caption">Table 107 - Client Classes - DC-UIA-01V</div><br /></div>
-<a name="5d20538b-f54b-4f7b-9adb-c42158cd4993"><h4 class="Heading4">3.2.3.5 Option Definitions</h4></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:30%; min-width:30%; width:30%" /><col style="max-width:12%; min-width:12%; width:12%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:22%; min-width:22%; width:22%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Type</th><th>Vendor Class</th><th>Multi Valued</th></tr></thead><tbody>
-<tr><td>Subnet Mask</td><td>1</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Time Offset</td><td>2</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Router</td><td>3</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Time Server</td><td>4</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Name Servers</td><td>5</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Log Servers</td><td>7</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Cookie Servers</td><td>8</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>LPR Servers</td><td>9</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Impress Servers</td><td>10</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Resource Location Servers</td><td>11</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Host Name</td><td>12</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Boot File Size</td><td>13</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Merit Dump File</td><td>14</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Swap Server</td><td>16</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Root Path</td><td>17</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Extensions Path</td><td>18</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>IP Layer Forwarding</td><td>19</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Nonlocal Source Routing</td><td>20</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Policy Filter Masks</td><td>21</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Max DG Reassembly Size</td><td>22</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>Default IP Time-to-live</td><td>23</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Aging Timeout</td><td>24</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Path MTU Plateau Table</td><td>25</td><td>Word</td><td>--</td><td>Yes</td></tr>
-<tr><td>MTU Option</td><td>26</td><td>Word</td><td>--</td><td>No</td></tr>
-<tr><td>All subnets are local</td><td>27</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Broadcast Address</td><td>28</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Mask Discovery</td><td>29</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Mask Supplier Option</td><td>30</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Perform Router Discovery</td><td>31</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Router Solicitation Address</td><td>32</td><td>IPv4Address</td><td>--</td><td>No</td></tr>
-<tr><td>Static Route Option</td><td>33</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Trailer Encapsulation</td><td>34</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>ARP Cache Timeout</td><td>35</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Ethernet Encapsulation</td><td>36</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>TCP Default Time-to-live</td><td>37</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Interval</td><td>38</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Keepalive Garbage</td><td>39</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Domain Name</td><td>40</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS Servers</td><td>41</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NTP Servers</td><td>42</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Vendor Specific Info</td><td>43</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-<tr><td>WINS/NBNS Servers</td><td>44</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>NetBIOS over TCP/IP NBDD</td><td>45</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>WINS/NBT Node Type</td><td>46</td><td>Byte</td><td>--</td><td>No</td></tr>
-<tr><td>NetBIOS Scope ID</td><td>47</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>X Window System Font</td><td>48</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>X Window System Display</td><td>49</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Lease</td><td>51</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Renewal (T1) Time Value</td><td>58</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>Rebinding (T2) Time Value</td><td>59</td><td>DWord</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Domain Name</td><td>64</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>NIS+ Servers</td><td>65</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Boot Server Host Name</td><td>66</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Bootfile Name</td><td>67</td><td>String</td><td>--</td><td>No</td></tr>
-<tr><td>Mobile IP Home Agents</td><td>68</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Simple Mail Transport Protocol (SMTP) Servers</td><td>69</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Post Office Protocol (POP3) Servers</td><td>70</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Network News Transport Protocol (NNTP) Servers</td><td>71</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>World Wide Web (WWW) Servers</td><td>72</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Finger Servers</td><td>73</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Internet Relay Chat (IRC) Servers</td><td>74</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Servers</td><td>75</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>StreetTalk Directory Assistance (STDA) Servers</td><td>76</td><td>IPv4Address</td><td>--</td><td>Yes</td></tr>
-<tr><td>Classless Static Routes</td><td>121</td><td>BinaryData</td><td>--</td><td>No</td></tr>
-</tbody></table>
-<div class="Caption">Table 108 - Option Definitions - DC-UIA-01V</div><br /></div>
-<a name="70bfca7a-8cd5-4a0c-b259-905c410cb99f"><h4 class="Heading4">3.2.3.6 Scope Configuration</h4></a><div>The following sections detail the configuration of the ipv4 per scope configuration.</div><a name="0b8237bd-c0c8-4340-bcc5-8a1b5eec2261"><h5 class="Heading5">3.2.3.6.1 172.23.7.0</h5></a><a name="5fadfbb6-eba6-4a14-b4d2-140bcc09566c"><h1 class="NOTOCHeading6">Properties</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:50%; min-width:50%; width:50%" /><col style="max-width:50%; min-width:50%; width:50%" /></colgroup>
-<tbody>
-<tr><th>Name</th><td>UIA Admin Scope</td></tr>
-<tr><th>Type</th><td>Dhcp</td></tr>
-<tr><th>Lease Duration</th><td>8.00:00:00</td></tr>
-<tr><th>Start Range</th><td>172.23.7.10</td></tr>
-<tr><th>End Range</th><td>172.23.7.253</td></tr>
-<tr><th>Subnet Mask</th><td>255.255.255.0</td></tr>
-<tr><th>Delay(ms)</th><td>0</td></tr>
-<tr><th>State</th><td>Active</td></tr>
-<tr><th>Max Bootp Clients</th><td>4294967295</td></tr>
-<tr><th>Activate Policies</th><td>Yes</td></tr>
-<tr><th>Nap Enable</th><td>No</td></tr>
-<tr><th>Nap Profile</th><td>--</td></tr>
-<tr><th>Description</th><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 109 - Scopes Properties - 172.23.7.0</div><br /></div>
-<a name="060bb26f-351d-4da0-80f5-0a3399eec6ce"><h1 class="NOTOCHeading6">Options</h1></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:40%; min-width:40%; width:40%" /><col style="max-width:15%; min-width:15%; width:15%" /><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:25%; min-width:25%; width:25%" /></colgroup>
-<thead><tr><th>Name</th><th>Option Id</th><th>Value</th><th>Policy Name</th></tr></thead><tbody>
-<tr><td>Router</td><td>3</td><td>172.23.7.254</td><td>--</td></tr>
-<tr><td>DNS Servers</td><td>6</td><td>172.23.7.1<br />192.168.5.1</td><td>--</td></tr>
-<tr><td>DNS Domain Name</td><td>15</td><td>uia.local</td><td>--</td></tr>
-<tr><td>Lease</td><td>51</td><td>691200</td><td>--</td></tr>
-</tbody></table>
-<div class="Caption">Table 110 - Scopes Options - 172.23.7.0</div><br /></div>
-<a name="80be0982-b373-40e4-ad73-ee71f1739b78"><h2 class="Heading2">3.3 IPv6 Information</h2></a><div>The following section provides a IPv6 configuration summary of the Dynamic Host Configuration Protocol.</div><br /><a name="624db728-914c-4e28-a1cb-11fdc46f51e4"><h3 class="Heading3">3.3.1 Service Statistics</h3></a><div style="word-break: break-word; overflow-wrap: anywhere; "><table class="tabledefault" style="width:100%; table-layout: fixed;"><colgroup><col style="max-width:20%; min-width:20%; width:20%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /><col style="max-width:13%; min-width:13%; width:13%" /><col style="max-width:14%; min-width:14%; width:14%" /></colgroup>
-<thead><tr><th>DC Name</th><th>Total Scopes</th><th>Total Addresses</th><th>Addresses In Use</th><th>Addresses Available</th><th>Percentage In Use</th><th>Percentage Available</th></tr></thead><tbody>
-<tr><td>dc-uia-01v</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-</tbody></table>
-<div class="Caption">Table 111 - DHCP Server Statistics - UIA.LOCAL</div><br /></div>
+<div class="Caption">Table 48 - DHCP Server Statistics - SERVER-DC-01V.PHARMAX.LOCAL</div><br /></div>
 </div>
 <div><br /><div class="Footer">Page 3</div></div></div></div></body>
