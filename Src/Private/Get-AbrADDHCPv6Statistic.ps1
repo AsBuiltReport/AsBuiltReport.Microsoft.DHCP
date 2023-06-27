@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6Statistic {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.0
+        Version:        0.2.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -33,13 +33,13 @@ function Get-AbrADDHCPv6Statistic {
                 Section -Style Heading3 'Service Statistics' {
                     $OutObj = @()
                     foreach ($DHCPServer in $DHCPinDC) {
-                        if (Test-Connection -ComputerName $DHCPServer.DnsName -Quiet -Count 2) {
+                        if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                             try {
-                                Write-PScriboMessage "Collecting DHCP Server IPv6 Statistics from $($DHCPServer.DnsName.split(".", 2)[0])"
-                                $TempCIMSession = New-CIMSession ($DHCPServer).DnsName -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
-                                $Setting = Get-DhcpServerv6Statistics -CimSession $TempCIMSession -ComputerName ($DHCPServer).DnsName
+                                Write-PScriboMessage "Collecting DHCP Server IPv6 Statistics from $($DHCPServer.split(".", 2)[0])"
+                                $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                $Setting = Get-DhcpServerv6Statistics -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
-                                    'DC Name' = $DHCPServer.DnsName.Split(".", 2)[0]
+                                    'DC Name' = $DHCPServer.Split(".", 2)[0]
                                     'Total Scopes' = ConvertTo-EmptyToFiller $Setting.TotalScopes
                                     'Total Addresses' = ConvertTo-EmptyToFiller $Setting.TotalAddresses
                                     'Addresses In Use' = ConvertTo-EmptyToFiller $Setting.AddressesInUse

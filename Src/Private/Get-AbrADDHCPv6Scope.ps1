@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6Scope {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -117,8 +117,8 @@ function Get-AbrADDHCPv6Scope {
                                     'Interface Alias' = $Scope.InterfaceAlias
                                     'IP Address' = $Scope.IPAddress
                                     'State' = Switch ($Scope.BindingState) {
-                                        ""  {"-"; break}
-                                        $Null  {"-"; break}
+                                        ""  {"--"; break}
+                                        $Null  {"--"; break}
                                         "True"  {"Enabled"}
                                         "False"  {"Disabled"}
                                         default {$Scope.BindingState}
@@ -169,7 +169,7 @@ function Get-AbrADDHCPv6Scope {
                         }
 
                         if ($HealthCheck.DHCP.BP) {
-                            $OutObj | Where-Object { $Null -eq $_.'Description'} | Set-Style -Style Warning -Property 'Description'
+                            $OutObj | Where-Object { $_.'Description' -eq '--'} | Set-Style -Style Warning -Property 'Description'
                         }
 
                         $TableParams = @{
@@ -181,6 +181,11 @@ function Get-AbrADDHCPv6Scope {
                             $TableParams['Caption'] = "- $($TableParams.Name)"
                         }
                         $OutObj | Table @TableParams
+                        if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Description' -eq "--" } )) {
+                            Paragraph "Health Check:" -Italic -Bold -Underline
+                            BlankLine
+                            Paragraph "Best Practice: It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment." -Italic -Bold
+                        }
                     }
                 }
             }

@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopePolicy {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.1
+        Version:        0.2.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -114,6 +114,14 @@ function Get-AbrADDHCPv4PerScopePolicy {
                                 $TableParams['Caption'] = "- $($TableParams.Name)"
                             }
                             $OutObj | Table @TableParams
+                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Description' -eq "--" } )) {
+                                Paragraph "Health Check:" -Bold -Underline
+                                BlankLine
+                                Paragraph {
+                                    Text "Best Practice:" -Bold
+                                    Text "It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment."
+                                }
+                            }
                         }
                         catch {
                             Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Per Scope Policy Item)"

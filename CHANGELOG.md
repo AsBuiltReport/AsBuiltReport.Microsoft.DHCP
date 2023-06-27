@@ -1,5 +1,15 @@
 # :arrows_clockwise: Microsoft DHCP As Built Report Changelog
 
+## [0.2.0] - 2023-06-24
+
+### Added
+
+- Added support for standalone DHCP servers (Non DC)
+
+### Changed
+
+- Added ServerDiscovery option to enable standalone DHCP server reporting.
+
 ## [0.1.1] - 2023-05-23
 
 ### Added
