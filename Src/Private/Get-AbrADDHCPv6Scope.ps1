@@ -33,7 +33,7 @@ function Get-AbrADDHCPv6Scope {
         $DHCPScopes = Get-DhcpServerv6Scope -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopes) {
             Section -Style Heading4 "Scopes" {
-                Paragraph "The following sections detail the configuration of the ipv6 scope within $($Server.ToUpper().split(".", 2)[0])."
+                Paragraph "The following sections detail the configuration of the IPv6 scope within $($Server.ToUpper().split(".", 2)[0])."
                 BlankLine
                 $OutObj = @()
                 foreach ($Scope in $DHCPScopes) {

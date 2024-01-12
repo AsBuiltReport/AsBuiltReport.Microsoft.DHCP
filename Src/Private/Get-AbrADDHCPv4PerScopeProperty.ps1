@@ -43,9 +43,9 @@ function Get-AbrADDHCPv4PerScopeProperty {
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange
                             'Subnet Mask' = $Exclusion.SubnetMask
-                            'Delay(ms)' = $Exclusion.Delay
+                            'Delay (ms)' = $Exclusion.Delay
                             'State' = $Exclusion.State
-                            'Max Bootp Clients' = $Exclusion.MaxBootpClients
+                            'Max BOOTP Clients' = $Exclusion.MaxBootpClients
                             'Activate Policies' = ConvertTo-EmptyToFiller $Exclusion.ActivatePolicies
                             'Nap Enable' = ConvertTo-EmptyToFiller $Exclusion.NapEnable
                             'Nap Profile' = ConvertTo-EmptyToFiller $Exclusion.NapProfile

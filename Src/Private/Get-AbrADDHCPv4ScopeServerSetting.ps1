@@ -62,25 +62,25 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                 try {
                     $DHCPScopeOptions = Get-DhcpServerv4DnsSetting -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopeOptions) {
-                        Section -Style Heading4 "Global DNS Setting" {
-                            Paragraph "The following table summarises the dhcp server ipv4 global dns setting."
+                        Section -Style Heading4 "Global DNS Settings" {
+                            Paragraph "The following table summarizes the DHCP server IPv4 global DNS settings."
                             BlankLine
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 global DNS Setting value from $($Server)."
+                                    Write-PscriboMessage "Collecting DHCP Server IPv4 global DNS Settings value from $($Server)."
                                     $inObj = [ordered] @{
                                         'Dynamic Updates' = $Option.DynamicUpdates
-                                        'Dns Suffix' = ConvertTo-EmptyToFiller $Option.DnsSuffix
+                                        'DNS Suffix' = ConvertTo-EmptyToFiller $Option.DnsSuffix
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
-                                        'Update Dns RR For Older Clients' = ConvertTo-EmptyToFiller $Option.UpdateDnsRRForOlderClients
-                                        'Disable Dns Ptr RR Update' = ConvertTo-EmptyToFiller $Option.DisableDnsPtrRRUpdate
-                                        'Delete Dns RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
+                                        'Update DNS RR For Older Clients' = ConvertTo-EmptyToFiller $Option.UpdateDnsRRForOlderClients
+                                        'Disable DNS PTR RR Update' = ConvertTo-EmptyToFiller $Option.DisableDnsPtrRRUpdate
+                                        'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
                                     $OutObj += [pscustomobject]$inobj
                                 }
                                 catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (global DNS Setting Item)"
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (global DNS Settings Item)"
                                 }
                             }
 
@@ -90,7 +90,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             }
 
                             $TableParams = @{
-                                Name = "Global DNS Setting - $($Server.split(".", 2).ToUpper()[0])"
+                                Name = "Global DNS Settings - $($Server.split(".", 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }
@@ -104,7 +104,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                                 if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'})) {
                                     Paragraph {
                                         Text "Best Practice:" -Bold
-                                        Text "'Always dynamically update dns records' should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
+                                        Text "'Always dynamically update DNS records' should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
                                     }
                                     BlankLine
                                 }
