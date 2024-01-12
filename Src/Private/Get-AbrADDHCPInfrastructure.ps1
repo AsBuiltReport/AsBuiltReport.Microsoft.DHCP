@@ -34,7 +34,7 @@ function Get-AbrADDHCPInfrastructure {
                     try {
                         Write-PScriboMessage "Discovered '$(($DHCPinDC | Measure-Object).Count)' DHCP Servers in forest $($Domain)."
                         Section -Style Heading2 'DHCP Servers in Domain' {
-                            Paragraph "The following table summarises the DHCP servers information within $($Domain.ToString().ToUpper())."
+                            Paragraph "The following table summarizes the DHCP servers information within $($Domain.ToString().ToUpper())."
                             BlankLine
                             $OutObj = @()
                             foreach ($DHCPServer in $DHCPinDC) {

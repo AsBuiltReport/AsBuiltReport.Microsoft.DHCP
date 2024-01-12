@@ -34,7 +34,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
         $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopeOptions) {
             Section -Style Heading4 "Global Server Options" {
-                Paragraph "The following table summarises the dhcp server ipv4 global dns setting."
+                Paragraph "The following table summarizes the DHCP server IPv4 global DNS settings."
                 BlankLine
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
@@ -69,21 +69,21 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv6 Global DNS Setting value from $($Server)."
+                                    Write-PscriboMessage "Collecting DHCP Server IPv6 Global DNS Settings value from $($Server)."
                                     $inObj = [ordered] @{
                                         'Dynamic Updates' = $Option.DynamicUpdates
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
-                                        'Delete Dns RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
+                                        'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
                                     $OutObj += [pscustomobject]$inobj
                                 }
                                 catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Setting Item)"
+                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Item)"
                                 }
                             }
 
                             $TableParams = @{
-                                Name = "Global DNS Setting - $($Server.split(".", 2).ToUpper()[0])"
+                                Name = "Global DNS Settings - $($Server.split(".", 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }
@@ -95,7 +95,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                     }
                 }
                 catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Setting Table)"
+                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Table)"
                 }
             }
         }

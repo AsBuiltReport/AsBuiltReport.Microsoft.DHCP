@@ -38,7 +38,7 @@ function Get-AbrADDHCPDomain {
                                             $DHCPinDC = ($DHCPinDomain | Where-Object {$_.DnsName.split(".", 2)[1] -eq $DomainInfo.DNSRoot -and $_.DnsName -notin $Options.Exclude.DCs}).DnsName
                                             Get-AbrADDHCPInfrastructure -Domain $DomainInfo.DNSRoot
                                             Section -Style Heading2 "IPv4 Information" {
-                                                Paragraph "The following sections detail the configuration of the ipv4 scopes within domain $($DomainInfo.DNSRoot)."
+                                                Paragraph "The following sections detail the configuration of the IPv4 scopes within domain $($DomainInfo.DNSRoot)."
                                                 BlankLine
                                                 try {
                                                     Get-AbrADDHCPv4Statistic -Domain $DomainInfo.DNSRoot
@@ -71,7 +71,7 @@ function Get-AbrADDHCPDomain {
                                                                         Get-AbrADDHCPv4ScopeServerSetting -Domain $DomainInfo.DNSRoot -Server $DHCPServer
                                                                         if ($DHCPScopes) {
                                                                             Section -Style Heading4 "Scope Configuration" {
-                                                                                Paragraph "The following sections detail the configuration of the ipv4 per scope configuration."
+                                                                                Paragraph "The following sections detail the configuration of the IPv4 per scope configuration."
                                                                                 foreach ($Scope in $DHCPScopes) {
                                                                                     Section -Style Heading5 $Scope {
                                                                                         try {
@@ -144,7 +144,7 @@ function Get-AbrADDHCPDomain {
                                                     if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                                         $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                                         $DHCPScopes =  Get-DhcpServerv6Scope -CimSession $TempCIMSession -ComputerName $DHCPServer | Select-Object -ExpandProperty Prefix
-                                                        Write-PScriboMessage "Discovering Dhcp Server IPv6 Scopes from $DHCPServer"
+                                                        Write-PScriboMessage "Discovering DHCP Server IPv6 Scopes from $DHCPServer"
                                                         if ($DHCPScopes) {
                                                             Section -Style Heading3 "$($DHCPServer.ToUpper().split(".", 2)[0])" {
                                                                 try {

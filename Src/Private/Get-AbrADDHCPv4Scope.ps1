@@ -34,7 +34,7 @@ function Get-AbrADDHCPv4Scope {
             $DHCPScopes = Get-DhcpServerv4Scope -CimSession $TempCIMSession -ComputerName $Server
             if ($DHCPScopes) {
                 Section -Style Heading4 "Scopes" {
-                    Paragraph "The following sections summarizes the ipv4 scope configuration within $($Server.ToUpper().split(".", 2)[0])."
+                    Paragraph "The following sections summarizes the IPv4 scope configuration within $($Server.ToUpper().split(".", 2)[0])."
                     BlankLine
                     $OutObj = @()
                     foreach ($Scope in $DHCPScopes) {
@@ -145,16 +145,16 @@ function Get-AbrADDHCPv4Scope {
                                                 'Scope Ids' = $Scope.ScopeId.IPAddressToString
                                                 'State' = $Scope.State
                                                 'Auto State Transition' = ConvertTo-TextYN $Scope.AutoStateTransition
-                                                'Authetication Enable' = ConvertTo-TextYN $Scope.EnableAuth
+                                                'Authentication Enabled' = ConvertTo-TextYN $Scope.EnableAuth
                                             }
                                             $OutObj = [pscustomobject]$inobj
 
                                             if ($HealthCheck.DHCP.BP) {
-                                                $OutObj | Where-Object { $_.'Authetication Enable' -eq 'No'} | Set-Style -Style Warning -Property 'Authetication Enable'
+                                                $OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No'} | Set-Style -Style Warning -Property 'Authentication Enabled'
                                             }
 
                                             $TableParams = @{
-                                                Name = "IPv4 Scope Failover Cofiguration - $($Server.split(".", 2).ToUpper()[0])"
+                                                Name = "IPv4 Scope Failover Configuration - $($Server.split(".", 2).ToUpper()[0])"
                                                 List = $true
                                                 ColumnWidths = 40, 60
                                             }
@@ -164,12 +164,12 @@ function Get-AbrADDHCPv4Scope {
 
                                             $OutObj | Table @TableParams
 
-                                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Authetication Enable' -eq 'No'})) {
+                                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No'})) {
                                                 Paragraph "Health Check:" -Bold -Underline
                                                 BlankLine
                                                 Paragraph {
                                                     Text "Corrective Action:" -Bold
-                                                    Text "Ensure Dhcp servers require authentication (a shared secret) in order to secure communications between failover partners."
+                                                    Text "Ensure DHCP servers require authentication (a shared secret) in order to secure communications between failover partners."
                                                 }
                                             }
                                         }
@@ -264,7 +264,7 @@ function Get-AbrADDHCPv4Scope {
                                             $false {$DHCPPolicy.MacAddress}
                                             default {"Unknown"}
                                         }
-                                        'Fqdn' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
+                                        'FQDN' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
                                             $true {"--"}
                                             $false {$DHCPPolicy.Fqdn}
                                             default {"Unknown"}

@@ -63,7 +63,7 @@ function Get-AbrADDHCPv4PerScopePolicy {
                                     $false {$DHCPPolicy.MacAddress}
                                     default {"Unknown"}
                                 }
-                                'Fqdn' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
+                                'FQDN' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
                                     $true {"--"}
                                     $false {$DHCPPolicy.Fqdn}
                                     default {"Unknown"}
