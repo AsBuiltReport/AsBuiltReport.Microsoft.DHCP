@@ -63,12 +63,12 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
 
 
     # Import Report Configuration
-    $Report = $ReportConfig.Report
-    $InfoLevel = $ReportConfig.InfoLevel
-    $Options = $ReportConfig.Options
+    $script:Report = $ReportConfig.Report
+    $script:InfoLevel = $ReportConfig.InfoLevel
+    $script:Options = $ReportConfig.Options
 
     # Used to set values to TitleCase where required
-    $TextInfo = (Get-Culture).TextInfo
+    $script:TextInfo = (Get-Culture).TextInfo
 
     #region foreach loop
     foreach ($System in $Target) {
