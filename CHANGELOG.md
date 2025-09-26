@@ -1,6 +1,6 @@
 # :arrows_clockwise: Microsoft DHCP As Built Report Changelog
 
-## [0.2.1] - Unreleased
+## [0.2.1] - 2025-09-26
 
 ### Added
 
@@ -13,8 +13,12 @@
 
 - Improve detection of Dhcp Server availability (Test-WSMan)
 - Update the Eomm/why-don-t-you-tweet action to v2.0.0
+- Update the zentered/bluesky-post-action to v0.3.0
+- Update the actions/checkout action to v5
 - Deny connection to backup server by Ip Address
 - Increase AsBuiltReport.Core modules to v1.4.3
+- Updated version number in multiple scripts to 0.2.1.
+- Improved formatting and readability in various sections of the code.
 
 ## [0.2.0] - 2023-06-24
 
