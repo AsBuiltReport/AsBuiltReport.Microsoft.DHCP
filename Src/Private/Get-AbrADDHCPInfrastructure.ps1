@@ -5,7 +5,7 @@ function Get-AbrADDHCPInfrastructure {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,12 +19,12 @@ function Get-AbrADDHCPInfrastructure {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain
+        [string]
+        $Domain
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
     }
 
     process {
@@ -34,43 +34,42 @@ function Get-AbrADDHCPInfrastructure {
                     try {
                         Write-PScriboMessage "Discovered '$(($DHCPinDC | Measure-Object).Count)' DHCP Servers in forest $($Domain)."
                         Section -Style Heading2 'DHCP Servers in Domain' {
-                            Paragraph "The following table summarises the DHCP servers information within $($Domain.ToString().ToUpper())."
+                            Paragraph "The following table summarizes the DHCP servers information within $($Domain.ToString().ToUpper())."
                             BlankLine
                             $OutObj = @()
                             foreach ($DHCPServer in $DHCPinDC) {
                                 if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                     try {
-                                        $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                        $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                         Write-PScriboMessage "Collecting DHCP Server Setting information from $($DHCPServer.split(".", 2)[0])"
                                         $Setting = Get-DhcpServerSetting -CimSession $TempCIMSession -ComputerName $DHCPServer
                                         $inObj = [ordered] @{
                                             'DC Name' = $DHCPServer.Split(".", 2)[0]
-                                            'IP Address' =  ($DHCPinDomain | Where-Object {$_.DnsName -eq $DHCPServer}).IPAddress
+                                            'IP Address' = ($DHCPinDomain | Where-Object { $_.DnsName -eq $DHCPServer }).IPAddress
                                             'Domain Name' = $DHCPServer.Split(".", 2)[1]
                                             'Domain Joined' = ConvertTo-TextYN $Setting.IsDomainJoined
                                             'Authorized' = ConvertTo-TextYN $Setting.IsAuthorized
                                             'Conflict Detection Attempts' = $Setting.ConflictDetectionAttempts
                                         }
                                         $OutObj += [pscustomobject]$inobj
-                                    }
-                                    catch {
-                                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain Item)"
+                                    } catch {
+                                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain Item)"
                                     }
                                     if ($TempCIMSession) {
-                                        Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                        Remove-CIMSession -CimSession $TempCIMSession
+                                        Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+                                        Remove-CimSession -CimSession $TempCIMSession
                                     }
                                 }
                             }
                             if ($HealthCheck.DHCP.BP) {
-                                $OutObj | Where-Object { $_.'Conflict Detection Attempts' -eq 0} | Set-Style -Style Warning -Property 'Conflict Detection Attempts'
-                                $OutObj | Where-Object { $_.'Authorized' -eq 'No'} | Set-Style -Style Warning -Property 'Authorized'
+                                $OutObj | Where-Object { $_.'Conflict Detection Attempts' -eq 0 } | Set-Style -Style Warning -Property 'Conflict Detection Attempts'
+                                $OutObj | Where-Object { $_.'Authorized' -eq 'No' } | Set-Style -Style Warning -Property 'Authorized'
                             }
 
                             $TableParams = @{
                                 Name = "DHCP Servers in Domain - $($Domain.ToString().ToUpper())"
                                 List = $false
-                                ColumnWidths = 20, 15, 20, 15, 15 ,15
+                                ColumnWidths = 20, 15, 20, 15, 15 , 15
                             }
                             if ($Report.ShowTableCaptions) {
                                 $TableParams['Caption'] = "- $($TableParams.Name)"
@@ -78,7 +77,7 @@ function Get-AbrADDHCPInfrastructure {
                             $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
                         }
                     } catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain)"
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain)"
                     }
                 }
                 try {
@@ -88,32 +87,31 @@ function Get-AbrADDHCPInfrastructure {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                 try {
                                     Write-PScriboMessage "Collecting DHCP Server database information from $($DHCPServer.split(".", 2)[0])"
-                                    $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                    $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                     $Setting = Get-DhcpServerDatabase -CimSession $TempCIMSession -ComputerName $DHCPServer
                                     $inObj = [ordered] @{
                                         'DC Name' = $DHCPServer.Split(".", 2)[0]
-                                        'File Path' =  ConvertTo-EmptyToFiller $Setting.FileName
+                                        'File Path' = ConvertTo-EmptyToFiller $Setting.FileName
                                         'Backup Path' = ConvertTo-EmptyToFiller $Setting.BackupPath
                                         'Backup Interval' = switch ($Setting.BackupInterval) {
-                                            "" {"--"; break}
-                                            $NULL {"--"; break}
-                                            default {"$($Setting.BackupInterval) min"}
+                                            "" { "--"; break }
+                                            $NULL { "--"; break }
+                                            default { "$($Setting.BackupInterval) min" }
                                         }
-                                        'Logging Enabled' =  Switch ($Setting.LoggingEnabled) {
-                                            ""  {"--"; break}
-                                            $Null   {"--"; break}
-                                            default {ConvertTo-TextYN $Setting.LoggingEnabled}
+                                        'Logging Enabled' = switch ($Setting.LoggingEnabled) {
+                                            "" { "--"; break }
+                                            $Null { "--"; break }
+                                            default { ConvertTo-TextYN $Setting.LoggingEnabled }
                                         }
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Service Database Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Service Database Item)"
                                 }
 
                                 if ($TempCIMSession) {
-                                    Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                    Remove-CIMSession -CimSession $TempCIMSession
+                                    Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+                                    Remove-CimSession -CimSession $TempCIMSession
                                 }
                             }
                         }
@@ -128,39 +126,37 @@ function Get-AbrADDHCPInfrastructure {
                         }
                         $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Service Database Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Service Database Table)"
                 }
                 try {
                     Section -Style Heading2 'Dynamic DNS credentials' {
                         $OutObj = @()
                         foreach ($DHCPServer in $DHCPinDC) {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
-                                try{
+                                try {
                                     Write-PScriboMessage "Collecting DHCP Server Dynamic DNS Credentials information from $($DHCPServer.split(".", 2)[0])"
-                                    $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                    $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                     $Setting = Get-DhcpServerDnsCredential -CimSession $TempCIMSession -ComputerName $DHCPServer
                                     $inObj = [ordered] @{
                                         'DC Name' = $DHCPServer.Split(".", 2)[0]
-                                        'User Name' =  ConvertTo-EmptyToFiller $Setting.UserName
+                                        'User Name' = ConvertTo-EmptyToFiller $Setting.UserName
                                         'Domain Name' = ConvertTo-EmptyToFiller $Setting.DomainName
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Item)"
                                 }
 
                                 if ($TempCIMSession) {
-                                    Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                    Remove-CIMSession -CimSession $TempCIMSession
+                                    Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+                                    Remove-CimSession -CimSession $TempCIMSession
                                 }
                             }
                         }
 
                         if ($HealthCheck.DHCP.BP) {
-                            $OutObj | Where-Object { $_.'User Name' -eq "--"} | Set-Style -Style Warning -Property 'User Name','Domain Name'
+                            $OutObj | Where-Object { $_.'User Name' -eq "--" } | Set-Style -Style Warning -Property 'User Name', 'Domain Name'
                         }
 
                         $TableParams = @{
@@ -172,7 +168,7 @@ function Get-AbrADDHCPInfrastructure {
                             $TableParams['Caption'] = "- $($TableParams.Name)"
                         }
                         $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
-                        if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'User Name' -eq "--"})) {
+                        if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'User Name' -eq "--" })) {
                             Paragraph "Health Check:"  -Bold -Underline
                             BlankLine
                             Paragraph {
@@ -181,14 +177,12 @@ function Get-AbrADDHCPInfrastructure {
                             }
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Table)"
                 }
             }
-        }
-        catch {
-            Write-PscriboMessage -IsWarning "$($_.Exception.Message) (DHCP Infrastructure Section)"
+        } catch {
+            Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Infrastructure Section)"
         }
     }
 

@@ -1,5 +1,30 @@
 # :arrows_clockwise: Microsoft DHCP As Built Report Changelog
 
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [0.2.1] - 2025-09-26
+
+### Added
+
+- Improve detection of empty fields in tables
+- Improve detection of true/false elements in tables
+- Update GitHub release workflow to add post to Bluesky social platform
+- Add code to properly display space information
+
+### Changed
+
+- Improve detection of Dhcp Server availability (Test-WSMan)
+- Update the Eomm/why-don-t-you-tweet action to v2.0.0
+- Update the zentered/bluesky-post-action to v0.3.0
+- Update the actions/checkout action to v5
+- Deny connection to backup server by Ip Address
+- Increase AsBuiltReport.Core modules to v1.4.3
+- Updated version number in multiple scripts to 0.2.1.
+- Improved formatting and readability in various sections of the code.
+
 ## [0.2.0] - 2023-06-24
 
 ### Added

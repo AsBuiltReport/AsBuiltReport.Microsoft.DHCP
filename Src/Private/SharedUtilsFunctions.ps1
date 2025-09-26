@@ -1,7 +1,7 @@
 function ConvertTo-TextYN {
     <#
     .SYNOPSIS
-    Used by As Built Report to convert true or false automatically to Yes or No.
+        Used by As Built Report to convert true or false automatically to Yes or No.
     .DESCRIPTION
 
     .NOTES
@@ -15,71 +15,58 @@ function ConvertTo-TextYN {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
-        (
+    param (
         [Parameter (
             Position = 0,
             Mandatory)]
-            [AllowEmptyString()]
-            [string]
-            $TEXT
-        )
+        [AllowEmptyString()]
+        [string] $TEXT
+    )
 
     switch ($TEXT) {
-            "" {"--"; break}
-            $Null {"--"; break}
-            "True" {"Yes"; break}
-            "False" {"No"; break}
-            default {$TEXT}
-        }
-    } # end
+        "" { "--"; break }
+        " " { "--"; break }
+        $Null { "--"; break }
+        "True" { "Yes"; break }
+        "False" { "No"; break }
+        default { $TEXT }
+    }
+} # end
 
 function ConvertTo-FileSizeString {
     <#
     .SYNOPSIS
     Used by As Built Report to convert bytes automatically to GB or TB based on size.
     .DESCRIPTION
-
     .NOTES
-        Version:        0.4.0
-        Author:         LEE DAILEY
-
+        Version:        0.1.0
+        Author:         Jonathan Colon
     .EXAMPLE
-
     .LINK
-
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
-        (
+    param
+    (
         [Parameter (
             Position = 0,
             Mandatory)]
-            [int64]
-            $Size
-        )
+        [int64]
+        $Size
+    )
 
-    switch ($Size) {
-        {$_ -gt 1TB}
-            {[string]::Format("{0:0.00} TB", $Size / 1TB); break}
-        {$_ -gt 1GB}
-            {[string]::Format("{0:0.00} GB", $Size / 1GB); break}
-        {$_ -gt 1MB}
-            {[string]::Format("{0:0.00} MB", $Size / 1MB); break}
-        {$_ -gt 1KB}
-            {[string]::Format("{0:0.00} KB", $Size / 1KB); break}
-        {$_ -gt 0}
-            {[string]::Format("{0} B", $Size); break}
-        {$_ -eq 0}
-            {"0 KB"; break}
-        default
-            {"0 KB"}
-        }
-} # end >> function Format-FileSize
+    $Unit = switch ($Size) {
+        { $Size -gt 1PB } { 'PB' ; break }
+        { $Size -gt 1TB } { 'TB' ; break }
+        { $Size -gt 1GB } { 'GB' ; break }
+        { $Size -gt 1Mb } { 'MB' ; break }
+        Default { 'KB' }
+    }
+    return "$([math]::Round(($Size / $("1" + $Unit)), 0)) $Unit"
+} # end
 
 function ConvertTo-EmptyToFiller {
-        <#
+    <#
         .SYNOPSIS
         Used by As Built Report to convert empty culumns to "--".
         .DESCRIPTION
@@ -93,26 +80,26 @@ function ConvertTo-EmptyToFiller {
         .LINK
 
         #>
-        [CmdletBinding()]
-        [OutputType([String])]
-        Param
-            (
-            [Parameter (
-                Position = 0,
-                Mandatory)]
-                [AllowEmptyString()]
-                [string]
-                $TEXT
-            )
+    [CmdletBinding()]
+    [OutputType([String])]
+    param
+    (
+        [Parameter (
+            Position = 0,
+            Mandatory)]
+        [AllowEmptyString()]
+        [string]
+        $TEXT
+    )
 
-        switch ($TEXT) {
-                "" {"--"; break}
-                $Null {"--"; break}
-                "True" {"Yes"; break}
-                "False" {"No"; break}
-                default {$TEXT}
-            }
-        } # end
+    switch ($TEXT) {
+        "" { "--"; break }
+        $Null { "--"; break }
+        "True" { "Yes"; break }
+        "False" { "No"; break }
+        default { $TEXT }
+    }
+} # end
 
 function Convert-IpAddressToMaskLength {
     <#
@@ -131,14 +118,14 @@ function Convert-IpAddressToMaskLength {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
-        (
+    param
+    (
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $SubnetMask
-        )
+        [string]
+        $SubnetMask
+    )
 
     [IPAddress] $MASK = $SubnetMask
     $octets = $MASK.IPAddressToString.Split('.')
@@ -151,3 +138,39 @@ function Convert-IpAddressToMaskLength {
     }
     return $result;
 }
+
+function ConvertTo-HashToYN {
+    <#
+    .SYNOPSIS
+        Used by As Built Report to convert array content true or false automatically to Yes or No.
+    .DESCRIPTION
+
+    .NOTES
+        Version:        0.1.0
+        Author:         Jonathan Colon
+
+    .EXAMPLE
+
+    .LINK
+
+    #>
+    [CmdletBinding()]
+    [OutputType([Hashtable])]
+    param (
+        [Parameter (Position = 0, Mandatory)]
+        [AllowEmptyString()]
+        [Hashtable] $TEXT
+    )
+
+    $result = [ordered] @{}
+    foreach ($i in $inObj.GetEnumerator()) {
+        try {
+            $result.add($i.Key, (ConvertTo-TextYN $i.Value))
+        } catch {
+            $result.add($i.Key, ($i.Value))
+        }
+    }
+    if ($result) {
+        return $result
+    } else { return $TEXT }
+} # end

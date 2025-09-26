@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopePolicy {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,13 +19,13 @@ function Get-AbrADDHCPv4PerScopePolicy {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Server,
-            $Scope
+        [string]
+        $Server,
+        $Scope
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers Policy information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers Policy information on $($Domain.ToString().ToUpper())."
     }
 
     process {
@@ -36,67 +36,67 @@ function Get-AbrADDHCPv4PerScopePolicy {
                     $OutObj = @()
                     foreach ($DHCPPolicy in $DHCPPolicies) {
                         try {
-                            Write-PscriboMessage "Collecting DHCP Server IPv4 $($DHCPPolicy.Name) policies from $($Server.split(".", 2)[0])"
+                            Write-PScriboMessage "Collecting DHCP Server IPv4 $($DHCPPolicy.Name) policies from $($Server.split(".", 2)[0])"
                             $inObj = [ordered] @{
                                 'Name' = $DHCPPolicy.Name
                                 'Enabled' = ConvertTo-TextYN $DHCPPolicy.Enabled
                                 'Scope Id' = $DHCPPolicy.ScopeId
                                 'Processing Order' = $DHCPPolicy.ProcessingOrder
                                 'Condition' = $DHCPPolicy.Condition
-                                'Vendor Class' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.VendorClass)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.VendorClass}
-                                    default {"Unknown"}
+                                'Vendor Class' = switch ([string]::IsNullOrEmpty($DHCPPolicy.VendorClass)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.VendorClass }
+                                    default { "Unknown" }
                                 }
-                                'User Class' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.UserClass)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.UserClass}
-                                    default {"Unknown"}
+                                'User Class' = switch ([string]::IsNullOrEmpty($DHCPPolicy.UserClass)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.UserClass }
+                                    default { "Unknown" }
                                 }
-                                'Mac Address' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.MacAddress}
-                                    default {"Unknown"}
+                                'Mac Address' = switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.MacAddress }
+                                    default { "Unknown" }
                                 }
-                                'Client Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.MacAddress}
-                                    default {"Unknown"}
+                                'Client Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.MacAddress }
+                                    default { "Unknown" }
                                 }
-                                'Fqdn' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.Fqdn}
-                                    default {"Unknown"}
+                                'FQDN' = switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.Fqdn }
+                                    default { "Unknown" }
                                 }
-                                'Relay Agent' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.RelayAgent)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.RelayAgent}
-                                    default {"Unknown"}
+                                'Relay Agent' = switch ([string]::IsNullOrEmpty($DHCPPolicy.RelayAgent)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.RelayAgent }
+                                    default { "Unknown" }
                                 }
-                                'Circuit Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.CircuitId)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.CircuitId}
-                                    default {"Unknown"}
+                                'Circuit Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.CircuitId)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.CircuitId }
+                                    default { "Unknown" }
                                 }
-                                'Remote Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.RemoteId)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.RemoteId}
-                                    default {"Unknown"}
+                                'Remote Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.RemoteId)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.RemoteId }
+                                    default { "Unknown" }
                                 }
-                                'Subscriber Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.SubscriberId)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.SubscriberId}
-                                    default {"Unknown"}
+                                'Subscriber Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.SubscriberId)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.SubscriberId }
+                                    default { "Unknown" }
                                 }
-                                'Lease Duration' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.LeaseDuration)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.LeaseDuration}
-                                    default {"Unknown"}
+                                'Lease Duration' = switch ([string]::IsNullOrEmpty($DHCPPolicy.LeaseDuration)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.LeaseDuration }
+                                    default { "Unknown" }
                                 }
-                                'Description' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Description)) {
-                                    $true {"--"}
-                                    $false {$DHCPPolicy.Description}
-                                    default {"Unknown"}
+                                'Description' = switch ([string]::IsNullOrEmpty($DHCPPolicy.Description)) {
+                                    $true { "--" }
+                                    $false { $DHCPPolicy.Description }
+                                    default { "Unknown" }
                                 }
                             }
                             $OutObj = [pscustomobject]$inobj
@@ -122,16 +122,14 @@ function Get-AbrADDHCPv4PerScopePolicy {
                                     Text "It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment."
                                 }
                             }
-                        }
-                        catch {
-                            Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Per Scope Policy Item)"
+                        } catch {
+                            Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Per Scope Policy Item)"
                         }
                     }
                 }
             }
-        }
-        catch {
-            Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Per Scope Policy Table)"
+        } catch {
+            Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Per Scope Policy Table)"
         }
     }
 

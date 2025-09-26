@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4FilterStatus {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,12 +19,12 @@ function Get-AbrADDHCPv4FilterStatus {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain
+        [string]
+        $Domain
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers filter status information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers filter status information on $($Domain.ToString().ToUpper())."
     }
 
     process {
@@ -34,25 +34,24 @@ function Get-AbrADDHCPv4FilterStatus {
                     $OutObj = @()
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
-                            if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 1) {
+                            if (Test-WSMan -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ComputerName $DHCPServer -ErrorAction SilentlyContinue) {
                                 Write-PScriboMessage "Collecting DHCP Server IPv4 filter status from $($DHCPServer.split(".", 2)[0])"
-                                $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $Setting = Get-DhcpServerv4FilterList -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
                                     'DC Name' = $DHCPServer.Split(".", 2)[0]
-                                    'Allow' = ConvertTo-EmptyToFiller $Setting.Allow
-                                    'Deny' = ConvertTo-EmptyToFiller $Setting.Deny
+                                    'Allow' = $Setting.Allow
+                                    'Deny' = $Setting.Deny
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
 
                                 if ($TempCIMSession) {
-                                    Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                    Remove-CIMSession -CimSession $TempCIMSession
+                                    Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+                                    Remove-CimSession -CimSession $TempCIMSession
                                 }
                             }
                         }
-                    }
-                    catch {
+                    } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 filter status Item)"
                     }
 
@@ -67,8 +66,7 @@ function Get-AbrADDHCPv4FilterStatus {
                     $OutObj | Table @TableParams
                 }
             }
-        }
-        catch {
+        } catch {
             Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Filter Status Table)"
         }
     }

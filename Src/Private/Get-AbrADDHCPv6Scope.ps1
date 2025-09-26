@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6Scope {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,39 +19,38 @@ function Get-AbrADDHCPv6Scope {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain,
-            [string]
-            $Server
+        [string]
+        $Domain,
+        [string]
+        $Server
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
     }
 
     process {
         $DHCPScopes = Get-DhcpServerv6Scope -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopes) {
             Section -Style Heading4 "Scopes" {
-                Paragraph "The following sections detail the configuration of the ipv6 scope within $($Server.ToUpper().split(".", 2)[0])."
+                Paragraph "The following sections detail the configuration of the IPv6 scope within $($Server.ToUpper().split(".", 2)[0])."
                 BlankLine
                 $OutObj = @()
                 foreach ($Scope in $DHCPScopes) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv6 $($Scope.ScopeId) Scope from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 $($Scope.ScopeId) Scope from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Scope Id' = "$($Scope.Prefix)/$($Scope.PrefixLength)"
                             'Scope Name' = $Scope.Name
-                            'Lease Duration' = Switch ($Scope.PreferredLifetime) {
-                                "10675199.02:48:05.4775807" {"Unlimited"}
-                                default {$Scope.PreferredLifetime}
+                            'Lease Duration' = switch ($Scope.PreferredLifetime) {
+                                "10675199.02:48:05.4775807" { "Unlimited" }
+                                default { $Scope.PreferredLifetime }
                             }
                             'State' = $Scope.State
                         }
                         $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Item)"
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Item)"
                     }
                 }
 
@@ -72,7 +71,7 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj = @()
                         foreach ($Scope in $DHCPScopes) {
                             try {
-                                Write-PscriboMessage "Collecting DHCP Server IPv6 $($Scope.ScopeId) scope statistics from $($Server.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv6 $($Scope.ScopeId) scope statistics from $($Server.split(".", 2)[0])"
                                 $inObj = [ordered] @{
                                     'Scope Id' = $Scope.Prefix
                                     'Free IP' = $Scope.AddressesFree
@@ -81,13 +80,12 @@ function Get-AbrADDHCPv6Scope {
                                     'Reserved IP' = $Scope.ReservedAddress
                                 }
                                 $OutObj += [pscustomobject]$inobj
-                            }
-                            catch {
-                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Statistics Item)"
+                            } catch {
+                                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Statistics Item)"
                             }
                         }
                         if ($HealthCheck.DHCP.Statistics) {
-                            $OutObj | Where-Object { $_.'Percentage In Use' -gt '95'} | Set-Style -Style Warning -Property 'Percentage In Use'
+                            $OutObj | Where-Object { $_.'Percentage In Use' -gt '95' } | Set-Style -Style Warning -Property 'Percentage In Use'
                         }
 
                         $TableParams = @{
@@ -101,9 +99,8 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj | Sort-Object -Property 'Scope Id' | Table @TableParams
                     }
                 }
-            }
-            catch {
-                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Statistics Table)"
+            } catch {
+                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Statistics Table)"
             }
             try {
                 $DHCPScopes = Get-DhcpServerv6Binding -CimSession $TempCIMSession -ComputerName $Server
@@ -112,22 +109,21 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj = @()
                         foreach ($Scope in $DHCPScopes) {
                             try {
-                            Write-PscriboMessage "Collecting DHCP Server IPv6 $($Scope.InterfaceAlias) binding from $($Server.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv6 $($Scope.InterfaceAlias) binding from $($Server.split(".", 2)[0])"
                                 $inObj = [ordered] @{
                                     'Interface Alias' = $Scope.InterfaceAlias
                                     'IP Address' = $Scope.IPAddress
-                                    'State' = Switch ($Scope.BindingState) {
-                                        ""  {"--"; break}
-                                        $Null  {"--"; break}
-                                        "True"  {"Enabled"}
-                                        "False"  {"Disabled"}
-                                        default {$Scope.BindingState}
+                                    'State' = switch ($Scope.BindingState) {
+                                        "" { "--"; break }
+                                        $Null { "--"; break }
+                                        "True" { "Enabled" }
+                                        "False" { "Disabled" }
+                                        default { $Scope.BindingState }
                                     }
                                 }
                                 $OutObj += [pscustomobject]$inobj
-                            }
-                            catch {
-                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 NIC binding item)"
+                            } catch {
+                                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 NIC binding item)"
                             }
                         }
 
@@ -142,9 +138,8 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj | Table @TableParams
                     }
                 }
-            }
-            catch {
-                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Network Interface binding table)"
+            } catch {
+                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Network Interface binding table)"
             }
             try {
                 $DHCPClass = Get-DhcpServerv6Class -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'Name'
@@ -153,7 +148,7 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj = @()
                         foreach ($Class in $DHCPClass) {
                             try {
-                                Write-PscriboMessage "Collecting DHCP Server IPv6 $($Class.Name) class from $($Server.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv6 $($Class.Name) class from $($Server.split(".", 2)[0])"
                                 $inObj = [ordered] @{
                                     'Name' = $Class.Name
                                     'Type' = $Class.Type
@@ -162,14 +157,13 @@ function Get-AbrADDHCPv6Scope {
                                     'Description' = $Class.Description
                                 }
                                 $OutObj += [pscustomobject]$inobj
-                            }
-                            catch {
-                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Item)"
+                            } catch {
+                                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Item)"
                             }
                         }
 
                         if ($HealthCheck.DHCP.BP) {
-                            $OutObj | Where-Object { $_.'Description' -eq '--'} | Set-Style -Style Warning -Property 'Description'
+                            $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'
                         }
 
                         $TableParams = @{
@@ -188,9 +182,8 @@ function Get-AbrADDHCPv6Scope {
                         }
                     }
                 }
-            }
-            catch {
-                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Table)"
+            } catch {
+                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Table)"
             }
             try {
                 $DHCPOptionDefinition = Get-DhcpServerv6OptionDefinition -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'OptionId'
@@ -199,7 +192,7 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj = @()
                         foreach ($Definition in $DHCPOptionDefinition) {
                             try {
-                                Write-PscriboMessage "Collecting DHCP Server IPv6 $($Definition.Name) option definitions from $($Server.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv6 $($Definition.Name) option definitions from $($Server.split(".", 2)[0])"
                                 $inObj = [ordered] @{
                                     'Name' = $Definition.Name
                                     'Option Id' = $Definition.OptionId
@@ -208,9 +201,8 @@ function Get-AbrADDHCPv6Scope {
                                     'Multi Valued' = ConvertTo-TextYN $Definition.MultiValued
                                 }
                                 $OutObj += [pscustomobject]$inobj
-                            }
-                            catch {
-                                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Option Definitions Item)"
+                            } catch {
+                                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Option Definitions Item)"
                             }
                         }
 
@@ -225,9 +217,8 @@ function Get-AbrADDHCPv6Scope {
                         $OutObj | Table @TableParams
                     }
                 }
-            }
-            catch {
-                Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Table)"
+            } catch {
+                Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Table)"
             }
         }
     }
