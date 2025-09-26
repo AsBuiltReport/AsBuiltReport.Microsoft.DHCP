@@ -14,7 +14,7 @@
 - Improve detection of Dhcp Server availability (Test-WSMan)
 - Update the Eomm/why-don-t-you-tweet action to v2.0.0
 - Deny connection to backup server by Ip Address
-- Increase AsBuiltReport.Core modules to v1.4.0
+- Increase AsBuiltReport.Core modules to v1.4.3
 
 ## [0.2.0] - 2023-06-24
 

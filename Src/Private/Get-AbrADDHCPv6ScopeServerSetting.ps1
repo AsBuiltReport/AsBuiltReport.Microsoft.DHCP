@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,14 +19,14 @@ function Get-AbrADDHCPv6ScopeServerSetting {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain,
-            [string]
-            $Server
+        [string]
+        $Domain,
+        [string]
+        $Server
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers IPv6 Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers IPv6 Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -39,7 +39,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
@@ -47,9 +47,8 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                             'Value' = $Option.Value
                         }
                         $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Server Option Item)"
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Server Option Item)"
                     }
                 }
 
@@ -69,16 +68,15 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv6 Global DNS Settings value from $($Server)."
+                                    Write-PScriboMessage "Collecting DHCP Server IPv6 Global DNS Settings value from $($Server)."
                                     $inObj = [ordered] @{
                                         'Dynamic Updates' = $Option.DynamicUpdates
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
                                         'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Item)"
                                 }
                             }
 
@@ -93,9 +91,8 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                             $OutObj | Table @TableParams
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Table)"
                 }
             }
         }

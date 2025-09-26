@@ -15,7 +15,7 @@ function Get-RequiredModule {
     The version of the required PowerShell module
     #>
 
-    Param
+    param
     (
         [CmdletBinding()]
         [Parameter(Mandatory = $true, ValueFromPipeline = $false)]

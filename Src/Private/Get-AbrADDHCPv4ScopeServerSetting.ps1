@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,14 +19,14 @@ function Get-AbrADDHCPv4ScopeServerSetting {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain,
-            [string]
-            $Server
+        [string]
+        $Domain,
+        [string]
+        $Server
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -37,7 +37,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv4 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
@@ -45,9 +45,8 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             'Policy Name' = ConvertTo-EmptyToFiller $Option.PolicyName
                         }
                         $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (DHCP scopes server opions item)"
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP scopes server opions item)"
                     }
                 }
                 $TableParams = @{
@@ -68,7 +67,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 global DNS Settings value from $($Server)."
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 global DNS Settings value from $($Server)."
                                     $inObj = [ordered] @{
                                         'Dynamic Updates' = $Option.DynamicUpdates
                                         'DNS Suffix' = ConvertTo-EmptyToFiller $Option.DnsSuffix
@@ -78,15 +77,14 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                                         'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (global DNS Settings Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (global DNS Settings Item)"
                                 }
                             }
 
                             if ($HealthCheck.DHCP.BP) {
-                                $OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'} | Set-Style -Style Warning -Property 'Dynamic Updates'
-                                $OutObj | Where-Object { $_.'Name Protection' -eq 'No'} | Set-Style -Style Warning -Property 'Name Protection'
+                                $OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always' } | Set-Style -Style Warning -Property 'Dynamic Updates'
+                                $OutObj | Where-Object { $_.'Name Protection' -eq 'No' } | Set-Style -Style Warning -Property 'Name Protection'
                             }
 
                             $TableParams = @{
@@ -98,17 +96,17 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                                 $TableParams['Caption'] = "- $($TableParams.Name)"
                             }
                             $OutObj | Table @TableParams
-                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'}) -or ($OutObj | Where-Object { $_.'Name Protection' -eq 'No'})) {
+                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always' }) -or ($OutObj | Where-Object { $_.'Name Protection' -eq 'No' })) {
                                 Paragraph "Health Check:" -Bold -Underline
                                 BlankLine
-                                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always'})) {
+                                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always' })) {
                                     Paragraph {
                                         Text "Best Practice:" -Bold
                                         Text "'Always dynamically update DNS records' should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
                                     }
                                     BlankLine
                                 }
-                                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Name Protection' -eq 'No'})) {
+                                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Name Protection' -eq 'No' })) {
                                     Paragraph {
                                         Text "Best Practice:" -Bold
                                         Text "'Name Protection' should be configured to prevent Name Squating."
@@ -117,9 +115,8 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             }
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Scope DNS Setting Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope DNS Setting Table)"
                 }
             }
         }

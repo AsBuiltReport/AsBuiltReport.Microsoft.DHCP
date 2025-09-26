@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4Scope {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,14 +19,14 @@ function Get-AbrADDHCPv4Scope {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain,
-            [string]
-            $Server
+        [string]
+        $Domain,
+        [string]
+        $Server
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
     }
 
     process {
@@ -38,28 +38,27 @@ function Get-AbrADDHCPv4Scope {
                     BlankLine
                     $OutObj = @()
                     foreach ($Scope in $DHCPScopes) {
-                        Write-PscriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId) Scope from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId) Scope from $($Server.split(".", 2)[0])"
                         try {
                             $SubnetMask = Convert-IpAddressToMaskLength $Scope.SubnetMask.IPAddressToString
                             $inObj = [ordered] @{
                                 'Scope Id' = "$($Scope.ScopeId)/$($SubnetMask)"
                                 'Scope Name' = $Scope.Name
                                 'Scope Range' = "$($Scope.StartRange) - $($Scope.EndRange)"
-                                'Lease Duration' = Switch ($Scope.LeaseDuration) {
-                                    "10675199.02:48:05.4775807" {"Unlimited"}
-                                    default {$Scope.LeaseDuration}
+                                'Lease Duration' = switch ($Scope.LeaseDuration) {
+                                    "10675199.02:48:05.4775807" { "Unlimited" }
+                                    default { $Scope.LeaseDuration }
                                 }
                                 'State' = $Scope.State
                             }
                             $OutObj += [pscustomobject]$inobj
-                        }
-                        catch {
-                            Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Item)"
+                        } catch {
+                            Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Item)"
                         }
                     }
 
                     if ($HealthCheck.DHCP.BP) {
-                        $OutObj | Where-Object { $_.'State' -ne 'Active'} | Set-Style -Style Warning -Property 'State'
+                        $OutObj | Where-Object { $_.'State' -ne 'Active' } | Set-Style -Style Warning -Property 'State'
                     }
 
                     $TableParams = @{
@@ -72,7 +71,7 @@ function Get-AbrADDHCPv4Scope {
                     }
                     $OutObj | Sort-Object -Property 'Scope Id' | Table @TableParams
 
-                    if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'State' -ne 'Active'} )) {
+                    if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'State' -ne 'Active' } )) {
                         Paragraph "Health Check:"  -Bold -Underline
                         BlankLine
                         Paragraph {
@@ -88,7 +87,7 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj = @()
                             foreach ($Scope in $DHCPScopes) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId) scope statistics from $($Server.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId) scope statistics from $($Server.split(".", 2)[0])"
                                     $inObj = [ordered] @{
                                         'Scope Id' = $Scope.ScopeId
                                         'Free IP' = $Scope.Free
@@ -97,14 +96,13 @@ function Get-AbrADDHCPv4Scope {
                                         'Reserved IP' = $Scope.Reserved
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Statistics Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Statistics Item)"
                                 }
                             }
 
                             if ($HealthCheck.DHCP.Statistics) {
-                                $OutObj | Where-Object { $_.'Percentage In Use' -gt '95'} | Set-Style -Style Warning -Property 'Percentage In Use'
+                                $OutObj | Where-Object { $_.'Percentage In Use' -gt '95' } | Set-Style -Style Warning -Property 'Percentage In Use'
                             }
 
                             $TableParams = @{
@@ -118,9 +116,8 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj | Sort-Object -Property 'Scope Id' | Table @TableParams
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Statistics Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Statistics Table)"
                 }
                 try {
                     $DHCPScopes = Get-DhcpServerv4Failover -CimSession $TempCIMSession -ComputerName $Server
@@ -132,7 +129,7 @@ function Get-AbrADDHCPv4Scope {
                                     try {
                                         Section -ExcludeFromTOC -Style NOTOCHeading5 $Scope.ScopeId.IPAddressToString {
                                             $OutObj = @()
-                                            Write-PscriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId.IPAddressToString) scope failover setting from $($Server.split(".", 2)[0])"
+                                            Write-PScriboMessage "Collecting DHCP Server IPv4 $($Scope.ScopeId.IPAddressToString) scope failover setting from $($Server.split(".", 2)[0])"
                                             $inObj = [ordered] @{
                                                 'DHCP Server' = $Server
                                                 'Partner DHCP Server' = $Scope.PartnerServer
@@ -150,7 +147,7 @@ function Get-AbrADDHCPv4Scope {
                                             $OutObj = [pscustomobject]$inobj
 
                                             if ($HealthCheck.DHCP.BP) {
-                                                $OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No'} | Set-Style -Style Warning -Property 'Authentication Enabled'
+                                                $OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No' } | Set-Style -Style Warning -Property 'Authentication Enabled'
                                             }
 
                                             $TableParams = @{
@@ -164,7 +161,7 @@ function Get-AbrADDHCPv4Scope {
 
                                             $OutObj | Table @TableParams
 
-                                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No'})) {
+                                            if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No' })) {
                                                 Paragraph "Health Check:" -Bold -Underline
                                                 BlankLine
                                                 Paragraph {
@@ -173,17 +170,15 @@ function Get-AbrADDHCPv4Scope {
                                                 }
                                             }
                                         }
-                                    }
-                                    catch {
-                                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Failover Item)"
+                                    } catch {
+                                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Failover Item)"
                                     }
                                 }
                             }
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Failover Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Failover Table)"
                 }
                 try {
                     $DHCPScopes = Get-DhcpServerv4Binding -CimSession $TempCIMSession -ComputerName $Server
@@ -192,28 +187,27 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj = @()
                             foreach ($Scope in $DHCPScopes) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Scope.InterfaceAlias) binding from $($Server.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 $($Scope.InterfaceAlias) binding from $($Server.split(".", 2)[0])"
                                     $SubnetMask = Convert-IpAddressToMaskLength $Scope.SubnetMask
                                     $inObj = [ordered] @{
                                         'Interface Alias' = $Scope.InterfaceAlias
                                         'IP Address' = $Scope.IPAddress
                                         'Subnet Mask' = $Scope.SubnetMask
-                                        'State' = Switch ($Scope.BindingState) {
-                                            ""  {"--"; break}
-                                            $Null  {"--"; break}
-                                            "True"  {"Enabled"}
-                                            "False"  {"Disabled"}
-                                            default {$Scope.BindingState}
+                                        'State' = switch ($Scope.BindingState) {
+                                            "" { "--"; break }
+                                            $Null { "--"; break }
+                                            "True" { "Enabled" }
+                                            "False" { "Disabled" }
+                                            default { $Scope.BindingState }
                                         }
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 NIC Biding Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 NIC Biding Item)"
                                 }
                             }
                             if ($HealthCheck.DHCP.BP) {
-                                $OutObj | Where-Object { $_.'State' -ne 'Enabled'} | Set-Style -Style Warning -Property 'State'
+                                $OutObj | Where-Object { $_.'State' -ne 'Enabled' } | Set-Style -Style Warning -Property 'State'
                             }
                             $TableParams = @{
                                 Name = "NIC Biding - $($Server.split(".", 2).ToUpper()[0])"
@@ -226,9 +220,8 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj | Table @TableParams
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Network Interface binding Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Network Interface binding Table)"
                 }
                 try {
                     $DHCPPolicies = Get-DhcpServerv4Policy -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'Name'
@@ -237,67 +230,67 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj = @()
                             foreach ($DHCPPolicy in $DHCPPolicies) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($DHCPPolicy.Name) policies from $($Server.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 $($DHCPPolicy.Name) policies from $($Server.split(".", 2)[0])"
                                     $inObj = [ordered] @{
                                         'Name' = $DHCPPolicy.Name
                                         'Enabled' = ConvertTo-TextYN $DHCPPolicy.Enabled
                                         'Scope Id' = $DHCPPolicy.ScopeId
                                         'Processing Order' = $DHCPPolicy.ProcessingOrder
                                         'Condition' = $DHCPPolicy.Condition
-                                        'Vendor Class' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.VendorClass)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.VendorClass}
-                                            default {"Unknown"}
+                                        'Vendor Class' = switch ([string]::IsNullOrEmpty($DHCPPolicy.VendorClass)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.VendorClass }
+                                            default { "Unknown" }
                                         }
-                                        'User Class' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.UserClass)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.UserClass}
-                                            default {"Unknown"}
+                                        'User Class' = switch ([string]::IsNullOrEmpty($DHCPPolicy.UserClass)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.UserClass }
+                                            default { "Unknown" }
                                         }
-                                        'Mac Address' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.MacAddress}
-                                            default {"Unknown"}
+                                        'Mac Address' = switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.MacAddress }
+                                            default { "Unknown" }
                                         }
-                                        'Client Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.MacAddress}
-                                            default {"Unknown"}
+                                        'Client Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.MacAddress)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.MacAddress }
+                                            default { "Unknown" }
                                         }
-                                        'FQDN' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.Fqdn}
-                                            default {"Unknown"}
+                                        'FQDN' = switch ([string]::IsNullOrEmpty($DHCPPolicy.Fqdn)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.Fqdn }
+                                            default { "Unknown" }
                                         }
-                                        'Relay Agent' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.RelayAgent)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.RelayAgent}
-                                            default {"Unknown"}
+                                        'Relay Agent' = switch ([string]::IsNullOrEmpty($DHCPPolicy.RelayAgent)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.RelayAgent }
+                                            default { "Unknown" }
                                         }
-                                        'Circuit Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.CircuitId)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.CircuitId}
-                                            default {"Unknown"}
+                                        'Circuit Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.CircuitId)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.CircuitId }
+                                            default { "Unknown" }
                                         }
-                                        'Remote Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.RemoteId)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.RemoteId}
-                                            default {"Unknown"}
+                                        'Remote Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.RemoteId)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.RemoteId }
+                                            default { "Unknown" }
                                         }
-                                        'Subscriber Id' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.SubscriberId)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.SubscriberId}
-                                            default {"Unknown"}
+                                        'Subscriber Id' = switch ([string]::IsNullOrEmpty($DHCPPolicy.SubscriberId)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.SubscriberId }
+                                            default { "Unknown" }
                                         }
-                                        'Lease Duration' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.LeaseDuration)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.LeaseDuration}
-                                            default {"Unknown"}
+                                        'Lease Duration' = switch ([string]::IsNullOrEmpty($DHCPPolicy.LeaseDuration)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.LeaseDuration }
+                                            default { "Unknown" }
                                         }
-                                        'Description' = Switch ([string]::IsNullOrEmpty($DHCPPolicy.Description)) {
-                                            $true {"--"}
-                                            $false {$DHCPPolicy.Description}
-                                            default {"Unknown"}
+                                        'Description' = switch ([string]::IsNullOrEmpty($DHCPPolicy.Description)) {
+                                            $true { "--" }
+                                            $false { $DHCPPolicy.Description }
+                                            default { "Unknown" }
                                         }
                                     }
                                     $OutObj = [pscustomobject]$inobj
@@ -323,16 +316,14 @@ function Get-AbrADDHCPv4Scope {
                                             Text "It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment."
                                         }
                                     }
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Policy Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Policy Item)"
                                 }
                             }
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Policy Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Policy Table)"
                 }
                 try {
                     $DHCPClass = Get-DhcpServerv4Class -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'Name'
@@ -341,7 +332,7 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj = @()
                             foreach ($Class in $DHCPClass) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Class.Name) class from $($Server.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 $($Class.Name) class from $($Server.split(".", 2)[0])"
                                     $inObj = [ordered] @{
                                         'Name' = $Class.Name
                                         'Type' = $Class.Type
@@ -350,14 +341,13 @@ function Get-AbrADDHCPv4Scope {
                                         'Description' = $Class.Description
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Item)"
                                 }
                             }
 
                             if ($HealthCheck.DHCP.BP) {
-                                $OutObj | Where-Object { $_.'Description' -eq '--'} | Set-Style -Style Warning -Property 'Description'
+                                $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'
                             }
 
                             $TableParams = @{
@@ -379,9 +369,8 @@ function Get-AbrADDHCPv4Scope {
                             }
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
                 }
                 try {
                     $DHCPOptionDefinition = Get-DhcpServerv4OptionDefinition -CimSession $TempCIMSession -ComputerName $Server | Sort-Object -Property 'OptionId'
@@ -390,7 +379,7 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj = @()
                             foreach ($Definition in $DHCPOptionDefinition) {
                                 try {
-                                    Write-PscriboMessage "Collecting DHCP Server IPv4 $($Definition.Name) option definitions from $($Server.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server IPv4 $($Definition.Name) option definitions from $($Server.split(".", 2)[0])"
                                     $inObj = [ordered] @{
                                         'Name' = $Definition.Name
                                         'Option Id' = $Definition.OptionId
@@ -399,9 +388,8 @@ function Get-AbrADDHCPv4Scope {
                                         'Multi Valued' = ConvertTo-TextYN $Definition.MultiValued
                                     }
                                     $OutObj += [pscustomobject]$inobj
-                                }
-                                catch {
-                                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Option Definitions Item)"
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Option Definitions Item)"
                                 }
                             }
 
@@ -416,14 +404,12 @@ function Get-AbrADDHCPv4Scope {
                             $OutObj | Table @TableParams
                         }
                     }
-                }
-                catch {
-                    Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
+                } catch {
+                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Table)"
                 }
             }
-        }
-        catch {
-            Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Summary)"
+        } catch {
+            Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Summary)"
         }
     }
     end {}

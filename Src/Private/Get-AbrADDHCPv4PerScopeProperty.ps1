@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,13 +19,13 @@ function Get-AbrADDHCPv4PerScopeProperty {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Server,
-            $Scope
+        [string]
+        $Server,
+        $Scope
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers Scope Properties information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Properties information from $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -35,7 +35,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv4 Scope Properties value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Properties value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Exclusion.Name
                             'Type' = $Exclusion.Type
@@ -52,15 +52,14 @@ function Get-AbrADDHCPv4PerScopeProperty {
                             'Description' = ConvertTo-EmptyToFiller $Exclusion.Description
                         }
                         $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Scope Properties Item)"
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Properties Item)"
                     }
                 }
 
 
                 if ($HealthCheck.DHCP.BP) {
-                    $OutObj | Where-Object { $_.'Description' -eq '--'} | Set-Style -Style Warning -Property 'Description'
+                    $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'
                     $OutObj | Where-Object { $_.'State' -eq "Inactive" } | Set-Style -Style Warning -Property 'State'
                 }
 

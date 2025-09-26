@@ -15,7 +15,7 @@ function ConvertTo-TextYN {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param (
+    param (
         [Parameter (
             Position = 0,
             Mandatory)]
@@ -46,7 +46,7 @@ function ConvertTo-FileSizeString {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter (
             Position = 0,
@@ -55,11 +55,11 @@ function ConvertTo-FileSizeString {
         $Size
     )
 
-    $Unit = Switch ($Size) {
-        { $Size -gt 1PB } { 'PB' ; Break }
-        { $Size -gt 1TB } { 'TB' ; Break }
-        { $Size -gt 1GB } { 'GB' ; Break }
-        { $Size -gt 1Mb } { 'MB' ; Break }
+    $Unit = switch ($Size) {
+        { $Size -gt 1PB } { 'PB' ; break }
+        { $Size -gt 1TB } { 'TB' ; break }
+        { $Size -gt 1GB } { 'GB' ; break }
+        { $Size -gt 1Mb } { 'MB' ; break }
         Default { 'KB' }
     }
     return "$([math]::Round(($Size / $("1" + $Unit)), 0)) $Unit"
@@ -82,7 +82,7 @@ function ConvertTo-EmptyToFiller {
         #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter (
             Position = 0,
@@ -118,7 +118,7 @@ function Convert-IpAddressToMaskLength {
     #>
     [CmdletBinding()]
     [OutputType([String])]
-    Param
+    param
     (
         [Parameter (
             Position = 0,
@@ -156,7 +156,7 @@ function ConvertTo-HashToYN {
     #>
     [CmdletBinding()]
     [OutputType([Hashtable])]
-    Param (
+    param (
         [Parameter (Position = 0, Mandatory)]
         [AllowEmptyString()]
         [Hashtable] $TEXT
