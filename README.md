@@ -39,8 +39,6 @@ Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for m
 
 Sample Microsoft DHCP As Built report HTML file: [Sample Microsoft DHCP As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/dev/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.html)
 
-Sample Microsoft DHCP As Built report PDF file: [Sample Microsoft DHCP As Built Report.pdf](https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.pdf)
-
 # :beginner: Getting Started
 Below are the instructions on how to install, configure and generate a Microsoft DHCP As Built report.
 
@@ -58,9 +56,9 @@ If you need to document an standalone DHCP server a better option is to use the 
 This report is compatible with the following PowerShell versions;
 
 <!-- ********** Update supported PowerShell versions ********** -->
-| Windows PowerShell 5.1 |     PowerShell 7    |
-|:----------------------:|:--------------------:|
-|   :white_check_mark:   | :x: |
+| Windows PowerShell 5.1 | PowerShell 7 |
+| :--------------------: | :----------: |
+|   :white_check_mark:   |     :x:      |
 ## :wrench: System Requirements
 <!-- ********** Update system requirements ********** -->
 PowerShell 5.1, and the following PowerShell modules are required for generating a Microsoft DHCP As Built Report.
@@ -124,7 +122,7 @@ The following provides information of how to configure each schema within the re
 The **Report** schema provides configuration of the Microsoft DHCP report information.
 
 | Sub-Schema          | Setting      | Default                        | Description                                                  |
-|---------------------|--------------|--------------------------------|--------------------------------------------------------------|
+| ------------------- | ------------ | ------------------------------ | ------------------------------------------------------------ |
 | Name                | User defined | Microsoft DHCP As Built Report | The name of the As Built Report                              |
 | Version             | User defined | 1.0                            | The report version                                           |
 | Status              | User defined | Released                       | The report release status                                    |
@@ -136,30 +134,30 @@ The **Report** schema provides configuration of the Microsoft DHCP report inform
 ### Options
 The **Options** schema allows certain options within the report to be toggled on or off.
 
-| Sub-Schema      | Setting      | Default | Description                                                                                                                                                                                 |
-|-----------------|--------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ShowDefinitionInfo | true/false  | false    | Toggle to enable/disable Microsoft AD term explanations
-| PSDefaultAuthentication | Negotiate/Kerberos  | Negotiate    | Allow to set the value of the PSRemoting authentication method. For Workgroup authentication Negotiate value is required. |
-| ServerDiscovery | Domain/Standalone  | Domain | Allow to set the DHCP servers discovery |
-| Exclude.Domains | Array List  | Empty    | Allow to filter on AD Domain FQDN |
-| Exclude.DCs | Array List  | Empty    | Allow to filter on AD Domain Controller Server FQDN. |
+| Sub-Schema              | Setting            | Default   | Description                                                                                                               |
+| ----------------------- | ------------------ | --------- | ------------------------------------------------------------------------------------------------------------------------- |
+| ShowDefinitionInfo      | true/false         | false     | Toggle to enable/disable Microsoft AD term explanations                                                                   |
+| PSDefaultAuthentication | Negotiate/Kerberos | Negotiate | Allow to set the value of the PSRemoting authentication method. For Workgroup authentication Negotiate value is required. |
+| ServerDiscovery         | Domain/Standalone  | Domain    | Allow to set the DHCP servers discovery                                                                                   |
+| Exclude.Domains         | Array List         | Empty     | Allow to filter on AD Domain FQDN                                                                                         |
+| Exclude.DCs             | Array List         | Empty     | Allow to filter on AD Domain Controller Server FQDN.                                                                      |
 
 ### InfoLevel
 The **InfoLevel** schema allows configuration of each section of the report at a granular level. The following sections can be set.
 
 There are 3 levels (0-2) of detail granularity for each section as follows;
 
-| Setting | InfoLevel         | Description                                                                                                                                |
-|:-------:|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-|    0    | Disabled          | Does not collect or display any information                                                                                                |
-|    1    | Enabled / Summary | Provides summarised information for a collection of objects                                                                                |
-|    2    | Adv Summary       | Provides condensed, detailed information for a collection of objects                                                                       |
+| Setting | InfoLevel         | Description                                                          |
+| :-----: | ----------------- | -------------------------------------------------------------------- |
+|    0    | Disabled          | Does not collect or display any information                          |
+|    1    | Enabled / Summary | Provides summarised information for a collection of objects          |
+|    2    | Adv Summary       | Provides condensed, detailed information for a collection of objects |
 
 The table below outlines the default and maximum **InfoLevel** settings for each section.
 
-| Sub-Schema   | Default Setting | Maximum Setting |
-|--------------|:---------------:|:---------------:|
-| DHCP         |        1        |        2        |
+| Sub-Schema | Default Setting | Maximum Setting |
+| ---------- | :-------------: | :-------------: |
+| DHCP       |        1        |        2        |
 
 ### Healthcheck
 The **Healthcheck** schema is used to toggle health checks on or off.

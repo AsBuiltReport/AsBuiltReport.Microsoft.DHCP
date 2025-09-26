@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopeExclusion {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,13 +19,13 @@ function Get-AbrADDHCPv4PerScopeExclusion {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Server,
-            $Scope
+        [string]
+        $Server,
+        $Scope
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -35,15 +35,14 @@ function Get-AbrADDHCPv4PerScopeExclusion {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv4 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange
                         }
                         $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Scope Exclusion Item)"
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Exclusion Item)"
                     }
                 }
 

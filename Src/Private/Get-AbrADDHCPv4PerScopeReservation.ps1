@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopeReservation {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,13 +19,13 @@ function Get-AbrADDHCPv4PerScopeReservation {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Server,
-            $Scope
+        [string]
+        $Server,
+        $Scope
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers Scope Reservation information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Reservation information from $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -35,17 +35,16 @@ function Get-AbrADDHCPv4PerScopeReservation {
                 $OutObj = @()
                 foreach ($Reservation in $DHCPScopeReservation) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv4 Scope Reservation value $($Reservation.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Reservation value $($Reservation.IPAddress) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'IP Address' = $Reservation.IPAddress
                             'Client Id' = $Reservation.ClientId
                             'Name' = $Reservation.Name
                             'Type' = $Reservation.Type
                         }
-                        $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (Scope Reservation Item)"
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Reservation Item)"
                     }
                 }
 

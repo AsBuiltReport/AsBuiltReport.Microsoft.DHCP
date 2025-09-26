@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4Statistic {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,12 +19,12 @@ function Get-AbrADDHCPv4Statistic {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Domain
+        [string]
+        $Domain
     )
 
     begin {
-        Write-PscriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
+        Write-PScriboMessage "Discovering Active Directory DHCP Servers information on $($Domain.ToString().ToUpper())."
     }
 
     process {
@@ -34,39 +34,38 @@ function Get-AbrADDHCPv4Statistic {
                     $OutObj = @()
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
-                            if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
+                            if (Test-WSMan -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ComputerName $DHCPServer -ErrorAction SilentlyContinue) {
                                 Write-PScriboMessage "Collecting DHCP Server IPv4 Statistics from $($DHCPServer.split(".", 2)[0])"
-                                $TempCIMSession = New-CIMSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $Setting = Get-DhcpServerv4Statistics -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
                                     'DC Name' = $DHCPServer.Split(".", 2)[0]
-                                    'Total Scopes' = ConvertTo-EmptyToFiller $Setting.TotalScopes
-                                    'Total Addresses' = ConvertTo-EmptyToFiller $Setting.TotalAddresses
-                                    'Addresses In Use' = ConvertTo-EmptyToFiller $Setting.AddressesInUse
-                                    'Addresses Available' = ConvertTo-EmptyToFiller $Setting.AddressesAvailable
-                                    'Percentage In Use' = ConvertTo-EmptyToFiller ([math]::Round($Setting.PercentageInUse, 0))
-                                    'Percentage Available' = ConvertTo-EmptyToFiller ([math]::Round($Setting.PercentageAvailable, 0))
+                                    'Total Scopes' = $Setting.TotalScopes
+                                    'Total Addresses' = $Setting.TotalAddresses
+                                    'Addresses In Use' = $Setting.AddressesInUse
+                                    'Addresses Available' = $Setting.AddressesAvailable
+                                    'Percentage In Use' = ([math]::Round($Setting.PercentageInUse, 0))
+                                    'Percentage Available' = ([math]::Round($Setting.PercentageAvailable, 0))
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
 
                                 if ($TempCIMSession) {
-                                    Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                    Remove-CIMSession -CimSession $TempCIMSession
+                                    Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+                                    Remove-CimSession -CimSession $TempCIMSession
                                 }
                             }
                         }
-                    }
-                    catch {
+                    } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Service Statistics Item)"
                     }
                     if ($HealthCheck.DHCP.Statistics) {
-                        $OutObj | Where-Object { $_.'Percentage In Use' -gt 95} | Set-Style -Style Warning -Property 'Percentage Available','Percentage In Use'
+                        $OutObj | Where-Object { $_.'Percentage In Use' -gt 95 } | Set-Style -Style Warning -Property 'Percentage Available', 'Percentage In Use'
                     }
 
                     $TableParams = @{
                         Name = "DHCP Server Statistics - $($Domain.ToString().ToUpper())"
                         List = $false
-                        ColumnWidths = 20, 13, 13, 13, 14 ,13, 14
+                        ColumnWidths = 20, 13, 13, 13, 14 , 13, 14
                     }
                     if ($Report.ShowTableCaptions) {
                         $TableParams['Caption'] = "- $($TableParams.Name)"
@@ -74,8 +73,7 @@ function Get-AbrADDHCPv4Statistic {
                     $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
                 }
             }
-        }
-        catch {
+        } catch {
             Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Service Statistics Table)"
         }
     }

@@ -12,7 +12,7 @@
 RootModule = 'AsBuiltReport.Microsoft.DHCP.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.2.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'Jonathan Colon'
 # CompanyName = 'Unknown'
 
 # Copyright statement for this module
-Copyright = '(c) 2023 Jonathan Colon. All rights reserved.'
+Copyright = '(c) 2025 Jonathan Colon. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'Repository for AsBuiltReport Microsoft DHCP module'
@@ -54,7 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(
     @{
         ModuleName = 'AsBuiltReport.Core';
-        ModuleVersion = '1.3.0'
+        ModuleVersion = '1.4.3'
     }
 )
 # Assemblies that must be loaded prior to importing this module
