@@ -5,7 +5,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
     .DESCRIPTION
         Documents the configuration of Microsoft DHCP in Word/HTML/Text formats using PScribo.
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -15,18 +15,29 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP
     #>
 
-	# Do not remove or add to these parameters
+    # Do not remove or add to these parameters
     param (
         [String[]] $Target,
         [PSCredential] $Credential
     )
 
-    Write-PScriboMessage -IsWarning "Please refer to the AsBuiltReport.Microsoft.DHCP github website for more detailed information about this project."
-    Write-PScriboMessage -IsWarning "Do not forget to update your report configuration file after each new release."
-    Write-PScriboMessage -IsWarning "Documentation: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP"
-    Write-PScriboMessage -IsWarning "Issues or bug reporting: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues"
+    #Requires -Version 5.1
+    #Requires -PSEdition Desktop
+    #Requires -RunAsAdministrator
 
-    Try {
+    if ($psISE) {
+        Write-Error -Message "You cannot run this script inside the PowerShell ISE. Please execute it from the PowerShell Command Window."
+        break
+    }
+
+    Write-PScriboMessage -Plugin "Module" -IsWarning "Please refer to the AsBuiltReport.Microsoft.DHCP github website for more detailed information about this project."
+    Write-PScriboMessage -Plugin "Module" -IsWarning "Do not forget to update your report configuration file after each new release."
+    Write-PScriboMessage -Plugin "Module" -IsWarning "Documentation: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP"
+    Write-PScriboMessage -Plugin "Module" -IsWarning "Issues or bug reporting: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues"
+    Write-PScriboMessage -Plugin "Module" -IsWarning "This project is community maintained and has no sponsorship from Microsoft, its employees or any of its affiliates."
+
+
+    try {
         $InstalledVersion = Get-Module -ListAvailable -Name AsBuiltReport.Microsoft.DHCP -ErrorAction SilentlyContinue | Sort-Object -Property Version -Descending | Select-Object -First 1 -ExpandProperty Version
 
         if ($InstalledVersion) {
@@ -37,17 +48,9 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
                 Write-PScriboMessage -IsWarning "Run 'Update-Module -Name AsBuiltReport.Microsoft.DHCP -Force' to install the latest version."
             }
         }
-    } Catch {
-            Write-PscriboMessage -IsWarning $_.Exception.Message
+    } catch {
+        Write-PScriboMessage -IsWarning $_.Exception.Message
     }
-
-    $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
-
-    if (-Not $currentPrincipal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
-
-        throw "The requested operation requires elevation: Run PowerShell console as administrator"
-    }
-
 
     #Validate Required Modules and Features
     $OSType = (Get-ComputerInfo).OsProductType
@@ -63,17 +66,22 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
 
 
     # Import Report Configuration
-    $script:Report = $ReportConfig.Report
-    $script:InfoLevel = $ReportConfig.InfoLevel
-    $script:Options = $ReportConfig.Options
+    $Report = $ReportConfig.Report
+    $InfoLevel = $ReportConfig.InfoLevel
+    $Options = $ReportConfig.Options
 
     # Used to set values to TitleCase where required
-    $script:TextInfo = (Get-Culture).TextInfo
+    $TextInfo = (Get-Culture).TextInfo
 
     #region foreach loop
     foreach ($System in $Target) {
+
+        if (Select-String -InputObject $System -Pattern "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$") {
+            throw "Please use the FQDN instead of an IP address to connect to the Domain Controller: $System"
+        }
+
         try {
-            $TempCIMSession = New-CIMSession -ComputerName $System -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+            $TempCIMSession = New-CimSession -ComputerName $System -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
             $ADSystem = Get-ADForest -ErrorAction Stop -Credential $Credential
         } catch {
             throw "Unable to discover Forest information from $System"
@@ -81,9 +89,9 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
 
 
 
-        $script:ForestInfo =  $ADSystem.RootDomain.toUpper()
+        $script:ForestInfo = $ADSystem.RootDomain.toUpper()
         [array]$RootDomains = $ADSystem.RootDomain
-        [array]$ChildDomains = $ADSystem.Domains | Where-Object {$_ -ne $RootDomains}
+        [array]$ChildDomains = $ADSystem.Domains | Where-Object { $_ -ne $RootDomains }
         [string]$OrderedDomains = $RootDomains + $ChildDomains
 
         #---------------------------------------------------------------------------------------------#
@@ -107,9 +115,9 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         }
 
         if ($TempCIMSession) {
-            Write-PscriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-            Remove-CIMSession -CimSession $TempCIMSession
+            Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
+            Remove-CimSession -CimSession $TempCIMSession
         }
-	}
-	#endregion foreach loop
+    }
+    #endregion foreach loop
 }

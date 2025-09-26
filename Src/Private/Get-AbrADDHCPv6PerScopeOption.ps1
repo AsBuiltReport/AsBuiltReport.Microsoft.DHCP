@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6PerScopeOption {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.0
+        Version:        0.2.1
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -19,13 +19,13 @@ function Get-AbrADDHCPv6PerScopeOption {
         [Parameter (
             Position = 0,
             Mandatory)]
-            [string]
-            $Server,
-            $Scope
+        [string]
+        $Server,
+        $Scope
     )
 
     begin {
-        Write-PscriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
     }
 
     process {
@@ -35,17 +35,16 @@ function Get-AbrADDHCPv6PerScopeOption {
                 $OutObj = @()
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PscriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
                             'Type' = $Option.Type
                             'Value' = $Option.Value
                         }
-                        $OutObj += [pscustomobject]$inobj
-                    }
-                    catch {
-                        Write-PscriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Options Item)"
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
+                    } catch {
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Options Item)"
                     }
                 }
                 $TableParams = @{
