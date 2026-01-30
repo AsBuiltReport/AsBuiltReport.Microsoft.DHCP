@@ -40,9 +40,9 @@ function Get-AbrADDHCPInfrastructure {
                             foreach ($DHCPServer in $DHCPinDC) {
                                 if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                     try {
-                                        $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
+                                        $InfraCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                         Write-PScriboMessage "Collecting DHCP Server Setting information from $($DHCPServer.split(".", 2)[0])"
-                                        $Setting = Get-DhcpServerSetting -CimSession $TempCIMSession -ComputerName $DHCPServer
+                                        $Setting = Get-DhcpServerSetting -CimSession $InfraCIMSession -ComputerName $DHCPServer
                                         $inObj = [ordered] @{
                                             'DC Name' = $DHCPServer.Split(".", 2)[0]
                                             'IP Address' = ($DHCPinDomain | Where-Object { $_.DnsName -eq $DHCPServer }).IPAddress
@@ -55,9 +55,9 @@ function Get-AbrADDHCPInfrastructure {
                                     } catch {
                                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain Item)"
                                     }
-                                    if ($TempCIMSession) {
-                                        Write-PScriboMessage "Clearing CIM Session $($TempCIMSession.Id)"
-                                        Remove-CimSession -CimSession $TempCIMSession
+                                    if ($InfraCIMSession) {
+                                        Write-PScriboMessage "Clearing CIM Session $($InfraCIMSession.Id)"
+                                        Remove-CimSession -CimSession $InfraCIMSession
                                     }
                                 }
                             }
