@@ -51,6 +51,7 @@ function Get-AbrADDHCPStandAlone {
                         }
                         foreach ($DHCPServer in $DomainDHCPs) {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
+                                try {
                                 $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $DHCPScopes = Get-DhcpServerv4Scope -CimSession $TempCIMSession -ComputerName $DHCPServer | Select-Object -ExpandProperty ScopeId
                                 if ($DHCPScopes) {
@@ -115,6 +116,9 @@ function Get-AbrADDHCPStandAlone {
                                         }
                                     }
                                 }
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 DHCP Server $($DHCPServer.split('.', 2)[0]) CIM Session)"
+                                }
                             } else { Write-PScriboMessage -IsWarning "Unable to connect to $($DHCPServer). Removing Server from report" }
                         }
                     }
@@ -129,6 +133,7 @@ function Get-AbrADDHCPStandAlone {
                         }
                         foreach ($DHCPServer in $DomainDHCPs) {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
+                                try {
                                 $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $DHCPScopes = Get-DhcpServerv6Scope -CimSession $TempCIMSession -ComputerName $DHCPServer | Select-Object -ExpandProperty Prefix
                                 Write-PScriboMessage "Discovering DHCP Server IPv6 Scopes from $DHCPServer"
@@ -175,6 +180,9 @@ function Get-AbrADDHCPStandAlone {
                                             }
                                         }
                                     }
+                                }
+                                } catch {
+                                    Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 DHCP Server $($DHCPServer.split('.', 2)[0]) CIM Session)"
                                 }
                             } else { Write-PScriboMessage -IsWarning "Unable to connect to $($DHCPServer). Removing Server from report" }
                         }
