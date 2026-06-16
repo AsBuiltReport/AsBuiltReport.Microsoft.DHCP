@@ -26,10 +26,10 @@ function Get-AbrADDHCPDomain {
         try {
             if ($InfoLevel.DHCP -ge 1 -and $DHCPinDomain ) {
                 foreach ($Domain in ($OrderedDomains.split(" "))) {
-                    if ($Domain -notin $Options.Exclude.Domains) {
+                    if ($Domain -and ($Domain -notin $Options.Exclude.Domains)) {
                         try {
                             $DomainInfo = Get-ADDomain $Domain -ErrorAction Stop
-                            if ($Domain) {
+                            if ($DomainInfo) {
                                 try {
                                     $DomainDHCPs = $DHCPinDomain | Where-Object { $_.DnsName.split(".", 2)[1] -eq $DomainInfo.DNSRoot } | Select-Object -ExpandProperty DnsName | Where-Object { $_ -notin $Options.Exclude.DCs }
                                     if ($DomainDHCPs) {

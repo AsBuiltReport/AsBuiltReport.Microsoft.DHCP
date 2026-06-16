@@ -20,6 +20,7 @@ function ConvertTo-TextYN {
             Position = 0,
             Mandatory)]
         [AllowEmptyString()]
+        [AllowNull()]
         [string] $TEXT
     )
 
@@ -88,6 +89,7 @@ function ConvertTo-EmptyToFiller {
             Position = 0,
             Mandatory)]
         [AllowEmptyString()]
+        [AllowNull()]
         [string]
         $TEXT
     )
@@ -163,7 +165,7 @@ function ConvertTo-HashToYN {
     )
 
     $result = [ordered] @{}
-    foreach ($i in $inObj.GetEnumerator()) {
+    foreach ($i in $TEXT.GetEnumerator()) {
         try {
             $result.add($i.Key, (ConvertTo-TextYN $i.Value))
         } catch {
