@@ -1,11 +1,11 @@
-function Get-AbrADDHCPv6PerScopeExclusion {
+function Get-AbrADDHCPv4PerScopeExclusion {
     <#
     .SYNOPSIS
     Used by As Built Report to retrieve Microsoft AD DHCP Servers Scopes Exclusion from DHCP Servers
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -29,18 +29,18 @@ function Get-AbrADDHCPv6PerScopeExclusion {
     }
 
     process {
-        $DHCPScopeExclusion = Get-DhcpServerv6ExclusionRange -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope | Sort-Object -Property 'StartRange'
+        $DHCPScopeExclusion = Get-DhcpServerv4ExclusionRange -CimSession $TempCIMSession -ComputerName $Server -ScopeId $Scope | Sort-Object -Property 'StartRange'
         if ($DHCPScopeExclusion) {
             Section -ExcludeFromTOC -Style NOTOCHeading6 "Exclusion" {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange
                         }
-                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
+                        $OutObj += [pscustomobject]$inobj
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Exclusion Item)"
                     }

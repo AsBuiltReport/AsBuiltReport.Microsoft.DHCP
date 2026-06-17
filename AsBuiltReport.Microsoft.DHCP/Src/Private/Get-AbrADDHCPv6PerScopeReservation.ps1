@@ -1,11 +1,11 @@
-function Get-AbrADDHCPv4PerScopeReservation {
+function Get-AbrADDHCPv6PerScopeReservation {
     <#
     .SYNOPSIS
     Used by As Built Report to retrieve Microsoft AD DHCP Servers Scopes Reservation from DHCP Servers
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -29,13 +29,13 @@ function Get-AbrADDHCPv4PerScopeReservation {
     }
 
     process {
-        $DHCPScopeReservation = Get-DhcpServerv4Reservation  -CimSession $TempCIMSession -ComputerName $Server -ScopeId $Scope | Sort-Object -Property 'IPAddress'
+        $DHCPScopeReservation = Get-DhcpServerv6Reservation  -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope | Sort-Object -Property 'IPAddress'
         if ($DHCPScopeReservation) {
             Section -ExcludeFromTOC -Style NOTOCHeading6 "Reservations" {
                 $OutObj = @()
                 foreach ($Reservation in $DHCPScopeReservation) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Reservation value $($Reservation.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Reservation value $($Reservation.IPAddress) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'IP Address' = $Reservation.IPAddress
                             'Client Id' = $Reservation.ClientId
@@ -44,7 +44,7 @@ function Get-AbrADDHCPv4PerScopeReservation {
                         }
                         $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
-                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Reservation Item)"
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope IPV6 Reservation Item)"
                     }
                 }
 
