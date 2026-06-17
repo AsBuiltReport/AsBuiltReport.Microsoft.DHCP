@@ -5,7 +5,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
     .DESCRIPTION
         Documents the configuration of Microsoft DHCP in Word/HTML/Text formats using PScribo.
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -15,41 +15,50 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP
     #>
 
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingConvertToSecureStringWithPlainText', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingUserNameAndPassWordParams', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingPlainTextForPassword', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseShouldProcessForStateChangingFunctions', '', Scope = 'Function')]
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSAvoidUsingCmdletAliases', '', Scope = 'Function')]
+
     # Do not remove or add to these parameters
     param (
         [String[]] $Target,
         [PSCredential] $Credential
     )
 
-    #Requires -Version 5.1
-    #Requires -PSEdition Desktop
     #Requires -RunAsAdministrator
 
     if ($psISE) {
-        Write-Error -Message "You cannot run this script inside the PowerShell ISE. Please execute it from the PowerShell Command Window."
+        Write-Error -Message 'You cannot run this script inside the PowerShell ISE. Please execute it from the PowerShell Command Window.'
         break
     }
 
-    Write-PScriboMessage -Plugin "Module" -IsWarning "Please refer to the AsBuiltReport.Microsoft.DHCP github website for more detailed information about this project."
-    Write-PScriboMessage -Plugin "Module" -IsWarning "Do not forget to update your report configuration file after each new release."
-    Write-PScriboMessage -Plugin "Module" -IsWarning "Documentation: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP"
-    Write-PScriboMessage -Plugin "Module" -IsWarning "Issues or bug reporting: https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues"
-    Write-PScriboMessage -Plugin "Module" -IsWarning "This project is community maintained and has no sponsorship from Microsoft, its employees or any of its affiliates."
+    # Check the version of the dependency modules
+    Write-ReportModuleInfo -ModuleName 'Veeam.VBR'
 
+    Write-Host '  To sponsor this project, please visit:' -NoNewline
+    Write-Host ' https://ko-fi.com/F1F8DEV80' -ForegroundColor Cyan
 
-    try {
-        $InstalledVersion = Get-Module -ListAvailable -Name AsBuiltReport.Microsoft.DHCP -ErrorAction SilentlyContinue | Sort-Object -Property Version -Descending | Select-Object -First 1 -ExpandProperty Version
+    Write-Host '  - Getting dependency information:'
+    # Check the version of the dependency modules
+    $ModuleArray = @('AsBuiltReport.Core', 'AsBuiltReport.Chart', 'AsBuiltReport.Diagram')
 
-        if ($InstalledVersion) {
-            Write-PScriboMessage -IsWarning "AsBuiltReport.Microsoft.DHCP $($InstalledVersion.ToString()) is currently installed."
-            $LatestVersion = Find-Module -Name AsBuiltReport.Microsoft.DHCP -Repository PSGallery -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Version
-            if ($LatestVersion -gt $InstalledVersion) {
-                Write-PScriboMessage -IsWarning "AsBuiltReport.Microsoft.DHCP $($LatestVersion.ToString()) is available."
-                Write-PScriboMessage -IsWarning "Run 'Update-Module -Name AsBuiltReport.Microsoft.DHCP -Force' to install the latest version."
+    foreach ($Module in $ModuleArray) {
+        try {
+            $InstalledVersion = Get-Module -ListAvailable -Name $Module -ErrorAction SilentlyContinue | Sort-Object -Property Version -Descending | Select-Object -First 1 -ExpandProperty Version
+
+            if ($InstalledVersion) {
+                Write-Host ('    - {0} module v{1} is currently installed.' -f $Module, $InstalledVersion.ToString())
+                $LatestVersion = Find-Module -Name $Module -Repository PSGallery -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Version
+                if ($InstalledVersion -lt $LatestVersion) {
+                    Write-Host ('    - {0} module v{1} is available.)' -f $Module, $LatestVersion.ToString()) -ForegroundColor Red
+                    Write-Host ("    - Run 'Update-Module -Name {0} -Force' to install the latest version." -f $Module) -ForegroundColor Red
+                }
             }
+        } catch {
+            Write-PScriboMessage -IsWarning $_.Exception.Message
         }
-    } catch {
-        Write-PScriboMessage -IsWarning $_.Exception.Message
     }
 
     #Validate Required Modules and Features
@@ -76,7 +85,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
     #region foreach loop
     foreach ($System in $Target) {
 
-        if (Select-String -InputObject $System -Pattern "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$") {
+        if (Select-String -InputObject $System -Pattern '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$') {
             throw "Please use the FQDN instead of an IP address to connect to the Domain Controller: $System"
         }
 
@@ -84,7 +93,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
             $TempCIMSession = New-CimSession -ComputerName $System -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
             $ADSystem = Get-ADForest -ErrorAction Stop -Credential $Credential
         } catch {
-            throw "Unable to discover Forest information from $System"
+            throw "Unable to discover Forest information from $($System): $($_.Exception.Message)"
         }
 
 
@@ -98,19 +107,21 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         #                                 DHCP Section                                                #
         #---------------------------------------------------------------------------------------------#
 
-        if ($Options.ServerDiscovery -eq "Domain") {
-            $DHCPinDomain = Get-DhcpServerInDC
+        if ($Options.ServerDiscovery -eq 'Domain') {
+            $DHCPinDomain = Get-DhcpServerInDC | Select-Object -Property DNSName -Unique
             if ($DHCPinDomain) {
                 try {
+                    Write-Host '  - Collecting Forest Wide DHCP information...'
                     Get-AbrADDHCPDomain
                 } catch {
                     throw "Unable to get generate DHCP report from $System"
                 }
             } else {
-                Write-PScriboMessage -IsWarning "Unable to get DHCP discovery from $($System): $($_.Exception.Message) "
+                Write-PScriboMessage -IsWarning "Unable to get DHCP discovery from $($System): $($_.Exception.Message)"
             }
         } else {
             $script:DomainDHCPs = $System
+            Write-Host "  - Collecting $($System) DHCP information..."
             Get-AbrADDHCPStandAlone -Domain $System
         }
 

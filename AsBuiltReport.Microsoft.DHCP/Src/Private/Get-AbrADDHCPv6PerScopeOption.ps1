@@ -1,11 +1,11 @@
-function Get-AbrADDHCPv4PerScopeOption {
+function Get-AbrADDHCPv6PerScopeOption {
     <#
     .SYNOPSIS
-    Used by As Built Report to retrieve Microsoft AD DHCP Servers Scopes Server Options from DHCP Servers
+    Used by As Built Report to retrieve Microsoft AD DHCP Servers IPv6 Scopes Server Options from DHCP Servers
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -29,25 +29,24 @@ function Get-AbrADDHCPv4PerScopeOption {
     }
 
     process {
-        $DHCPScopeOptions = Get-DhcpServerv4OptionValue -CimSession $TempCIMSession -ComputerName $Server -ScopeId $Scope
+        $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope
         if ($DHCPScopeOptions) {
             Section -ExcludeFromTOC -Style NOTOCHeading6 "Options" {
                 $OutObj = @()
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
+                            'Type' = $Option.Type
                             'Value' = $Option.Value
-                            'Policy Name' = $Option.PolicyName
                         }
                         $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
-                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Options Item)"
+                        Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Options Item)"
                     }
                 }
-
                 $TableParams = @{
                     Name = "Scopes Options - $Scope"
                     List = $false
