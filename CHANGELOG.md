@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix `ConvertTo-TextYN` and `ConvertTo-EmptyToFiller` throwing on `$null` input by adding `[AllowNull()]` to the `$TEXT` parameter, so null values render as `--` instead of raising "Cannot process argument transformation on parameter 'TEXT'"
 - Fix `ConvertTo-HashToYN` iterating an undefined `$inObj` variable instead of its `$TEXT` parameter
 - Skip empty domain entries before calling `Get-ADDomain` in `Get-AbrADDHCPDomain` to avoid "Identity property on the argument is null or empty" errors
+- Fix [#26](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/26)
 
 ## [0.2.1] - 2025-09-26
 
