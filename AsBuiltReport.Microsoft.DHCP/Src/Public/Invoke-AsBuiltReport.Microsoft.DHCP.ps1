@@ -28,6 +28,8 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
         [PSCredential] $Credential
     )
 
+    #Requires -Version 5.1
+    #Requires -PSEdition Desktop
     #Requires -RunAsAdministrator
 
     if ($psISE) {
