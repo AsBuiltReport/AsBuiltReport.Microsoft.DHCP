@@ -38,7 +38,7 @@ function Invoke-AsBuiltReport.Microsoft.DHCP {
     }
 
     # Check the version of the dependency modules
-    Write-ReportModuleInfo -ModuleName 'Veeam.VBR'
+    Write-ReportModuleInfo -ModuleName 'Microsoft.DHCP'
 
     Write-Host '  To sponsor this project, please visit:' -NoNewline
     Write-Host ' https://ko-fi.com/F1F8DEV80' -ForegroundColor Cyan
