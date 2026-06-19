@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add IPv4 Scope Statistics chart
+- Add support for IPv4 Scope Statistics chart
 
 ### Changed
 
