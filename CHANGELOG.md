@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Increase AsBuiltReport.Core modules to v1.6.4
 - Reorganize module structure - moved module files to AsBuiltReport.Veeam.VBR/ subdirectory
+- Implemented pwsh best practices
 
 ### Fixed
 
@@ -22,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix `ConvertTo-HashToYN` iterating an undefined `$inObj` variable instead of its `$TEXT` parameter
 - Skip empty domain entries before calling `Get-ADDomain` in `Get-AbrADDHCPDomain` to avoid "Identity property on the argument is null or empty" errors
 - Fix [#26](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/26)
+- Fix `ConvertTo-HashToYN` cmdlet not respecting hash table ordering
 
 ## [0.2.1] - 2025-09-26
 

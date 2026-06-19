@@ -25,22 +25,22 @@ function Get-AbrADDHCPv4PerScopeExclusion {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $DHCPScopeExclusion = Get-DhcpServerv4ExclusionRange -CimSession $TempCIMSession -ComputerName $Server -ScopeId $Scope | Sort-Object -Property 'StartRange'
         if ($DHCPScopeExclusion) {
-            Section -ExcludeFromTOC -Style NOTOCHeading6 "Exclusion" {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 'Exclusion' {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Exclusion Item)"
                     }

@@ -99,7 +99,7 @@ function Get-AbrADDHCPv4PerScopePolicy {
                                     default { 'Unknown' }
                                 }
                             }
-                            $OutObj = [pscustomobject]$inobj
+                            $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
 
                             if ($HealthCheck.DHCP.BP) {
                                 $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'

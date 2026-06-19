@@ -30,7 +30,7 @@ function Get-AbrADDHCPInfrastructure {
     process {
         try {
             if ($DHCPinDC) {
-                if ($Options.ServerDiscovery -eq "Domain") {
+                if ($Options.ServerDiscovery -eq 'Domain') {
                     try {
                         Write-PScriboMessage "Discovered '$(($DHCPinDC | Measure-Object).Count)' DHCP Servers in forest $($Domain)."
                         Section -Style Heading2 'DHCP Servers in Domain' {
@@ -41,17 +41,17 @@ function Get-AbrADDHCPInfrastructure {
                                 if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                     try {
                                         $InfraCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
-                                        Write-PScriboMessage "Collecting DHCP Server Setting information from $($DHCPServer.split(".", 2)[0])"
+                                        Write-PScriboMessage "Collecting DHCP Server Setting information from $($DHCPServer.split('.', 2)[0])"
                                         $Setting = Get-DhcpServerSetting -CimSession $InfraCIMSession -ComputerName $DHCPServer
                                         $inObj = [ordered] @{
-                                            'DC Name' = $DHCPServer.Split(".", 2)[0]
+                                            'DC Name' = $DHCPServer.Split('.', 2)[0]
                                             'IP Address' = ($DHCPinDomain | Where-Object { $_.DnsName -eq $DHCPServer }).IPAddress
-                                            'Domain Name' = $DHCPServer.Split(".", 2)[1]
+                                            'Domain Name' = $DHCPServer.Split('.', 2)[1]
                                             'Domain Joined' = ConvertTo-TextYN $Setting.IsDomainJoined
                                             'Authorized' = ConvertTo-TextYN $Setting.IsAuthorized
                                             'Conflict Detection Attempts' = $Setting.ConflictDetectionAttempts
                                         }
-                                        $OutObj += [pscustomobject]$inobj
+                                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                     } catch {
                                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain Item)"
                                     }
@@ -86,25 +86,25 @@ function Get-AbrADDHCPInfrastructure {
                         foreach ($DHCPServer in $DHCPinDC) {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                 try {
-                                    Write-PScriboMessage "Collecting DHCP Server database information from $($DHCPServer.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server database information from $($DHCPServer.split('.', 2)[0])"
                                     $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                     $Setting = Get-DhcpServerDatabase -CimSession $TempCIMSession -ComputerName $DHCPServer
                                     $inObj = [ordered] @{
-                                        'DC Name' = $DHCPServer.Split(".", 2)[0]
+                                        'DC Name' = $DHCPServer.Split('.', 2)[0]
                                         'File Path' = ConvertTo-EmptyToFiller $Setting.FileName
                                         'Backup Path' = ConvertTo-EmptyToFiller $Setting.BackupPath
                                         'Backup Interval' = switch ($Setting.BackupInterval) {
-                                            "" { "--"; break }
-                                            $NULL { "--"; break }
+                                            '' { '--'; break }
+                                            $NULL { '--'; break }
                                             default { "$($Setting.BackupInterval) min" }
                                         }
                                         'Logging Enabled' = switch ($Setting.LoggingEnabled) {
-                                            "" { "--"; break }
-                                            $Null { "--"; break }
+                                            '' { '--'; break }
+                                            $Null { '--'; break }
                                             default { ConvertTo-TextYN $Setting.LoggingEnabled }
                                         }
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Service Database Item)"
                                 }
@@ -135,15 +135,15 @@ function Get-AbrADDHCPInfrastructure {
                         foreach ($DHCPServer in $DHCPinDC) {
                             if (Test-Connection -ComputerName $DHCPServer -Quiet -Count 2) {
                                 try {
-                                    Write-PScriboMessage "Collecting DHCP Server Dynamic DNS Credentials information from $($DHCPServer.split(".", 2)[0])"
+                                    Write-PScriboMessage "Collecting DHCP Server Dynamic DNS Credentials information from $($DHCPServer.split('.', 2)[0])"
                                     $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                     $Setting = Get-DhcpServerDnsCredential -CimSession $TempCIMSession -ComputerName $DHCPServer
                                     $inObj = [ordered] @{
-                                        'DC Name' = $DHCPServer.Split(".", 2)[0]
+                                        'DC Name' = $DHCPServer.Split('.', 2)[0]
                                         'User Name' = ConvertTo-EmptyToFiller $Setting.UserName
                                         'Domain Name' = ConvertTo-EmptyToFiller $Setting.DomainName
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Item)"
                                 }
@@ -156,7 +156,7 @@ function Get-AbrADDHCPInfrastructure {
                         }
 
                         if ($HealthCheck.DHCP.BP) {
-                            $OutObj | Where-Object { $_.'User Name' -eq "--" } | Set-Style -Style Warning -Property 'User Name', 'Domain Name'
+                            $OutObj | Where-Object { $_.'User Name' -eq '--' } | Set-Style -Style Warning -Property 'User Name', 'Domain Name'
                         }
 
                         $TableParams = @{
@@ -168,12 +168,12 @@ function Get-AbrADDHCPInfrastructure {
                             $TableParams['Caption'] = "- $($TableParams.Name)"
                         }
                         $OutObj | Sort-Object -Property 'DC Name' | Table @TableParams
-                        if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'User Name' -eq "--" })) {
-                            Paragraph "Health Check:"  -Bold -Underline
+                        if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'User Name' -eq '--' })) {
+                            Paragraph 'Health Check:' -Bold -Underline
                             BlankLine
                             Paragraph {
-                                Text "Best Practice:" -Bold
-                                Text "Credentials for DNS update should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
+                                Text 'Best Practice:' -Bold
+                                Text 'Credentials for DNS update should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server.'
                             }
                         }
                     }
