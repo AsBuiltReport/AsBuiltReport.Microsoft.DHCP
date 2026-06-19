@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Increase AsBuiltReport.Core modules to v1.6.4
-- Reorganize module structure - moved module files to AsBuiltReport.Veeam.VBR/ subdirectory
+- Reorganize module structure - moved module files to AsBuiltReport.Microsoft.DHCP/ subdirectory
 - Implemented pwsh best practices
 
 ### Fixed
