@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4FilterStatus {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -35,11 +35,11 @@ function Get-AbrADDHCPv4FilterStatus {
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
                             if (Test-WSMan -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ComputerName $DHCPServer -ErrorAction SilentlyContinue) {
-                                Write-PScriboMessage "Collecting DHCP Server IPv4 filter status from $($DHCPServer.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv4 filter status from $($DHCPServer.split('.', 2)[0])"
                                 $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $Setting = Get-DhcpServerv4FilterList -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
-                                    'DC Name' = $DHCPServer.Split(".", 2)[0]
+                                    'DC Name' = $DHCPServer.Split('.', 2)[0]
                                     'Allow' = $Setting.Allow
                                     'Deny' = $Setting.Deny
                                 }

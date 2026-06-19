@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -26,34 +26,34 @@ function Get-AbrADDHCPv6ScopeServerSetting {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers IPv6 Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers IPv6 Scope Server Options information on $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $OutObj = @()
         $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopeOptions) {
-            Section -Style Heading4 "Global Server Options" {
-                Paragraph "The following table summarizes the DHCP server IPv4 global DNS settings."
+            Section -Style Heading4 'Global Server Options' {
+                Paragraph 'The following table summarizes the DHCP server IPv4 global DNS settings.'
                 BlankLine
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
                             'Type' = ConvertTo-EmptyToFiller $Option.Type
                             'Value' = $Option.Value
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Server Option Item)"
                     }
                 }
 
                 $TableParams = @{
-                    Name = "Global Server Options - $($Server.split(".", 2).ToUpper()[0])"
+                    Name = "Global Server Options - $($Server.split('.', 2).ToUpper()[0])"
                     List = $false
                     ColumnWidths = 40, 15, 20, 25
                 }
@@ -64,7 +64,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                 try {
                     $DHCPScopeOptions = Get-DhcpServerv6DnsSetting -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopeOptions) {
-                        Section -Style Heading4 "Global DNS Settings" {
+                        Section -Style Heading4 'Global DNS Settings' {
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
                                 try {
@@ -74,14 +74,14 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
                                         'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Item)"
                                 }
                             }
 
                             $TableParams = @{
-                                Name = "Global DNS Settings - $($Server.split(".", 2).ToUpper()[0])"
+                                Name = "Global DNS Settings - $($Server.split('.', 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }

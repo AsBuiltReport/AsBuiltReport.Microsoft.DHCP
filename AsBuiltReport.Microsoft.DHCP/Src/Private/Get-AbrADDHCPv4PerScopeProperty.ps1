@@ -5,7 +5,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -25,17 +25,17 @@ function Get-AbrADDHCPv4PerScopeProperty {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Properties information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Properties information from $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $DHCPScopeExclusion = Get-DhcpServerv4Scope -CimSession $TempCIMSession -ComputerName $Server -ScopeId $Scope | Sort-Object -Property 'ScopeId'
         if ($DHCPScopeExclusion) {
-            Section -ExcludeFromTOC -Style NOTOCHeading6 "Properties" {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 'Properties' {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Properties value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Properties value $($Exclusion.IPAddress) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Exclusion.Name
                             'Type' = $Exclusion.Type
@@ -51,7 +51,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
                             'Nap Profile' = ConvertTo-EmptyToFiller $Exclusion.NapProfile
                             'Description' = ConvertTo-EmptyToFiller $Exclusion.Description
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Properties Item)"
                     }
@@ -60,7 +60,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
 
                 if ($HealthCheck.DHCP.BP) {
                     $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'
-                    $OutObj | Where-Object { $_.'State' -eq "Inactive" } | Set-Style -Style Warning -Property 'State'
+                    $OutObj | Where-Object { $_.'State' -eq 'Inactive' } | Set-Style -Style Warning -Property 'State'
                 }
 
 
@@ -73,12 +73,12 @@ function Get-AbrADDHCPv4PerScopeProperty {
                     $TableParams['Caption'] = "- $($TableParams.Name)"
                 }
                 $OutObj | Table @TableParams
-                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Description' -eq "--" } )) {
-                    Paragraph "Health Check:"  -Bold -Underline
+                if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Description' -eq '--' } )) {
+                    Paragraph 'Health Check:' -Bold -Underline
                     BlankLine
                     Paragraph {
-                        Text "Best Practice:" -Bold
-                        Text "It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment."
+                        Text 'Best Practice:' -Bold
+                        Text 'It is a general rule of good practice to establish well-defined descriptions. This helps to speed up the fault identification process, as well as enabling better documentation of the environment.'
                     }
                 }
             }

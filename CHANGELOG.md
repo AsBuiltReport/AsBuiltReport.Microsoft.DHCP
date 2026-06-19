@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - [2026-06-18]
+
+### Added
+
+- Add support for IPv4 Scope Statistics chart
+
+### Changed
+
+- Increase AsBuiltReport.Core modules to v1.6.4
+- Reorganize module structure - moved module files to AsBuiltReport.Microsoft.DHCP/ subdirectory
+- Implemented pwsh best practices
+
+### Fixed
+
+- Fix `ConvertTo-TextYN` and `ConvertTo-EmptyToFiller` throwing on `$null` input by adding `[AllowNull()]` to the `$TEXT` parameter, so null values render as `--` instead of raising "Cannot process argument transformation on parameter 'TEXT'"
+- Fix `ConvertTo-HashToYN` iterating an undefined `$inObj` variable instead of its `$TEXT` parameter
+- Skip empty domain entries before calling `Get-ADDomain` in `Get-AbrADDHCPDomain` to avoid "Identity property on the argument is null or empty" errors
+- Fix [#26](https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/issues/26)
+- Fix `ConvertTo-HashToYN` cmdlet not respecting hash table ordering
+
 ## [0.2.1] - 2025-09-26
 
 ### Added

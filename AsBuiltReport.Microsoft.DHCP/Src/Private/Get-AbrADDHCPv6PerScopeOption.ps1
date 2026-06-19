@@ -5,7 +5,7 @@ function Get-AbrADDHCPv6PerScopeOption {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.2.1
+        Version:        0.3.0
         Author:         Jonathan Colon
         Twitter:        @jcolonfzenpr
         Github:         rebelinux
@@ -25,17 +25,17 @@ function Get-AbrADDHCPv6PerScopeOption {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $DHCPScopeOptions = Get-DhcpServerv6OptionValue -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope
         if ($DHCPScopeOptions) {
-            Section -ExcludeFromTOC -Style NOTOCHeading6 "Options" {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 'Options' {
                 $OutObj = @()
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Server Option value $($Option.OptionId) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId

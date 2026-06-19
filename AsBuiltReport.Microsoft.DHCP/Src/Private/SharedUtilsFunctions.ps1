@@ -20,15 +20,16 @@ function ConvertTo-TextYN {
             Position = 0,
             Mandatory)]
         [AllowEmptyString()]
+        [AllowNull()]
         [string] $TEXT
     )
 
     switch ($TEXT) {
-        "" { "--"; break }
-        " " { "--"; break }
-        $Null { "--"; break }
-        "True" { "Yes"; break }
-        "False" { "No"; break }
+        '' { '--'; break }
+        ' ' { '--'; break }
+        $Null { '--'; break }
+        'True' { 'Yes'; break }
+        'False' { 'No'; break }
         default { $TEXT }
     }
 } # end
@@ -60,9 +61,9 @@ function ConvertTo-FileSizeString {
         { $Size -gt 1TB } { 'TB' ; break }
         { $Size -gt 1GB } { 'GB' ; break }
         { $Size -gt 1Mb } { 'MB' ; break }
-        Default { 'KB' }
+        default { 'KB' }
     }
-    return "$([math]::Round(($Size / $("1" + $Unit)), 0)) $Unit"
+    return "$([math]::Round(($Size / $('1' + $Unit)), 0)) $Unit"
 } # end
 
 function ConvertTo-EmptyToFiller {
@@ -88,15 +89,16 @@ function ConvertTo-EmptyToFiller {
             Position = 0,
             Mandatory)]
         [AllowEmptyString()]
+        [AllowNull()]
         [string]
         $TEXT
     )
 
     switch ($TEXT) {
-        "" { "--"; break }
-        $Null { "--"; break }
-        "True" { "Yes"; break }
-        "False" { "No"; break }
+        '' { '--'; break }
+        $Null { '--'; break }
+        'True' { 'Yes'; break }
+        'False' { 'No'; break }
         default { $TEXT }
     }
 } # end
@@ -146,8 +148,8 @@ function ConvertTo-HashToYN {
     .DESCRIPTION
 
     .NOTES
-        Version:        0.1.0
-        Author:         Jonathan Colon
+        Version:        0.2.0
+        Author:         AsBuiltReport Organization
 
     .EXAMPLE
 
@@ -155,15 +157,15 @@ function ConvertTo-HashToYN {
 
     #>
     [CmdletBinding()]
-    [OutputType([Hashtable])]
+    [OutputType([System.Collections.Specialized.OrderedDictionary])]
     param (
         [Parameter (Position = 0, Mandatory)]
         [AllowEmptyString()]
-        [Hashtable] $TEXT
+        [System.Collections.Specialized.OrderedDictionary] $TEXT
     )
 
     $result = [ordered] @{}
-    foreach ($i in $inObj.GetEnumerator()) {
+    foreach ($i in $TEXT.GetEnumerator()) {
         try {
             $result.add($i.Key, (ConvertTo-TextYN $i.Value))
         } catch {
