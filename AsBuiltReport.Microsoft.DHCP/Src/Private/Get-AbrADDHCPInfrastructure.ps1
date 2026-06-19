@@ -51,7 +51,7 @@ function Get-AbrADDHCPInfrastructure {
                                             'Authorized' = ConvertTo-TextYN $Setting.IsAuthorized
                                             'Conflict Detection Attempts' = $Setting.ConflictDetectionAttempts
                                         }
-                                        $OutObj += [pscustomobject]$inobj
+                                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                     } catch {
                                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP Servers in Domain Item)"
                                     }
@@ -104,7 +104,7 @@ function Get-AbrADDHCPInfrastructure {
                                             default { ConvertTo-TextYN $Setting.LoggingEnabled }
                                         }
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Service Database Item)"
                                 }
@@ -143,7 +143,7 @@ function Get-AbrADDHCPInfrastructure {
                                         'User Name' = ConvertTo-EmptyToFiller $Setting.UserName
                                         'Domain Name' = ConvertTo-EmptyToFiller $Setting.DomainName
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Dynamic DNS credentials Item)"
                                 }

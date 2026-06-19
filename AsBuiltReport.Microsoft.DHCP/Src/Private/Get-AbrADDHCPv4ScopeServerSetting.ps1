@@ -44,7 +44,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             'Value' = $Option.Value
                             'Policy Name' = ConvertTo-EmptyToFiller $Option.PolicyName
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (DHCP scopes server opions item)"
                     }
@@ -76,7 +76,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                                         'Disable DNS PTR RR Update' = ConvertTo-EmptyToFiller $Option.DisableDnsPtrRRUpdate
                                         'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (global DNS Settings Item)"
                                 }

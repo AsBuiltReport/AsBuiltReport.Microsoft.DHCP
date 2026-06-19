@@ -40,7 +40,7 @@ function Get-AbrADDHCPv4PerScopeExclusion {
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Exclusion Item)"
                     }

@@ -51,7 +51,7 @@ function Get-AbrADDHCPv4PerScopeProperty {
                             'Nap Profile' = ConvertTo-EmptyToFiller $Exclusion.NapProfile
                             'Description' = ConvertTo-EmptyToFiller $Exclusion.Description
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (Scope Properties Item)"
                     }

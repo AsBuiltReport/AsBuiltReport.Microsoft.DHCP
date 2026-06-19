@@ -51,7 +51,7 @@ function Get-AbrADDHCPv4Scope {
                                 }
                                 'State' = $Scope.State
                             }
-                            $OutObj += [pscustomobject]$inobj
+                            $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                         } catch {
                             Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Item)"
                         }
@@ -96,7 +96,7 @@ function Get-AbrADDHCPv4Scope {
                                         'Percentage Free' = [math]::Round((100 - $Scope.PercentageInUse), 0)
                                         'Reserved IP' = $Scope.Reserved
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Scope Statistics Item)"
                                 }
@@ -225,7 +225,7 @@ function Get-AbrADDHCPv4Scope {
                                             default { $Scope.BindingState }
                                         }
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 NIC Biding Item)"
                                 }
@@ -364,7 +364,7 @@ function Get-AbrADDHCPv4Scope {
                                         'Ascii Data' = $Class.AsciiData
                                         'Description' = $Class.Description
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Client Classes Item)"
                                 }
@@ -411,7 +411,7 @@ function Get-AbrADDHCPv4Scope {
                                         'Vendor Class' = ConvertTo-EmptyToFiller $Definition.VendorClass
                                         'Multi Valued' = ConvertTo-TextYN $Definition.MultiValued
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv4 Option Definitions Item)"
                                 }

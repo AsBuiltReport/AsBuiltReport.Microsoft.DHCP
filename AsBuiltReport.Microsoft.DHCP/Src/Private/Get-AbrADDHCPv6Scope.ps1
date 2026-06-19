@@ -48,7 +48,7 @@ function Get-AbrADDHCPv6Scope {
                             }
                             'State' = $Scope.State
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Item)"
                     }
@@ -79,7 +79,7 @@ function Get-AbrADDHCPv6Scope {
                                     'Percentage In Use' = [math]::Round($Scope.PercentageInUse, 0)
                                     'Reserved IP' = $Scope.ReservedAddress
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                             } catch {
                                 Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Statistics Item)"
                             }
@@ -121,7 +121,7 @@ function Get-AbrADDHCPv6Scope {
                                         default { $Scope.BindingState }
                                     }
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                             } catch {
                                 Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 NIC binding item)"
                             }
@@ -156,7 +156,7 @@ function Get-AbrADDHCPv6Scope {
                                     'Ascii Data' = $Class.AsciiData
                                     'Description' = $Class.Description
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                             } catch {
                                 Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Client Classes Item)"
                             }
@@ -200,7 +200,7 @@ function Get-AbrADDHCPv6Scope {
                                     'Vendor Class' = ConvertTo-EmptyToFiller $Definition.VendorClass
                                     'Multi Valued' = ConvertTo-TextYN $Definition.MultiValued
                                 }
-                                $OutObj += [pscustomobject]$inobj
+                                $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                             } catch {
                                 Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Option Definitions Item)"
                             }

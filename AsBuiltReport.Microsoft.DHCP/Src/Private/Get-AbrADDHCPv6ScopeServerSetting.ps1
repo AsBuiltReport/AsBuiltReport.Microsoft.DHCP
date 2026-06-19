@@ -46,7 +46,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                             'Type' = ConvertTo-EmptyToFiller $Option.Type
                             'Value' = $Option.Value
                         }
-                        $OutObj += [pscustomobject]$inobj
+                        $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                     } catch {
                         Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Scope Server Option Item)"
                     }
@@ -74,7 +74,7 @@ function Get-AbrADDHCPv6ScopeServerSetting {
                                         'Name Protection' = ConvertTo-EmptyToFiller $Option.NameProtection
                                         'Delete DNS RR On Lease Expiry' = ConvertTo-EmptyToFiller $Option.DeleteDnsRROnLeaseExpiry
                                     }
-                                    $OutObj += [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
                                 } catch {
                                     Write-PScriboMessage -IsWarning "$($_.Exception.Message) (IPv6 Global DNS Settings Item)"
                                 }
