@@ -35,11 +35,11 @@ function Get-AbrADDHCPv4Statistic {
                     try {
                         foreach ($DHCPServer in $DHCPinDC) {
                             if (Test-WSMan -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ComputerName $DHCPServer -ErrorAction SilentlyContinue) {
-                                Write-PScriboMessage "Collecting DHCP Server IPv4 Statistics from $($DHCPServer.split(".", 2)[0])"
+                                Write-PScriboMessage "Collecting DHCP Server IPv4 Statistics from $($DHCPServer.split('.', 2)[0])"
                                 $TempCIMSession = New-CimSession $DHCPServer -Credential $Credential -Authentication $Options.PSDefaultAuthentication -ErrorAction Stop
                                 $Setting = Get-DhcpServerv4Statistics -CimSession $TempCIMSession -ComputerName $DHCPServer
                                 $inObj = [ordered] @{
-                                    'DC Name' = $DHCPServer.Split(".", 2)[0]
+                                    'DC Name' = $DHCPServer.Split('.', 2)[0]
                                     'Total Scopes' = $Setting.TotalScopes
                                     'Total Addresses' = $Setting.TotalAddresses
                                     'Addresses In Use' = $Setting.AddressesInUse

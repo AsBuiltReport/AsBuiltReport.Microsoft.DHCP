@@ -26,18 +26,18 @@ function Get-AbrADDHCPv4ScopeServerSetting {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Server Options information on $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $DHCPScopeOptions = Get-DhcpServerv4OptionValue -CimSession $TempCIMSession -ComputerName $Server
         if ($DHCPScopeOptions) {
-            Section -Style Heading3 "Global Server Options" {
+            Section -Style Heading3 'Global Server Options' {
                 $OutObj = @()
                 Write-PScriboMessage "Discovered '$(($DHCPScopeOptions | Measure-Object).Count)' DHCP scopes server opions on $($Server)."
                 foreach ($Option in $DHCPScopeOptions) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Server Option value $($Option.OptionId) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv4 Scope Server Option value $($Option.OptionId) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Name' = $Option.Name
                             'Option Id' = $Option.OptionId
@@ -50,7 +50,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                     }
                 }
                 $TableParams = @{
-                    Name = "Scopes Server Options - $($Server.split(".", 2).ToUpper()[0])"
+                    Name = "Scopes Server Options - $($Server.split('.', 2).ToUpper()[0])"
                     List = $false
                     ColumnWidths = 40, 15, 20, 25
                 }
@@ -61,8 +61,8 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                 try {
                     $DHCPScopeOptions = Get-DhcpServerv4DnsSetting -CimSession $TempCIMSession -ComputerName $Server
                     if ($DHCPScopeOptions) {
-                        Section -Style Heading4 "Global DNS Settings" {
-                            Paragraph "The following table summarizes the DHCP server IPv4 global DNS settings."
+                        Section -Style Heading4 'Global DNS Settings' {
+                            Paragraph 'The following table summarizes the DHCP server IPv4 global DNS settings.'
                             BlankLine
                             $OutObj = @()
                             foreach ($Option in $DHCPScopeOptions) {
@@ -88,7 +88,7 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             }
 
                             $TableParams = @{
-                                Name = "Global DNS Settings - $($Server.split(".", 2).ToUpper()[0])"
+                                Name = "Global DNS Settings - $($Server.split('.', 2).ToUpper()[0])"
                                 List = $true
                                 ColumnWidths = 40, 60
                             }
@@ -97,18 +97,18 @@ function Get-AbrADDHCPv4ScopeServerSetting {
                             }
                             $OutObj | Table @TableParams
                             if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always' }) -or ($OutObj | Where-Object { $_.'Name Protection' -eq 'No' })) {
-                                Paragraph "Health Check:" -Bold -Underline
+                                Paragraph 'Health Check:' -Bold -Underline
                                 BlankLine
                                 if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Dynamic Updates' -ne 'Always' })) {
                                     Paragraph {
-                                        Text "Best Practice:" -Bold
+                                        Text 'Best Practice:' -Bold
                                         Text "'Always dynamically update DNS records' should be configured if secure dynamic DNS update is enabled and the domain controller is on the same host as the DHCP server."
                                     }
                                     BlankLine
                                 }
                                 if ($HealthCheck.DHCP.BP -and ($OutObj | Where-Object { $_.'Name Protection' -eq 'No' })) {
                                     Paragraph {
-                                        Text "Best Practice:" -Bold
+                                        Text 'Best Practice:' -Bold
                                         Text "'Name Protection' should be configured to prevent Name Squating."
                                     }
                                 }

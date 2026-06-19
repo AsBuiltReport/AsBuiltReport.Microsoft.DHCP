@@ -168,7 +168,7 @@ function Get-AbrADDHCPv4Scope {
                                                 'Auto State Transition' = ConvertTo-TextYN $Scope.AutoStateTransition
                                                 'Authentication Enabled' = ConvertTo-TextYN $Scope.EnableAuth
                                             }
-                                            $OutObj = [pscustomobject]$inobj
+                                            $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
 
                                             if ($HealthCheck.DHCP.BP) {
                                                 $OutObj | Where-Object { $_.'Authentication Enabled' -eq 'No' } | Set-Style -Style Warning -Property 'Authentication Enabled'
@@ -317,7 +317,7 @@ function Get-AbrADDHCPv4Scope {
                                             default { 'Unknown' }
                                         }
                                     }
-                                    $OutObj = [pscustomobject]$inobj
+                                    $OutObj += [pscustomobject](ConvertTo-HashToYN $inObj)
 
                                     if ($HealthCheck.DHCP.BP) {
                                         $OutObj | Where-Object { $_.'Description' -eq '--' } | Set-Style -Style Warning -Property 'Description'

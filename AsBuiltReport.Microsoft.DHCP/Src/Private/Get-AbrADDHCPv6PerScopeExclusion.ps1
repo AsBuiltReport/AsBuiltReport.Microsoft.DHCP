@@ -25,17 +25,17 @@ function Get-AbrADDHCPv6PerScopeExclusion {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Exclusion information from $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
         $DHCPScopeExclusion = Get-DhcpServerv6ExclusionRange -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope | Sort-Object -Property 'StartRange'
         if ($DHCPScopeExclusion) {
-            Section -ExcludeFromTOC -Style NOTOCHeading6 "Exclusion" {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 'Exclusion' {
                 $OutObj = @()
                 foreach ($Exclusion in $DHCPScopeExclusion) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Exclusion value $($Exclusion.IPAddress) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'Start Range' = $Exclusion.StartRange
                             'End Range' = $Exclusion.EndRange

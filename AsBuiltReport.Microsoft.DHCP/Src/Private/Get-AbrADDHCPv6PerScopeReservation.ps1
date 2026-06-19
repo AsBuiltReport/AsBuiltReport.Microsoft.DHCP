@@ -25,17 +25,17 @@ function Get-AbrADDHCPv6PerScopeReservation {
     )
 
     begin {
-        Write-PScriboMessage "Discovering DHCP Servers Scope Reservation information from $($Server.ToUpper().split(".", 2)[0])."
+        Write-PScriboMessage "Discovering DHCP Servers Scope Reservation information from $($Server.ToUpper().split('.', 2)[0])."
     }
 
     process {
-        $DHCPScopeReservation = Get-DhcpServerv6Reservation  -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope | Sort-Object -Property 'IPAddress'
+        $DHCPScopeReservation = Get-DhcpServerv6Reservation -CimSession $TempCIMSession -ComputerName $Server -Prefix $Scope | Sort-Object -Property 'IPAddress'
         if ($DHCPScopeReservation) {
-            Section -ExcludeFromTOC -Style NOTOCHeading6 "Reservations" {
+            Section -ExcludeFromTOC -Style NOTOCHeading6 'Reservations' {
                 $OutObj = @()
                 foreach ($Reservation in $DHCPScopeReservation) {
                     try {
-                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Reservation value $($Reservation.IPAddress) from $($Server.split(".", 2)[0])"
+                        Write-PScriboMessage "Collecting DHCP Server IPv6 Scope Reservation value $($Reservation.IPAddress) from $($Server.split('.', 2)[0])"
                         $inObj = [ordered] @{
                             'IP Address' = $Reservation.IPAddress
                             'Client Id' = $Reservation.ClientId
