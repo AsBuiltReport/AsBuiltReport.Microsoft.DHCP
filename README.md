@@ -1,15 +1,15 @@
 <!-- ********** DO NOT EDIT THESE LINKS ********** -->
 <p align="center">
-    <a href="https://www.asbuiltreport.com/" alt="AsBuiltReport"></a>
-            <img src='https://avatars.githubusercontent.com/u/42958564' width="8%" height="8%" /></a>
+    <a href="https://www.asbuiltreport.com/">
+        <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/repo-banners/AsBuiltReport.Microsoft.DHCP.png" alt="AsBuiltReport.Microsoft.DHCP" width="880"></a>
 </p>
 <p align="center">
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.Microsoft.DHCP/" alt="PowerShell Gallery Version">
-        <img src="https://img.shields.io/powershellgallery/v/AsBuiltReport.Microsoft.DHCP.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/v/AsBuiltReport.Microsoft.DHCP.svg?color=1F5FD0" /></a>
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.Microsoft.DHCP/" alt="PS Gallery Downloads">
-        <img src="https://img.shields.io/powershellgallery/dt/AsBuiltReport.Microsoft.DHCP.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/dt/AsBuiltReport.Microsoft.DHCP.svg?color=012456" /></a>
     <a href="https://www.powershellgallery.com/packages/AsBuiltReport.Microsoft.DHCP/" alt="PS Platform">
-        <img src="https://img.shields.io/powershellgallery/p/AsBuiltReport.Microsoft.DHCP.svg" /></a>
+        <img src="https://img.shields.io/powershellgallery/p/AsBuiltReport.Microsoft.DHCP.svg?color=FFD02B" /></a>
 </p>
 <p align="center">
     <a href="https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/graphs/commit-activity" alt="GitHub Last Commit">
@@ -17,15 +17,9 @@
     <a href="https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/master/LICENSE" alt="GitHub License">
         <img src="https://img.shields.io/github/license/AsBuiltReport/AsBuiltReport.Microsoft.DHCP.svg" /></a>
     <a href="https://github.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/graphs/contributors" alt="GitHub Contributors">
-        <img src="https://img.shields.io/github/contributors/AsBuiltReport/AsBuiltReport.Microsoft.DHCP.svg"/></a>
-</p>
-<p align="center">
-    <a href="https://twitter.com/AsBuiltReport" alt="Twitter">
-            <img src="https://img.shields.io/twitter/follow/AsBuiltReport.svg?style=social"/></a>
+        <img src="https://img.shields.io/github/contributors/AsBuiltReport/AsBuiltReport.Microsoft.DHCP.svg?color=012456"/></a>
 </p>
 <!-- ********** DO NOT EDIT THESE LINKS ********** -->
-
-# Microsoft DHCP As Built Report
 
 Microsoft DHCP As Built Report is a PowerShell module which works in conjunction with [AsBuiltReport.Core](https://github.com/AsBuiltReport/AsBuiltReport.Core).
 
@@ -33,16 +27,16 @@ Microsoft DHCP As Built Report is a PowerShell module which works in conjunction
 
 Please refer to the AsBuiltReport [website](https://www.asbuiltreport.com) for more detailed information about this project.
 
-# :books: Sample Reports
+# <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/sample-reports.svg" alt="" width="28" height="28" align="top"> Sample Reports
 
 ## Sample Report - Custom Style 1
 
 Sample Microsoft DHCP As Built report HTML file: [Sample Microsoft DHCP As-Built Report.html](https://htmlpreview.github.io/?https://raw.githubusercontent.com/AsBuiltReport/AsBuiltReport.Microsoft.DHCP/dev/Samples/Sample%20Microsoft%20DHCP%20As%20Built%20Report.html)
 
-# :beginner: Getting Started
+# <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/getting-started.svg" alt="" width="28" height="28" align="top"> Getting Started
 Below are the instructions on how to install, configure and generate a Microsoft DHCP As Built report.
 
-## :floppy_disk: Supported Versions
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/supported-versions.svg" alt="" width="24" height="24" align="top"> Supported Versions
 <!-- ********** Update supported AD versions ********** -->
 The Microsoft DHCP As Built Report supports the following DHCP server versions;
 
@@ -59,7 +53,7 @@ This report is compatible with the following PowerShell versions;
 | Windows PowerShell 5.1 | PowerShell 7 |
 | :--------------------: | :----------: |
 |   :white_check_mark:   |     :x:      |
-## :wrench: System Requirements
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/system-requirements.svg" alt="" width="24" height="24" align="top"> System Requirements
 <!-- ********** Update system requirements ********** -->
 PowerShell 5.1, and the following PowerShell modules are required for generating a Microsoft DHCP As Built Report.
 
@@ -71,14 +65,14 @@ PowerShell 5.1, and the following PowerShell modules are required for generating
 
 This report does not support Linux or Mac due to the fact that the ActiveDirectory/GroupPolicy modules are dependent on the .NET Framework. Until Microsoft migrates these modules to native PowerShell Core, only PowerShell >= (5.x, 7) will be supported on Windows.
 
-### :closed_lock_with_key: Required Privileges
+### <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/required-privileges.svg" alt="" width="20" height="20" align="top"> Required Privileges
 
 A Microsoft DHCP As Built Report can be generated with DHCP operator level privileges. Since this report relies extensively on the WinRM component, you should make sure that it is enabled and configured. [Reference](https://docs.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
 
 Due to a limitation of the WinRM component, a domain-joined machine is needed, also it is required to use the FQDN of the DC instead of its IP address.
 [Reference](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_troubleshooting?view=powershell-7.1#how-to-use-an-ip-address-in-a-remote-command)
 
-## :package: Module Installation
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/module-installation.svg" alt="" width="24" height="24" align="top"> Module Installation
 
 ### PowerShell
 <!-- ********** Add installation for any additional PowerShell module(s) ********** -->
@@ -102,7 +96,7 @@ If you are unable to use the PowerShell Gallery, you can still install the modul
 
 _Note: You are not limited to installing the module to those example paths, you can add a new entry to the environment variable PSModulePath if you want to use another path._
 
-## :pencil2: Configuration
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/configuration.svg" alt="" width="24" height="24" align="top"> Configuration
 
 The Microsoft DHCP As Built Report utilises a JSON file to allow configuration of report information, options, detail and healthchecks.
 
@@ -162,7 +156,7 @@ The table below outlines the default and maximum **InfoLevel** settings for each
 ### Healthcheck
 The **Healthcheck** schema is used to toggle health checks on or off.
 
-## :computer: Examples
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/examples.svg" alt="" width="24" height="24" align="top"> Examples
 
 There are a few examples listed below on running the AsBuiltReport script against a Microsoft DHCP server target. Refer to the `README.md` file in the main AsBuiltReport project repository for more examples.
 
@@ -182,7 +176,7 @@ PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso
 PS C:\> New-AsBuiltReport -Report Microsoft.DHCP -Target 'admin-dhcp-01v.contoso.local' -Username 'administrator@contoso.local' -Password 'P@ssw0rd' -Format Html,Word -OutputFolderPath 'C:\Users\Jon\Documents' -SendEmail
 ```
 
-## :x: Known Issues
+## <img src="https://raw.githubusercontent.com/AsBuiltReport/.github/main/assets/section-icons/known-issues.svg" alt="" width="24" height="24" align="top"> Known Issues
 
 - Issues with WinRM when using the IP address instead of the "Fully Qualified Domain Name".
 - This project relies heavily on the remote connection function through WinRM. For this reason the use of a Windows 10 client is specifically used as a jumpbox.
